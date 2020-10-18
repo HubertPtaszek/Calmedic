@@ -1,0 +1,55 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "globalize@1.4.2",
+      "destination": "wwwroot/lib/globalize/"
+    },
+    {
+      "library": "jquery@3.4.1",
+      "destination": "wwwroot/lib/jquery/"
+    },
+    {
+      "library": "jquery-validation-unobtrusive@3.2.11",
+      "destination": "wwwroot/lib/jquery-validation-unobtrusive/"
+    },
+    {
+      "library": "jquery-validate@1.19.1",
+      "destination": "wwwroot/lib/jquery-validate/"
+    },
+    {
+      "library": "cldrjs@0.5.1",
+      "destination": "wwwroot/lib/cldrjs/"
+    },
+    {
+      "library": "twitter-bootstrap@4.4.1",
+      "destination": "wwwroot/lib/twitter-bootstrap/"
+    },
+    {
+      "library": "modernizr@2.8.3",
+      "destination": "wwwroot/lib/modernizr/"
+    },
+    {
+      "library": "codemirror@5.48.4",
+      "destination": "wwwroot/lib/codemirror/"
+    },
+    {
+      "library": "font-awesome@5.11.2",
+      "destination": "wwwroot/lib/font-awesome/"
+    },
+    {
+      "provider": "unpkg",
+      "library": "devextreme-cldr-data@1.0.2",
+      "destination": "wwwroot/lib/devextreme-cldr-data/",
+      "files": [
+        "supplemental.js",
+        "pl.js"
+      ]
+    },
+    {
+      "library": "cropper@4.1.0",
+      "destination": "wwwroot/lib/cropper/"
+    }
+  ]
+}

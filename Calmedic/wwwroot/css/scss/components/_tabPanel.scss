@@ -1,0 +1,75 @@
+﻿.tabpanel-title {
+    font-weight: 500;
+    margin: $space-size $space-size-2 $space-size 0;
+    font-size: $space-size-2;
+}
+div.dx-tabpanel {
+    &.dx-state-focused {
+        .dx-multiview-wrapper {
+            border: none;
+        }
+    }
+
+    .dx-multiview-wrapper {
+        border: none;
+    }
+
+    .dx-tabs {
+        border: none;
+        display: flex;
+        .dx-tabs-wrapper{
+            align-items: center;
+            display: flex;
+        }
+    }
+
+    .dx-tabpanel-tabs {
+        margin-bottom: $space-size-2;
+    }
+
+    & .dx-tab {
+        width: auto;
+
+        span, & {
+            font-weight: 500;
+            color: $secondary-text-color;
+            line-height: 25px;
+        }
+
+        padding: $space-size/2 $space-size-2;
+
+        &.dx-state-hover {
+            background: none;
+
+            span, & {
+                color: $black;
+            }
+        }
+
+        &-selected {
+            background: none;
+
+            &:before {
+                display: none;
+            }
+
+            span, & {
+                color: $black;
+            }
+
+            &:after {
+                border: none;
+                height: 2px;
+                width: 70%;
+                background: $blue;
+                border-radius: 2px;
+                position: absolute;
+                top: auto;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+            }
+        }
+    }
+}

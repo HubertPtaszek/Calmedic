@@ -1,0 +1,51 @@
+﻿.login {
+    background: white;
+    border-radius: 4px;
+    max-width: 1400px;
+    margin: $space-size-8 auto $space-size-8 auto;
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.07);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.07);
+    overflow: hidden;
+    max-height: 700px;
+
+    form {
+        display: flex;
+        max-height: 700px;
+    }
+
+    &-form {
+        position: relative;
+        padding: $space-size-6;
+        flex-grow: 0;
+        flex-shrink: 0;
+        width: 350px;
+
+        &-footer {
+            position: absolute;
+            bottom: $space-size-2;
+            left: $space-size-8;
+            margin-left: $space-size-5;
+        }
+
+        &-wrapper {
+            width: 75%;
+            margin: auto;
+        }
+
+        &-header {
+            width: 75%;
+            margin: auto;
+            margin-bottom: 24px;
+        }
+    }
+
+    &-image {
+        flex-grow: 1;
+        overflow: hidden;
+        position: relative;
+
+        img {
+            height: 100%;
+        }
+    }
+}

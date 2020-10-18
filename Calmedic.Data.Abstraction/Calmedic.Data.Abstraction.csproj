@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DevExtreme.AspNet.Data" Version="2.7.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Calmedic.Dictionaries\Calmedic.Dictionaries.csproj" />
+    <ProjectReference Include="..\Calmedic.Domain\Calmedic.Domain.csproj" />
+    <ProjectReference Include="..\Calmedic.EntityFramework\Calmedic.EntityFramework.csproj" />
+    <ProjectReference Include="..\Calmedic.Infrastructure\Calmedic.Infrastructure.csproj" />
+    <ProjectReference Include="..\Calmedic.Resources\Calmedic.Resources.csproj" />
+  </ItemGroup>
+
+</Project>

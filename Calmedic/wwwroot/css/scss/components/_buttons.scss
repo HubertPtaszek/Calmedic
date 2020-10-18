@@ -1,0 +1,33 @@
+﻿.dx-button {
+    .dx-icon {
+        font-size: 15px !important;
+    }
+
+    &.dx-button-mode-text {
+        .dx-button-content {
+            padding: 7px $space-size 8px;
+
+            .dx-icon {
+                margin-right: 6px;
+            }
+        }
+    }
+}
+
+.btn-datagrid {
+    color: $gray400;
+    margin: 0 6px;
+    font-size: 13.5px;
+
+    &:hover {
+        color: $black;
+    }
+}
+
+.btn-small {
+    font-size: 12px !important;
+
+    .dx-button-content {
+        padding: 3px 5px !important;
+    }
+}

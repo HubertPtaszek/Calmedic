@@ -3,7 +3,39 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30128.74
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calmedic", "Calmedic\Calmedic.csproj", "{3F80464C-CC21-4FD1-975F-B0623CAE3E9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calmedic", "Calmedic\Calmedic.csproj", "{3F80464C-CC21-4FD1-975F-B0623CAE3E9E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{416A8A3C-F8D9-4C38-BDEE-97FCCAADF5FD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{7C47F988-36BC-4E55-A5DD-26FC17AF9364}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DI", "DI", "{6CB3077E-4928-4499-8813-CB15BF88EEF9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{D7AEC27D-31DE-436F-A95C-AE0A127A1C3F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{7980B4B0-EF01-479C-9879-A24FD15695CF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{4478B693-E5B9-422E-B939-044EEC6F366F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calmedic.Resources", "Calmedic.Resources\Calmedic.Resources.csproj", "{87EE845E-BD7A-4D4F-9E5C-C3F713216CDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calmedic.Infrastructure", "Calmedic.Infrastructure\Calmedic.Infrastructure.csproj", "{480C1BE3-3450-47CB-B4F6-CDEDB497D4D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calmedic.Dictionaries", "Calmedic.Dictionaries\Calmedic.Dictionaries.csproj", "{DC39F370-2FD4-4BE3-AE62-18D58AD3AAAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calmedic.Domain", "Calmedic.Domain\Calmedic.Domain.csproj", "{4D03E9CF-F24B-4037-8F6D-6C4D7FD26B14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calmedic.DependencyResolver", "Calmedic.DependencyResolver\Calmedic.DependencyResolver.csproj", "{8A2AF625-8334-4A74-9796-2FAFB7ACC420}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calmedic.Data.Abstraction", "Calmedic.Data.Abstraction\Calmedic.Data.Abstraction.csproj", "{DD916995-36AC-4A0B-926E-A882881CC129}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calmedic.Data.Repositories", "Calmedic.Data.Repositories\Calmedic.Data.Repositories.csproj", "{004BB453-55CA-48A0-B187-DEB509179301}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calmedic.EntityFramework", "Calmedic.EntityFramework\Calmedic.EntityFramework.csproj", "{A60392F7-9E7F-4EBA-8789-B50F8FEDF67D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calmedic.Application.Abstraction", "Calmedic.Application.Abstraction\Calmedic.Application.Abstraction.csproj", "{ED32877F-0A8A-426D-8D1A-C070B6DE8BBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calmedic.Application.Services", "Calmedic.Application.Services\Calmedic.Application.Services.csproj", "{99CBF183-217A-47A8-9BA2-67E67CB5CF96}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +47,62 @@ Global
 		{3F80464C-CC21-4FD1-975F-B0623CAE3E9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F80464C-CC21-4FD1-975F-B0623CAE3E9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F80464C-CC21-4FD1-975F-B0623CAE3E9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87EE845E-BD7A-4D4F-9E5C-C3F713216CDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87EE845E-BD7A-4D4F-9E5C-C3F713216CDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87EE845E-BD7A-4D4F-9E5C-C3F713216CDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87EE845E-BD7A-4D4F-9E5C-C3F713216CDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{480C1BE3-3450-47CB-B4F6-CDEDB497D4D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{480C1BE3-3450-47CB-B4F6-CDEDB497D4D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{480C1BE3-3450-47CB-B4F6-CDEDB497D4D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{480C1BE3-3450-47CB-B4F6-CDEDB497D4D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC39F370-2FD4-4BE3-AE62-18D58AD3AAAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC39F370-2FD4-4BE3-AE62-18D58AD3AAAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC39F370-2FD4-4BE3-AE62-18D58AD3AAAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC39F370-2FD4-4BE3-AE62-18D58AD3AAAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D03E9CF-F24B-4037-8F6D-6C4D7FD26B14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D03E9CF-F24B-4037-8F6D-6C4D7FD26B14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D03E9CF-F24B-4037-8F6D-6C4D7FD26B14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D03E9CF-F24B-4037-8F6D-6C4D7FD26B14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A2AF625-8334-4A74-9796-2FAFB7ACC420}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A2AF625-8334-4A74-9796-2FAFB7ACC420}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A2AF625-8334-4A74-9796-2FAFB7ACC420}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A2AF625-8334-4A74-9796-2FAFB7ACC420}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD916995-36AC-4A0B-926E-A882881CC129}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD916995-36AC-4A0B-926E-A882881CC129}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD916995-36AC-4A0B-926E-A882881CC129}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD916995-36AC-4A0B-926E-A882881CC129}.Release|Any CPU.Build.0 = Release|Any CPU
+		{004BB453-55CA-48A0-B187-DEB509179301}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{004BB453-55CA-48A0-B187-DEB509179301}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{004BB453-55CA-48A0-B187-DEB509179301}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{004BB453-55CA-48A0-B187-DEB509179301}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A60392F7-9E7F-4EBA-8789-B50F8FEDF67D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A60392F7-9E7F-4EBA-8789-B50F8FEDF67D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A60392F7-9E7F-4EBA-8789-B50F8FEDF67D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A60392F7-9E7F-4EBA-8789-B50F8FEDF67D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED32877F-0A8A-426D-8D1A-C070B6DE8BBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED32877F-0A8A-426D-8D1A-C070B6DE8BBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED32877F-0A8A-426D-8D1A-C070B6DE8BBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED32877F-0A8A-426D-8D1A-C070B6DE8BBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99CBF183-217A-47A8-9BA2-67E67CB5CF96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99CBF183-217A-47A8-9BA2-67E67CB5CF96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99CBF183-217A-47A8-9BA2-67E67CB5CF96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99CBF183-217A-47A8-9BA2-67E67CB5CF96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3F80464C-CC21-4FD1-975F-B0623CAE3E9E} = {4478B693-E5B9-422E-B939-044EEC6F366F}
+		{87EE845E-BD7A-4D4F-9E5C-C3F713216CDA} = {7980B4B0-EF01-479C-9879-A24FD15695CF}
+		{480C1BE3-3450-47CB-B4F6-CDEDB497D4D7} = {7980B4B0-EF01-479C-9879-A24FD15695CF}
+		{DC39F370-2FD4-4BE3-AE62-18D58AD3AAAC} = {D7AEC27D-31DE-436F-A95C-AE0A127A1C3F}
+		{4D03E9CF-F24B-4037-8F6D-6C4D7FD26B14} = {D7AEC27D-31DE-436F-A95C-AE0A127A1C3F}
+		{8A2AF625-8334-4A74-9796-2FAFB7ACC420} = {6CB3077E-4928-4499-8813-CB15BF88EEF9}
+		{DD916995-36AC-4A0B-926E-A882881CC129} = {416A8A3C-F8D9-4C38-BDEE-97FCCAADF5FD}
+		{004BB453-55CA-48A0-B187-DEB509179301} = {416A8A3C-F8D9-4C38-BDEE-97FCCAADF5FD}
+		{A60392F7-9E7F-4EBA-8789-B50F8FEDF67D} = {416A8A3C-F8D9-4C38-BDEE-97FCCAADF5FD}
+		{ED32877F-0A8A-426D-8D1A-C070B6DE8BBE} = {7C47F988-36BC-4E55-A5DD-26FC17AF9364}
+		{99CBF183-217A-47A8-9BA2-67E67CB5CF96} = {7C47F988-36BC-4E55-A5DD-26FC17AF9364}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DFA54FCF-DE46-4FD8-86AC-0539112EA258}

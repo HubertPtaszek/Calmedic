@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@SharedResource.Calmedic.ToHtmlStringSafe()</title>
+    <link rel="shortcut icon" href="~/images/utils/smallLogo.svg" />
+    <link rel="stylesheet" href="~/css/core-css.min.css" />
+    <script src="~/js/core-js.min.js"></script>
+    <script src="~/js/globalize-core.min.js"></script>
+    <script src="~/js/devextreme-core.min.js"></script>
+</head>
+<body>
+    <script>
+        DevExpress.utils.readyCallbacks.add((function () { Globalize.locale("pl") }).bind(this, jQuery));
+    </script>
+    <header>
+        <ul class="navbar-links navbar-links-user">
+            <partial name="_LoginPartial" />
+        </ul>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

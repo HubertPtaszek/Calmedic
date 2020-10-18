@@ -1,0 +1,30 @@
+﻿.breadcrumb {
+    display: flex;
+    padding: 0;
+
+    li {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        margin-right: $space-size;
+
+        * {
+            color: $secondary-text-color;
+        }
+
+        &:after {
+            content: "\f054";
+            font-family: 'Font Awesome 5 Pro';
+            font-size: 10px;
+            margin-left: $space-size;
+            color: $secondary-text-color;
+        }
+
+        &:last-child {
+            &:after {
+                content: "";
+            }
+        }
+    }
+}

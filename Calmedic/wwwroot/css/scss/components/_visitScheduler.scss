@@ -1,0 +1,100 @@
+﻿.visit-scheduler {
+    border-radius: 4px;
+    overflow: hidden;
+
+    .dx-scheduler-timeline.dx-scheduler-work-space-grouped[dx-group-column-count='1'] .dx-scheduler-date-table-scrollable, .dx-scheduler-timeline.dx-scheduler-work-space-grouped[dx-group-column-count='1'] .dx-scheduler-header-scrollable {
+        margin-left: 200px;
+    }
+
+    .dx-scheduler-timeline.dx-scheduler-work-space-grouped[dx-group-column-count='1'] .dx-scheduler-group-table, .dx-scheduler-timeline.dx-scheduler-work-space-grouped[dx-group-column-count='1'] .dx-scheduler-sidebar-scrollable, .dx-scheduler-timeline.dx-scheduler-work-space-grouped[dx-group-column-count='1'] .dx-scheduler-sidebar-scrollable:before {
+        width: 200px;
+    }
+
+    &-avatar {
+        width: 55px;
+        height: 55px;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 0;
+        border-radius: 4px;
+        overflow: hidden;
+        flex-shrink: 0;
+
+        img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    &-text {
+        text-align: left;
+        margin-left: 4px;
+
+        h5 {
+            font-size: 13px;
+            margin-top: 0;
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        p {
+            margin-top: 4px;
+            font-size: 11px;
+            font-weight: normal;
+            margin-bottom: 0;
+        }
+    }
+
+    .dx-scheduler-date-table-cell {
+        height: 76px !important;
+    }
+
+    .dx-scheduler-view-switcher.dx-tabs {
+        display: none;
+    }
+
+    .dx-scheduler-timeline .dx-scheduler-header-panel-cell:not(.dx-scheduler-header-panel-week-cell), .dx-scheduler-timeline .dx-scheduler-date-table-cell {
+        width: 40px;
+    }
+
+    .dx-scheduler-header-panel-cell.dx-scheduler-cell-sizes-horizontal {
+        font-size: 14px !important;
+    }
+
+    .dx-scheduler-appointment {
+        top: -12.5px;
+
+        .schedulerItemContainer {
+            &:before {
+                width: 10px;
+                height: calc(100% - 20px);
+                position: absolute;
+                left: 5px;
+                top: 10px;
+                border-radius: 20px;
+                content: "";
+                display: block;
+            }
+        }
+    }
+
+    &-item {
+        display: flex;
+        align-items: center;
+        margin-top: 5px;
+        margin-left: 3px;
+
+        &-container {
+            margin-left: 5px;
+        }
+
+        &-title {
+            font-size: 10px !important;
+        }
+
+        &-text {
+            font-size: 10px !important;
+            color: rgba(0, 0, 0, 0.5);
+        }
+    }
+}

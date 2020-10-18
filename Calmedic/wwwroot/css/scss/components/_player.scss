@@ -1,0 +1,147 @@
+﻿.canvas {
+    z-index: 99998;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.playable-video,
+.static-image {
+    position: fixed;
+    z-index: 50;
+    min-height: 1%;
+    min-width: 1%;
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.default-board {
+    position: fixed;
+    z-index: 50;
+    min-height: 1%;
+    min-width: 1%;
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.static-board {
+    position: fixed;
+    z-index: 50;
+    height: auto;
+    width: auto;
+
+    @media(min-width: 1920px) {
+        min-width: 1920px;
+        min-height: 1080px;
+    }
+
+    @media(min-width: 1100px) AND (max-width: 1919px) {
+        min-width: 1100px;
+        max-width: 1919px;
+        max-height: 1079px;
+        min-height: 649px;
+    }
+
+    @media(max-width: 1099px) {
+        min-width: 770px;
+        max-width: 1099px;
+        max-height: 650px;
+        min-height: 420px;
+    }
+
+    @media(max-width: 769px) {
+        min-width: 450px;
+        max-width: 769px;
+        max-height: 480px;
+        min-height: 450px;
+    }
+
+    @media(max-width: 450px) {
+        max-width: 450px;
+        max-height: 1079px;
+    }
+
+    vertical-align: middle;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+}
+
+.animation-div {
+    background: black;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 100vh;
+
+    &.sheduler {
+        z-index: 99996;
+    }
+
+    &.player {
+        z-index: 999999999999;
+    }
+
+    &.active {
+        animation-name: fadeScheduler;
+        animation-duration: 1.5s;
+        animation-direction: normal;
+        animation-fill-mode: both;
+        animation-timing-function: ease-in;
+        top: 0;
+    }
+}
+
+.preloader-div {
+    z-index: 99998;
+    background: black;
+    width: 100%;
+    top: 0;
+    position: absolute;
+    height: 100vh;
+    font-size: 130px;
+    color: white;
+
+    &-spinner {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        width: 130px;
+        height: 130px;
+    }
+}
+
+
+@keyframes fadeScheduler {
+    0% {
+        opacity: 0;
+    }
+
+    35% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    65% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}

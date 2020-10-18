@@ -1,0 +1,41 @@
+﻿.main-datagrid {
+    .dx-editor-cell .dx-texteditor, .dx-editor-cell .dx-texteditor .dx-texteditor-input {
+        background: none;
+    }
+
+    .dx-datagrid {
+        background: none;
+        td {
+            border: none !important;
+        }
+    }
+
+    &-user {
+        display: flex;
+        align-items: center;
+    }
+
+    &-featured-text {
+        font-weight: 500;
+    }
+
+    .dx-editor-container {
+        border: 1px solid lighten($gray200, 15%);
+        margin-bottom: 8px;
+        margin-right: 4px;
+        height: 32px !important;
+    }
+
+
+    &-avatar {
+        width: $space-size-4;
+        height: $space-size-4;
+        border-radius: 100%;
+        overflow: hidden;
+        margin-right: $space-size;
+
+        img {
+            width: 100%;
+        }
+    }
+}

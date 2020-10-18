@@ -1,0 +1,149 @@
+[
+  {
+    "outputFileName": "wwwroot/css/core-css.min.css",
+    "inputFiles": [
+      "wwwroot/css/scss/main.css",
+      "wwwroot/css/devextreme/dx.common.css",
+      "wwwroot/css/devextreme/dx.generic.calmedicCloudScheme.css"
+    ],
+    "minify": {
+      "enabled": false
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/codemirror-core.min.css",
+    "inputFiles": [
+      "wwwroot/lib/codemirror/codemirror.css",
+      "wwwroot/lib/codemirror/theme/monokai.css"
+    ],
+    "minify": {
+      "enabled": false
+    }
+  },
+  {
+    "outputFileName": "wwwroot/js/codemirror-core.min.js",
+    "inputFiles": [
+      "wwwroot/lib/codemirror/codemirror.js",
+      "wwwroot/lib/codemirror/codemirror-mode/htmlmixed.js",
+      "wwwroot/lib/codemirror/codemirror-mode/xml.js",
+      "wwwroot/lib/codemirror/codemirror-mode/css.js",
+      "wwwroot/lib/codemirror/codemirror-mode/javascript.js",
+      "wwwroot/lib/codemirror/codemirror-mode/active-line.js",
+      "wwwroot/lib/codemirror/codemirror-mode/match-tags.js",
+      "wwwroot/lib/codemirror/codemirror-mode/closetag.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/js/core-js.min.js",
+    "inputFiles": [
+      "wwwroot/lib/modernizr/modernizr.js",
+      "wwwroot/lib/jquery/jquery.js",
+      "wwwroot/lib/jquery-validate/jquery.validate.js",
+      "wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
+      "wwwroot/lib/signalr/signalr.js",
+      "wwwroot/js/main.js",
+      "wwwroot/js/jquery.mCustomScrollbar.concat.min.js",
+      "wwwroot/lib/font-awesome/js/all.css"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": false
+    }
+  },
+  {
+    "outputFileName": "wwwroot/js/cropper.js",
+    "inputFiles": [
+      "wwwroot/lib/cropper/cropper.js",
+      "wwwroot/lib/jquery-cropper/jquery-cropper.js"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": false
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/cropper.css",
+    "inputFiles": [
+      "wwwroot/lib/cropper/cropper.css"
+    ],
+    "minify": {
+      "enabled": false
+    }
+  },
+  {
+    "outputFileName": "wwwroot/js/globalize-core.min.js",
+    "inputFiles": [
+      "wwwroot/lib/cldrjs/cldr.js",
+      "wwwroot/lib/cldrjs/cldr/event.js",
+      "wwwroot/lib/cldrjs/cldr/supplemental.js",
+      "wwwroot/lib/cldrjs/cldr/unresolved.js",
+      "wwwroot/lib/globalize/globalize.js",
+      "wwwroot/lib/globalize/globalize/message.js",
+      "wwwroot/lib/globalize/globalize/number.js",
+      "wwwroot/lib/globalize/globalize/currency.js",
+      "wwwroot/lib/globalize/globalize/date.js",
+      "wwwroot/js/globalize.extensions.js"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": false
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/devextreme-css.min.css",
+    "inputFiles": [
+      "wwwroot/css/devextreme/dx.common.css",
+      "wwwroot/css/devextreme/dx.light.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/devextreme-core.min.js",
+    "inputFiles": [
+      "wwwroot/js/devextreme/dx.all.js",
+      "wwwroot/js/devextreme/aspnet/dx.aspnet.data.js",
+      "wwwroot/js/devextreme/aspnet/dx.aspnet.mvc.js",
+      "wwwroot/js/devextreme/localization/dx.messages.pl.js",
+      "wwwroot/js/devextreme/localization/dx.messages.de.js",
+      "wwwroot/lib/devextreme-cldr-data/supplemental.js",
+      "wwwroot/lib/devextreme-cldr-data/pl.js"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": false
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/main.min.css",
+    "inputFiles": [
+      "wwwroot/css/main.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/scheduler.js",
+    "inputFiles": [
+      "wwwroot/lib/codebase/dhtmlxscheduler.js",
+      "wwwroot/lib/codebase/ext/dhtmlxscheduler_limit.js",
+      "wwwroot/lib/codebase/ext/dhtmlxscheduler_timeline.js",
+      "wwwroot/lib/codebase/ext/dhtmlxscheduler_readonly.js",
+      "wwwroot/lib/codebase/ext/dhtmlxscheduler_collision.js",
+      "wwwroot/lib/codebase/ext/dhtmlxscheduler_container_autoresize.js",
+      "wwwroot/lib/codebase/ext/dhtmlxscheduler_quick_info.js",
+      "wwwroot/lib/codebase/locale/locale_pl.js"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": false
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/scheduler.css",
+    "inputFiles": [
+      "wwwroot/lib/codebase/dhtmlxscheduler.css",
+      "wwwroot/lib/codebase/dhtmlxscheduler_material.css"
+    ]
+  }
+]

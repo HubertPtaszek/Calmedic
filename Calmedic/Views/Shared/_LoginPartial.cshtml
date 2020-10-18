@@ -1,0 +1,42 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@{
+    string tab = Context.Request.RouteValues.FirstOrDefault(x => x.Key == "controller").Value.ToString();
+    string area = Context.Request.RouteValues.FirstOrDefault(x => x.Key == "area").Value.ToString();
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <li class="nav-item navbar-dropdown">
+        <a href="#" style="display: @(tab != "Account" ? "" : "none")" class="navbar-avatar"><img src="~/images/DefaultAvatar.png" /></a>
+        <ul class="navbar-dropdown-el">
+            <li class="nav-item">
+                @if (area != "UserPanel")
+                {
+                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Login", "Account", new { area = AreaNames.AdminPanel_Area })">
+                        <button type="submit" class="nav-link btn btn-link text-dark">@SharedResource.Logout.ToHtmlStringSafe()</button>
+                    </form>
+                }
+                else
+                {
+                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Login", "Account", new { area = AreaNames.AdminPanel_Area })">
+                        <button type="submit" class="nav-link btn btn-link text-dark">@SharedResource.Logout.ToHtmlStringSafe()</button>
+                    </form>
+                }
+            </li>
+        </ul>
+    </li>
+}
+<script>
+    $(function () {
+        $(".navbar-dropdown").click(function () {
+            $(this).addClass("is-opened")
+        })
+        $(document).click(function (e) {
+            var container = $(".navbar-dropdown");
+            if (!container.is(e.target) && container.has(e.target).length === 0) {
+                $(".navbar-dropdown").removeClass("is-opened");
+            }
+        })
+    })
+</script>

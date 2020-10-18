@@ -1,0 +1,14 @@
+﻿.color-selector {
+    .dx-list-item {
+        width: 30px;
+        height: 30px;
+        .dx-item-content{
+            padding: 0;
+        }
+    }
+}
+div.dx-dropdownlist-popup-wrapper {
+    div.dx-item.dx-list-item {
+        width: 100% !important;
+    }
+}
