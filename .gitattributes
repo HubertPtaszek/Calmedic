@@ -3,7 +3,7 @@
 ###############################################################################
 * text=auto
 
-calmedic/wwwroot/* linguist-vendored
+Calmedic/wwwroot/* linguist-vendored
 
 ###############################################################################
 # Set default behavior for command prompt diff.
