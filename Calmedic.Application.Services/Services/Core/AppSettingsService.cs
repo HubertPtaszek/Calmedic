@@ -12,8 +12,10 @@ namespace Calmedic.Application
     public class AppSettingsService : ServiceBase, IAppSettingsService
     {
         #region Dependencies
+
         public IAppSettingsRepository AppSettingsRepository { get; set; }
-        #endregion
+
+        #endregion Dependencies
 
         private IList<AppSetting> _appSettings;
 
@@ -30,6 +32,26 @@ namespace Calmedic.Application
             }
 
             return (T)Convert.ChangeType(element.Value, typeof(T), CultureInfo.InvariantCulture);
+        }
+
+        public int GetEmailPort()
+        {
+            return GetSetting<int>(AppSettingEnum.EmailPort);
+        }
+
+        public string GetEmailServer()
+        {
+            return GetSetting<string>(AppSettingEnum.EmailServer);
+        }
+
+        public string GetEmailUserName()
+        {
+            return GetSetting<string>(AppSettingEnum.EmailUserName);
+        }
+
+        public string GetEmailUserPassword()
+        {
+            return GetSetting<string>(AppSettingEnum.EmailUserPassword);
         }
     }
 }

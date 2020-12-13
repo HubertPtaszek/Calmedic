@@ -11,7 +11,17 @@ namespace Calmedic.DependencyResolver
         {
             builder.RegisterType<AppSettingsService>().As<IAppSettingsService>().InstancePerLifetimeScope().EnableClassInterceptors().InterceptedBy(typeof(TransactionInterceptor)).PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies);
             builder.RegisterType<AppSettingsService>().As<AppSettingsService>().InstancePerLifetimeScope().PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies);
+            
             builder.RegisterType<AppSettingsRepository>().As<IAppSettingsRepository>().InstancePerLifetimeScope().PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies);
+            builder.RegisterType<AppSettingsRepository>().As<AppSettingsRepository>().InstancePerLifetimeScope().PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies);
+
+            builder.RegisterType<AppMailMessageService>().As<IAppMailMessageService>().InstancePerLifetimeScope().EnableClassInterceptors().InterceptedBy(typeof(TransactionInterceptor)).PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies);
+            builder.RegisterType<AppMailMessageService>().As<AppMailMessageService>().InstancePerLifetimeScope().PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies);
+
+            builder.RegisterType<AppMailMessageConverter>().AsSelf().PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies).InstancePerLifetimeScope();
+
+            builder.RegisterType<AppMailMessageRepository>().As<IAppMailMessageRepository>().InstancePerLifetimeScope().PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies);
+            builder.RegisterType<AppMailMessageRepository>().As<AppMailMessageRepository>().InstancePerLifetimeScope().PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies);
         }
     }
 }

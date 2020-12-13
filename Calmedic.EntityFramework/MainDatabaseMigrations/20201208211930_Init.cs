@@ -202,6 +202,45 @@ namespace Calmedic.EntityFramework.MainDatabaseMigrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AppMailMessages",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CreatedById = table.Column<int>(nullable: true),
+                    CreatedDate = table.Column<DateTime>(nullable: false),
+                    ModifiedById = table.Column<int>(nullable: true),
+                    ModifiedDate = table.Column<DateTime>(nullable: true),
+                    From = table.Column<string>(nullable: true),
+                    To = table.Column<string>(nullable: true),
+                    ReplyTo = table.Column<string>(nullable: true),
+                    CarbonCopy = table.Column<string>(nullable: true),
+                    BlindCarbonCopy = table.Column<string>(nullable: true),
+                    IsBodyHtml = table.Column<bool>(nullable: false),
+                    Body = table.Column<string>(nullable: true),
+                    Subject = table.Column<string>(nullable: true),
+                    Status = table.Column<int>(nullable: false),
+                    EmailType = table.Column<int>(nullable: false),
+                    SendDate = table.Column<DateTime>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AppMailMessages", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AppMailMessages_Peoples_CreatedById",
+                        column: x => x.CreatedById,
+                        principalTable: "Peoples",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_AppMailMessages_Peoples_ModifiedById",
+                        column: x => x.ModifiedById,
+                        principalTable: "Peoples",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AppRoles",
                 columns: table => new
                 {
@@ -258,6 +297,37 @@ namespace Calmedic.EntityFramework.MainDatabaseMigrations
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Clinics_Peoples_ModifiedById",
+                        column: x => x.ModifiedById,
+                        principalTable: "Peoples",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Patient",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CreatedById = table.Column<int>(nullable: true),
+                    CreatedDate = table.Column<DateTime>(nullable: false),
+                    ModifiedById = table.Column<int>(nullable: true),
+                    ModifiedDate = table.Column<DateTime>(nullable: true),
+                    FirstName = table.Column<string>(nullable: true),
+                    LasrName = table.Column<string>(nullable: true),
+                    Pesel = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Patient", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Patient_Peoples_CreatedById",
+                        column: x => x.CreatedById,
+                        principalTable: "Peoples",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Patient_Peoples_ModifiedById",
                         column: x => x.ModifiedById,
                         principalTable: "Peoples",
                         principalColumn: "Id",
@@ -325,9 +395,9 @@ namespace Calmedic.EntityFramework.MainDatabaseMigrations
                 {
                     table.PrimaryKey("PK_Visits", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Visits_Clinics_ClinicId",
+                        name: "FK_Visits_Patient_ClinicId",
                         column: x => x.ClinicId,
-                        principalTable: "Clinics",
+                        principalTable: "Patient",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -343,6 +413,16 @@ namespace Calmedic.EntityFramework.MainDatabaseMigrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AppMailMessages_CreatedById",
+                table: "AppMailMessages",
+                column: "CreatedById");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AppMailMessages_ModifiedById",
+                table: "AppMailMessages",
+                column: "ModifiedById");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AppRoles_CreatedById",
@@ -424,6 +504,16 @@ namespace Calmedic.EntityFramework.MainDatabaseMigrations
                 column: "ModifiedById");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Patient_CreatedById",
+                table: "Patient",
+                column: "CreatedById");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Patient_ModifiedById",
+                table: "Patient",
+                column: "ModifiedById");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_AppIdentityUserId",
                 table: "Peoples",
                 column: "AppIdentityUserId");
@@ -457,6 +547,9 @@ namespace Calmedic.EntityFramework.MainDatabaseMigrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "AppMailMessages");
+
+            migrationBuilder.DropTable(
                 name: "AppSettings");
 
             migrationBuilder.DropTable(
@@ -478,6 +571,9 @@ namespace Calmedic.EntityFramework.MainDatabaseMigrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Clinics");
+
+            migrationBuilder.DropTable(
                 name: "Visits");
 
             migrationBuilder.DropTable(
@@ -490,7 +586,7 @@ namespace Calmedic.EntityFramework.MainDatabaseMigrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Clinics");
+                name: "Patient");
 
             migrationBuilder.DropTable(
                 name: "Peoples");

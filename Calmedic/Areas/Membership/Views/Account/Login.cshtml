@@ -1,61 +1,47 @@
 ﻿@model LoginVM
 @{
     Layout = "~/Views/Shared/_LoginLayout.cshtml";
+    string validationGroup = Guid.NewGuid().ToString();
 }
 
 <div class="login">
     @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { id = "formId" }))
     {
-        using (Html.DevExtreme().ValidationGroup())
-        {
-            @Html.AntiForgeryToken();
-
-            <div class="row" style="display: none;">
-                <div class="col-12">
-                    @Html.DevExtreme().ValidationSummary()
-                </div>
+        @Html.AntiForgeryToken();
+        <div class="login-form">
+            <div class="login-form-header center">
+                <img src="~/images/utils/logo.svg" />
             </div>
-            <div class="login-form">
-                <div class="login-form-header center">
-                    <img src="~/images/utils/logo.svg" />
-                </div>
-                <div class="login-form-wrapper">
-                    <div class="row">
-                        <div class="row start-xs">
-                            <div class="col-xs-12">
-                                <div class="form-group">
-                                    <label>@Html.DisplayNameFor(x => x.Email)</label>
-                                    @Html.DevExtreme().TextBoxFor(x => x.Email).Placeholder(SharedResource.EmailHolder)
-                                </div>
-                            </div>
-                            <div class="col-xs-12">
-                                <div class="form-group">
-                                    <label>@Html.DisplayNameFor(x => x.Password)</label>
-                                    @Html.DevExtreme().TextBoxFor(x => x.Password).Mode(TextBoxMode.Password).Placeholder(SharedResource.PasswordHash)
-                                </div>
-                            </div>
-                            <div class="col-xs-12 d-flex space-between mt-3">
-                                <div class="form-group ">
-                                    <a href="#">@SharedResource.Register.ToHtmlStringSafe()</a>
-                                </div>
-                                @(Html.DevExtreme().Button()
-                                    .ID("button")
-                                    .ElementAttr("class", "btn btn-primary")
-                                    .Text(ButtonNameResource.Login)
-                                    .Type(ButtonType.Default)
-                                    .UseSubmitBehavior(true)
-                                )
+            <div class="login-form-wrapper">
+                <div class="row">
+                    <div class="row start-xs">
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <label>@Html.DisplayNameFor(x => x.Email)</label>
+                                <div id="emailBoxId"></div>
                             </div>
                         </div>
-                        <span class="login-form-footer">Wystąpił problem? <a href="#" id="contactButton">Skontaktuj się z nami!</a></span>
-                        <div id="contactPopup"></div>
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <label>@Html.DisplayNameFor(x => x.Password)</label>
+                                <div id="passwordBoxId"></div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 d-flex space-between mt-3">
+                            <div class="form-group ">
+
+                            </div>
+                            <div id="loginBtnId"></div>
+                        </div>
                     </div>
+                    <span class="login-form-footer">Wystąpił problem? <a href="#" id="contactButton">Skontaktuj się z nami!</a></span>
+                    <div id="contactPopup"></div>
                 </div>
             </div>
-            <div class="login-image">
-                <img src="~/images/utils/login.png" />
-            </div>
-        }
+        </div>
+        <div class="login-image">
+            <img src="~/images/utils/login.png" />
+        </div>
     }
 </div>
 
@@ -72,6 +58,39 @@
     $(document).ready(function () {
         $("#contactButton").click(function () {
             $("#contactPopup").dxPopup("instance").option({ visible: true });
+        });
+
+        $("#emailBoxId").dxTextBox({
+            name: "Email",
+            placeholder: "@SharedResource.EmailHolder.ToScriptStringSafe()",
+            widht: "100%"
+        }).dxValidator({
+            validationRules: [{
+                type: "required",
+                message: "@ErrorResource.RequiredShort.ToScriptStringSafe()"
+            }],
+            validationGroup: "@validationGroup"
+        });
+
+        $("#passwordBoxId").dxTextBox({
+            mode: 'password',
+            name: "Password",
+            placeholder: "@SharedResource.PasswordHash.ToScriptStringSafe()",
+            widht: "100%"
+        }).dxValidator({
+            validationRules: [{
+                type: "required",
+                message: "@ErrorResource.RequiredShort.ToScriptStringSafe()"
+            }],
+            validationGroup: "@validationGroup"
+        });
+
+        $("#loginBtnId").dxButton({
+            elementAttr: { class: "btn btn-primary" },
+            text: "@ButtonNameResource.Login.ToScriptStringSafe()",
+            type: "default",
+            useSubmitBehavior: true,
+            validationGroup: "@validationGroup"
         });
 
         $("#contactPopup").dxPopup({

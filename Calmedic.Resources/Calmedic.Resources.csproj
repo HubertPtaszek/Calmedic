@@ -25,6 +25,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>DisplayFormatResource.resx</DependentUpon>
     </Compile>
+    <Compile Update="Shared\EnumResource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>EnumResource.resx</DependentUpon>
+    </Compile>
     <Compile Update="Shared\ErrorResource.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -53,6 +58,10 @@
     <EmbeddedResource Update="Shared\DisplayFormatResource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>DisplayFormatResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Shared\EnumResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EnumResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Shared\ErrorResource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

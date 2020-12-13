@@ -43,6 +43,7 @@ namespace Calmedic.EntityFramework
 
         #region Core
         public DbSet<AppSetting> AppSettings { get; set; }
+        public DbSet<AppMailMessage> AppMailMessages { get; set; }
         public DbSet<Person> Peoples { get; set; }
         public DbSet<SystemUser> SystemUsers { get; set; }
         public DbSet<AppUser> AppUsers { get; set; }

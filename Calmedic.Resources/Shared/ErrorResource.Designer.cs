@@ -70,6 +70,24 @@ namespace Calmedic.Resources.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Twoje konto zostało utworzone, kliknij na poniższy link żeby utworzyć hasło: &lt;br /&gt; &lt;a href=&apos;{0}&apos;&gt;Utwórz hasło&lt;/a&gt;.
+        /// </summary>
+        public static string ConfirmationMessageContent {
+            get {
+                return ResourceManager.GetString("ConfirmationMessageContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Potwierdzenie konta.
+        /// </summary>
+        public static string ConfirmationMessageSubject {
+            get {
+                return ResourceManager.GetString("ConfirmationMessageSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nie można edytować roli Adminsitrator.
         /// </summary>
         public static string EditRoleAdmin {
@@ -93,6 +111,33 @@ namespace Calmedic.Resources.Shared {
         public static string ErrorText {
             get {
                 return ResourceManager.GetString("ErrorText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to W celu zmiany hasła, kliknij na poniższy link: &lt;br /&gt; &lt;a href=&apos;{0}&apos;&gt;Zmień hasło&lt;/a&gt;.
+        /// </summary>
+        public static string ForgotPasswordContent {
+            get {
+                return ResourceManager.GetString("ForgotPasswordContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zmiana hasła.
+        /// </summary>
+        public static string ForgotPasswordSubject {
+            get {
+                return ResourceManager.GetString("ForgotPasswordSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MailMessageSending id: {0}.
+        /// </summary>
+        public static string MailMessageSending {
+            get {
+                return ResourceManager.GetString("MailMessageSending", resourceCulture);
             }
         }
         

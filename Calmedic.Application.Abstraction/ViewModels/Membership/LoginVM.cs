@@ -17,8 +17,5 @@ namespace Calmedic.Application
         [DataType(DataType.Password)]
         [Display(ResourceType = typeof(SharedResource), Name = "Password")]
         public string Password { get; set; }
-
-        [Display(ResourceType = typeof(SharedResource), Name = "RememberMe")]
-        public bool RememberMe { get; set; }
     }
 }

@@ -10,6 +10,12 @@ namespace Calmedic.EntityFramework
         { }
 
         public void Configure(EntityTypeBuilder<Clinic> builder)
-        { }
+        {
+            builder.HasOne(x => x.Address)
+                       .WithMany()
+                       .HasForeignKey(x => x.AddressId)
+                       .IsRequired()
+                       .OnDelete(DeleteBehavior.Restrict);
+        }
     }
 }

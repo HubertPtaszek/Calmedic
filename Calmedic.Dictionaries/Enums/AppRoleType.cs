@@ -7,9 +7,11 @@ namespace Calmedic.Dictionaries
     {
         [Display(ResourceType = typeof(AppRoleResource), Name = "Administrator")]
         Administrator = 0,
+        [Display(ResourceType = typeof(AppRoleResource), Name = "Clinic")]
+        Clinic = 1,
         [Display(ResourceType = typeof(AppRoleResource), Name = "Reception")]
-        Reception = 1,
+        Reception = 2,
         [Display(ResourceType = typeof(AppRoleResource), Name = "Doctor")]
-        Doctor = 2
+        Doctor = 3
     }
 }

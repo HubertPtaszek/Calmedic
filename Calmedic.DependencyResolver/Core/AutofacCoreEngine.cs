@@ -1,13 +1,13 @@
-﻿using Calmedic.Application;
+﻿using Autofac;
+using Calmedic.Application;
 using Calmedic.EntityFramework;
 using Calmedic.Utils;
-using Autofac;
 
 namespace Calmedic.DependencyResolver
 {
-    public class NinjectCoreEngine : Module
+    public class AutofacCoreEngine : Module
     {
-        public NinjectCoreEngine()
+        public AutofacCoreEngine()
         { }
 
         protected override void Load(ContainerBuilder builder)

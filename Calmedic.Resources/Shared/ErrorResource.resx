@@ -120,6 +120,12 @@
   <data name="AccessDenied" xml:space="preserve">
     <value>Brak dostępu</value>
   </data>
+  <data name="ConfirmationMessageContent" xml:space="preserve">
+    <value>Twoje konto zostało utworzone, kliknij na poniższy link żeby utworzyć hasło: &lt;br /&gt; &lt;a href='{0}'&gt;Utwórz hasło&lt;/a&gt;</value>
+  </data>
+  <data name="ConfirmationMessageSubject" xml:space="preserve">
+    <value>Potwierdzenie konta</value>
+  </data>
   <data name="EditRoleAdmin" xml:space="preserve">
     <value>Nie można edytować roli Adminsitrator</value>
   </data>
@@ -128,6 +134,15 @@
   </data>
   <data name="ErrorText" xml:space="preserve">
     <value>Ups! Coś poszło nie tak!</value>
+  </data>
+  <data name="ForgotPasswordContent" xml:space="preserve">
+    <value>W celu zmiany hasła, kliknij na poniższy link: &lt;br /&gt; &lt;a href='{0}'&gt;Zmień hasło&lt;/a&gt;</value>
+  </data>
+  <data name="ForgotPasswordSubject" xml:space="preserve">
+    <value>Zmiana hasła</value>
+  </data>
+  <data name="MailMessageSending" xml:space="preserve">
+    <value>MailMessageSending id: {0}</value>
   </data>
   <data name="MaxFileLarge" xml:space="preserve">
     <value>Plik nie może być większy niż {0} MB</value>

@@ -84,6 +84,67 @@ namespace Calmedic.EntityFramework.MainDatabaseMigrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("Calmedic.Domain.AppMailMessage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BlindCarbonCopy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Body")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CarbonCopy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("CreatedById")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("EmailType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("From")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsBodyHtml")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("ModifiedById")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ReplyTo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("SendDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Subject")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("To")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("ModifiedById");
+
+                    b.ToTable("AppMailMessages");
+                });
+
             modelBuilder.Entity("Calmedic.Domain.AppRole", b =>
                 {
                     b.Property<int>("Id")
@@ -215,6 +276,43 @@ namespace Calmedic.EntityFramework.MainDatabaseMigrations
                     b.HasIndex("ModifiedById");
 
                     b.ToTable("Clinics");
+                });
+
+            modelBuilder.Entity("Calmedic.Domain.Patient", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CreatedById")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LasrName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ModifiedById")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Pesel")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("ModifiedById");
+
+                    b.ToTable("Patient");
                 });
 
             modelBuilder.Entity("Calmedic.Domain.Person", b =>
@@ -460,6 +558,17 @@ namespace Calmedic.EntityFramework.MainDatabaseMigrations
                     b.HasDiscriminator().HasValue("SystemUser");
                 });
 
+            modelBuilder.Entity("Calmedic.Domain.AppMailMessage", b =>
+                {
+                    b.HasOne("Calmedic.Domain.Person", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById");
+
+                    b.HasOne("Calmedic.Domain.Person", "ModifiedBy")
+                        .WithMany()
+                        .HasForeignKey("ModifiedById");
+                });
+
             modelBuilder.Entity("Calmedic.Domain.AppRole", b =>
                 {
                     b.HasOne("Calmedic.Domain.Person", "CreatedBy")
@@ -505,6 +614,17 @@ namespace Calmedic.EntityFramework.MainDatabaseMigrations
                         .HasForeignKey("ModifiedById");
                 });
 
+            modelBuilder.Entity("Calmedic.Domain.Patient", b =>
+                {
+                    b.HasOne("Calmedic.Domain.Person", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById");
+
+                    b.HasOne("Calmedic.Domain.Person", "ModifiedBy")
+                        .WithMany()
+                        .HasForeignKey("ModifiedById");
+                });
+
             modelBuilder.Entity("Calmedic.Domain.Person", b =>
                 {
                     b.HasOne("Calmedic.Domain.Person", "CreatedBy")
@@ -520,7 +640,7 @@ namespace Calmedic.EntityFramework.MainDatabaseMigrations
 
             modelBuilder.Entity("Calmedic.Domain.Visit", b =>
                 {
-                    b.HasOne("Calmedic.Domain.Clinic", "Clinic")
+                    b.HasOne("Calmedic.Domain.Patient", "Clinic")
                         .WithMany()
                         .HasForeignKey("ClinicId")
                         .OnDelete(DeleteBehavior.Cascade)

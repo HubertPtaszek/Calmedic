@@ -26,6 +26,16 @@ namespace Calmedic.Data
             return _dbset.Where(x => x.AppUser.AppIdentityUserId == identityUserId).Any(x => x.AppRole.AppRoleType == AppRoleType.Administrator);
         }
 
+        public bool CheckIfIsClinic(int userId)
+        {
+            return _dbset.Where(x => x.Id == userId).Any(x => x.AppRole.AppRoleType == AppRoleType.Clinic);
+        }
+
+        public bool CheckIfIsClinic(string identityUserId)
+        {
+            return _dbset.Where(x => x.AppUser.AppIdentityUserId == identityUserId).Any(x => x.AppRole.AppRoleType == AppRoleType.Clinic);
+        }
+
         public bool CheckIfIsReception(int userId)
         {
             return _dbset.Where(x => x.Id == userId).Any(x => x.AppRole.AppRoleType == AppRoleType.Reception);

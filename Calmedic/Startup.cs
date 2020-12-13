@@ -69,7 +69,7 @@ namespace Calmedic
         public void ConfigureContainer(ContainerBuilder builder)
         {
             // Register your own things directly with Autofac, like:
-            builder.RegisterModule<NinjectCoreEngine>();
+            builder.RegisterModule<AutofacCoreEngine>();
             foreach (var controllerType in _controllerTypes)
             {
                 builder.RegisterType(controllerType).PropertiesAutowired();

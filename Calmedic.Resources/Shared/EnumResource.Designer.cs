@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Calmedic.Resources.Membership {
+namespace Calmedic.Resources.Shared {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace Calmedic.Resources.Membership {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class AppRoleResource {
+    public class EnumResource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal AppRoleResource() {
+        internal EnumResource() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Calmedic.Resources.Membership {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Calmedic.Resources.Membership.AppRoleResource", typeof(AppRoleResource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Calmedic.Resources.Shared.EnumResource", typeof(EnumResource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,38 +61,74 @@ namespace Calmedic.Resources.Membership {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Administrator.
+        ///   Looks up a localized string similar to Prywatna.
         /// </summary>
-        public static string Administrator {
+        public static string ClinicType_Private {
             get {
-                return ResourceManager.GetString("Administrator", resourceCulture);
+                return ResourceManager.GetString("ClinicType_Private", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Przychodnia.
+        ///   Looks up a localized string similar to Publiczna.
         /// </summary>
-        public static string Clinic {
+        public static string ClinicType_Public {
             get {
-                return ResourceManager.GetString("Clinic", resourceCulture);
+                return ResourceManager.GetString("ClinicType_Public", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Recepcja.
+        ///   Looks up a localized string similar to Obraz.
         /// </summary>
-        public static string Doctor {
+        public static string MediaType_Image {
             get {
-                return ResourceManager.GetString("Doctor", resourceCulture);
+                return ResourceManager.GetString("MediaType_Image", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lekarz.
+        ///   Looks up a localized string similar to Film.
         /// </summary>
-        public static string Reception {
+        public static string MediaType_Video {
             get {
-                return ResourceManager.GetString("Reception", resourceCulture);
+                return ResourceManager.GetString("MediaType_Video", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grafik wizyt.
+        /// </summary>
+        public static string MediaType_VisitGraphics {
+            get {
+                return ResourceManager.GetString("MediaType_VisitGraphics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inna.
+        /// </summary>
+        public static string SexDictionary_Different {
+            get {
+                return ResourceManager.GetString("SexDictionary_Different", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kobieta.
+        /// </summary>
+        public static string SexDictionary_Female {
+            get {
+                return ResourceManager.GetString("SexDictionary_Female", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mężczyzna.
+        /// </summary>
+        public static string SexDictionary_Male {
+            get {
+                return ResourceManager.GetString("SexDictionary_Male", resourceCulture);
             }
         }
     }

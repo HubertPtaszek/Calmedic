@@ -40,25 +40,24 @@ namespace Calmedic.Areas.Membership.Controllers
         {
             if (ModelState.IsValid)
             {
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 AppIdentityUser user = await _userManager.FindByNameAsync(model.Email);
                 if (user == null)
                 {
                     ModelState.AddModelError("Email", "Invalid login attempt.");
                     return View(model);
                 }
-                var signInResult = await _signInManager.CheckPasswordSignInAsync(user, model.Password, lockoutOnFailure: false);
+                var signInResult = await _signInManager.CheckPasswordSignInAsync(user, model.Password, false);
                 if (!signInResult.Succeeded)
                 {
                     ModelState.AddModelError("Email", "Invalid login attempt.");
                     return View(model);
                 }
 
-                var result = await _signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe, lockoutOnFailure: false);
+                var result = await _signInManager.PasswordSignInAsync(user, model.Password, false, false);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
+                    //sprawdzać czy użytkownik ma aktywowane konto oraz ewentualnie czy potrzebuje ustawić nowe hasło
                     return RedirectToAction("Index", "Dashboard", new { area = AreaNames.Dashboard_Area });
                 }
                 ModelState.AddModelError("Email", "Invalid login attempt.");
