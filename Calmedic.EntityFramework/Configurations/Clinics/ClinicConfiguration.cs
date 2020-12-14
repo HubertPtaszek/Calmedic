@@ -16,6 +16,12 @@ namespace Calmedic.EntityFramework
                        .HasForeignKey(x => x.AddressId)
                        .IsRequired()
                        .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasMany(x => x.Doctors)
+                .WithOne(x => x.Clinic)
+                .HasForeignKey(x => x.ClinicId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

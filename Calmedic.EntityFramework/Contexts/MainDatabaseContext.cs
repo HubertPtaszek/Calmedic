@@ -1,9 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Calmedic.Domain;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Calmedic.Domain;
 using System;
 using System.Linq;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Calmedic.EntityFramework
 {
@@ -13,7 +13,7 @@ namespace Calmedic.EntityFramework
 
         public MainDatabaseContext() : base()
         {
-            Id = Guid.NewGuid(); 
+            Id = Guid.NewGuid();
         }
 
         public MainDatabaseContext(DbContextOptions<MainDatabaseContext> options) : base(options)
@@ -42,6 +42,7 @@ namespace Calmedic.EntityFramework
         //Remove-Migration -Context MainDatabaseContext
 
         #region Core
+
         public DbSet<AppSetting> AppSettings { get; set; }
         public DbSet<AppMailMessage> AppMailMessages { get; set; }
         public DbSet<Person> Peoples { get; set; }
@@ -49,33 +50,95 @@ namespace Calmedic.EntityFramework
         public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<AppRole> AppRoles { get; set; }
         public DbSet<AppUserRole> AppUserRoles { get; set; }
+        public DbSet<Address> Addresses { get; set; }
+
         #endregion Core
 
         #region Clinics
+
         public DbSet<Clinic> Clinics { get; set; }
-        #endregion
+
+        #endregion Clinics
+
+        #region DisplaySequences
+
+        public DbSet<DisplaySequence> DisplaySequences { get; set; }
+
+        #endregion DisplaySequences
+
+        #region Doctors
+
+        public DbSet<Doctor> Doctors { get; set; }
+        public DbSet<Specialization> Specializations { get; set; }
+
+        #endregion Doctors
+
+        #region Galleries
+
+        public DbSet<File> Files { get; set; }
+
+        #endregion Galleries
+
+        #region Patients
+
+        public DbSet<Patient> Patients { get; set; }
+
+        #endregion Patients
 
         #region Visits
+
         public DbSet<Visit> Visits { get; set; }
-        #endregion
+
+        #endregion Visits
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             #region Membership
+
             modelBuilder.ApplyConfiguration(new PersonConfiguration());
             modelBuilder.ApplyConfiguration(new AppUserConfiguration());
 
             modelBuilder.ApplyConfiguration(new AppUserRoleConfiguration());
             modelBuilder.ApplyConfiguration(new AppRoleConfiguration());
+
             #endregion Membership
 
             #region Clinics
+
             modelBuilder.ApplyConfiguration(new ClinicConfiguration());
-            #endregion
+
+            #endregion Clinics
+
+            #region DisplaySequences
+
+            modelBuilder.ApplyConfiguration(new DisplaySequenceConfiguration());
+
+            #endregion DisplaySequences
+
+            #region Doctors
+
+            modelBuilder.ApplyConfiguration(new DoctorConfiguration());
+            modelBuilder.ApplyConfiguration(new DoctorClinicConfiguration());
+
+            #endregion Doctors
+
+            #region Galleries
+
+            modelBuilder.ApplyConfiguration(new FileConfiguration());
+
+            #endregion Galleries
+
+            #region Patients
+
+            modelBuilder.ApplyConfiguration(new PatientConfiguration());
+
+            #endregion Patients
 
             #region Visits
+
             modelBuilder.ApplyConfiguration(new VisitConfiguration());
-            #endregion
+
+            #endregion Visits
 
             foreach (var property in modelBuilder.Model.GetEntityTypes()
            .SelectMany(t => t.GetProperties())

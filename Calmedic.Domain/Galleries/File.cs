@@ -2,7 +2,7 @@
 {
     public class File : AuditEntity
     {
-        public File()
+        public File() 
         {
         }
 

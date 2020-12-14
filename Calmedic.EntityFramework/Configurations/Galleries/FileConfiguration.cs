@@ -4,23 +4,18 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Calmedic.EntityFramework
 {
-    public class DisplaySequenceConfiguration : IEntityTypeConfiguration<DisplaySequence>
+    public class FileConfiguration : IEntityTypeConfiguration<File>
     {
-        public DisplaySequenceConfiguration()
+        public FileConfiguration()
         { }
 
-        public void Configure(EntityTypeBuilder<DisplaySequence> builder)
+        public void Configure(EntityTypeBuilder<File> builder)
         {
             builder.HasOne(x => x.Clinic)
                        .WithMany()
                        .HasForeignKey(x => x.ClinicId)
                        .IsRequired()
                        .OnDelete(DeleteBehavior.Restrict);
-
-            builder.HasOne(x => x.File)
-                .WithMany()
-                .HasForeignKey(x => x.FileId)
-                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

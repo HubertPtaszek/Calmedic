@@ -29,4 +29,8 @@
     <ProjectReference Include="..\Calmedic.Infrastructure\Calmedic.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="MainDatabaseMigrations\" />
+  </ItemGroup>
+
 </Project>
