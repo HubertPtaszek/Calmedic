@@ -1,24 +1,30 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using Calmedic.DependencyResolver;
+using Calmedic.Domain;
+using Calmedic.EntityFramework;
+using Calmedic.Jobs;
+using Calmedic.Jobs.JobSection;
+using Calmedic.Utils;
+using Hangfire;
+using Hangfire.States;
+using Hangfire.Storage;
+using Hangfire.Storage.Monitoring;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Autofac;
-using System.Reflection;
-using Microsoft.AspNetCore.Mvc.Controllers;
-using Calmedic.EntityFramework;
-using Calmedic.Domain;
-using Calmedic.DependencyResolver;
-using System.Globalization;
-using Autofac.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.Localization;
-using Calmedic.Utils;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Reflection;
 
 namespace Calmedic
 {
@@ -38,6 +44,7 @@ namespace Calmedic
 
         public IConfiguration Configuration { get; }
         private List<TypeInfo> _controllerTypes = new List<TypeInfo>();
+        private BackgroundJobServer _backgroundJobServer;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -74,6 +81,7 @@ namespace Calmedic
             {
                 builder.RegisterType(controllerType).PropertiesAutowired();
             }
+            builder.RegisterType<SendEmailJob>().PropertiesAutowired();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -146,6 +154,64 @@ namespace Calmedic
                 var mainContext = scope.ServiceProvider.GetRequiredService<MainDatabaseContext>();
                 var userManager = scope.ServiceProvider.GetRequiredService<UserManager<AppIdentityUser>>();
                 DbInitializer.Seed(mainContext, userManager);
+            }
+
+            GlobalConfiguration.Configuration
+             .UseSqlServerStorage(Configuration.GetConnectionString("MainDatabaseContext"))
+             .UseActivator(new HangfireActivator(this.AutofacContainer));
+            _backgroundJobServer = new BackgroundJobServer();
+            if (JobStorage.Current?.GetMonitoringApi() != null)
+                PurgeJobs(JobStorage.Current?.GetMonitoringApi());
+            HangfireJobSection jobSection = Configuration.GetSection("HangfireJobSection").Get<HangfireJobSection>();
+            if (jobSection != null)
+            {
+                ActiveJobs(jobSection);
+            }
+            appLifetime.ApplicationStopping.Register(() =>
+            {
+                if (_backgroundJobServer != null)
+                {
+                    _backgroundJobServer.Dispose();
+                }
+            });
+        }
+
+        private void ActiveJobs(HangfireJobSection jobSection)
+        {
+            ManageJob<SendEmailJob>("1", jobSection);
+        }
+
+        private void ManageJob<T>(string jobId, HangfireJobSection jobSection) where T : Job
+        {
+            HangfireJobSectionItem jobInfo = jobSection.Jobs.FirstOrDefault(x => x.JobId == jobId);
+            if (jobInfo == null || !jobInfo.IsEnabled || !jobSection.IsEnabled)
+            {
+                RecurringJob.RemoveIfExists(jobId);
+            }
+            else
+            {
+                TimeZoneInfo timeZone = TimeZoneInfo.Local;
+                string queue = jobInfo.Queue.IsNullOrEmpty() ? EnqueuedState.DefaultQueue : jobInfo.Queue;
+                RecurringJob.AddOrUpdate<T>(jobId, x => x.Execute(), jobInfo.CronExpression, timeZone: timeZone, queue: queue);
+            }
+        }
+
+        private void PurgeJobs(IMonitoringApi monitor)
+        {
+            var toDelete = new List<string>();
+
+            foreach (QueueWithTopEnqueuedJobsDto queue in monitor.Queues())
+            {
+                for (var i = 0; i < Math.Ceiling(queue.Length / 1000d); i++)
+                {
+                    monitor.EnqueuedJobs(queue.Name, 1000 * i, 1000)
+                        .ForEach(x => toDelete.Add(x.Key));
+                }
+            }
+
+            foreach (var jobId in toDelete)
+            {
+                BackgroundJob.Delete(jobId);
             }
         }
     }

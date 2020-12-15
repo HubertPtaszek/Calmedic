@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Calmedic.EntityFramework.MainDatabaseMigrations
 {
     [DbContext(typeof(MainDatabaseContext))]
-    [Migration("20201214143815_Init")]
+    [Migration("20201214202928_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -139,13 +139,7 @@ namespace Calmedic.EntityFramework.MainDatabaseMigrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("BlindCarbonCopy")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Body")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CarbonCopy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("CreatedById")
@@ -168,9 +162,6 @@ namespace Calmedic.EntityFramework.MainDatabaseMigrations
 
                     b.Property<DateTime?>("ModifiedDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("ReplyTo")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("SendDate")
                         .HasColumnType("datetime2");

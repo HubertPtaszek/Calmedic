@@ -34,7 +34,7 @@ namespace Calmedic.Application
                 string emailUserName = AppSettingsService.GetEmailUserName();
                 foreach (AppMailMessage mail in listToSend)
                 {
-                    SendMessage(mail, emailUserName, null);
+                    SendMessage(mail, emailUserName);
                 }
             }
         }
@@ -47,9 +47,9 @@ namespace Calmedic.Application
             return message;
         }
 
-        private void SendMessage(AppMailMessage appMail, string emailUserName, string base64FooterImage)
+        private void SendMessage(AppMailMessage appMail, string emailUserName)
         {
-            MailMessage mail = AppMailMessageConverter.ToMailMessage(appMail, emailUserName, base64FooterImage);
+            MailMessage mail = AppMailMessageConverter.ToMailMessage(appMail, emailUserName);
             try
             {
                 SendMessage(mail);

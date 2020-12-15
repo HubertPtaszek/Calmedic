@@ -17,11 +17,7 @@ namespace Calmedic.Utils
     [InternalAuthorization]
     public abstract class AppController : Controller
     {
-        private readonly Microsoft.Extensions.Logging.ILogger _logger;
-
         public MainContext MainContext { get; set; }
-
-        private static object _lockObject = new object();
       
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
