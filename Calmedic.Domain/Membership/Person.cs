@@ -1,4 +1,6 @@
-﻿namespace Calmedic.Domain
+﻿using System.Collections.Generic;
+
+namespace Calmedic.Domain
 {
     public abstract class Person : AuditEntity
     {
@@ -8,5 +10,6 @@
         public string AvatarUrl { get; set; }
         public bool IsActive { get; set; }
         public bool EmailConfirmed { get; set; }
+        public virtual List<ClinicUser> Clinics { get; set; } = new List<ClinicUser>();
     }
 }

@@ -51,12 +51,14 @@ namespace Calmedic.EntityFramework
         public DbSet<AppRole> AppRoles { get; set; }
         public DbSet<AppUserRole> AppUserRoles { get; set; }
         public DbSet<Address> Addresses { get; set; }
+        public DbSet<File> Files { get; set; }
 
         #endregion Core
 
         #region Clinics
 
         public DbSet<Clinic> Clinics { get; set; }
+        public DbSet<ClinicUser> ClinicUsers { get; set; }
 
         #endregion Clinics
 
@@ -73,12 +75,6 @@ namespace Calmedic.EntityFramework
 
         #endregion Doctors
 
-        #region Galleries
-
-        public DbSet<File> Files { get; set; }
-
-        #endregion Galleries
-
         #region Patients
 
         public DbSet<Patient> Patients { get; set; }
@@ -93,6 +89,10 @@ namespace Calmedic.EntityFramework
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            #region Core
+            modelBuilder.ApplyConfiguration(new FileConfiguration());
+            #endregion
+
             #region Membership
 
             modelBuilder.ApplyConfiguration(new PersonConfiguration());
@@ -106,6 +106,7 @@ namespace Calmedic.EntityFramework
             #region Clinics
 
             modelBuilder.ApplyConfiguration(new ClinicConfiguration());
+            modelBuilder.ApplyConfiguration(new ClinicUserConfiguration());
 
             #endregion Clinics
 
@@ -118,15 +119,8 @@ namespace Calmedic.EntityFramework
             #region Doctors
 
             modelBuilder.ApplyConfiguration(new DoctorConfiguration());
-            modelBuilder.ApplyConfiguration(new DoctorClinicConfiguration());
 
             #endregion Doctors
-
-            #region Galleries
-
-            modelBuilder.ApplyConfiguration(new FileConfiguration());
-
-            #endregion Galleries
 
             #region Patients
 

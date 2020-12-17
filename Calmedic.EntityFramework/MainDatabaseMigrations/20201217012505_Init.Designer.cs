@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Calmedic.EntityFramework.MainDatabaseMigrations
 {
     [DbContext(typeof(MainDatabaseContext))]
-    [Migration("20201214202928_Init")]
+    [Migration("20201217012505_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -335,6 +335,44 @@ namespace Calmedic.EntityFramework.MainDatabaseMigrations
                     b.ToTable("Clinics");
                 });
 
+            modelBuilder.Entity("Calmedic.Domain.ClinicUser", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ClinicId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CreatedById")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("ModifiedById")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClinicId");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("ModifiedById");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ClinicUsers");
+                });
+
             modelBuilder.Entity("Calmedic.Domain.DisplaySequence", b =>
                 {
                     b.Property<int>("Id")
@@ -430,44 +468,6 @@ namespace Calmedic.EntityFramework.MainDatabaseMigrations
                     b.HasIndex("SpecializationId");
 
                     b.ToTable("Doctors");
-                });
-
-            modelBuilder.Entity("Calmedic.Domain.DoctorClinic", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ClinicId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CreatedById")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("DoctorId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ModifiedById")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ClinicId");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("DoctorId");
-
-                    b.HasIndex("ModifiedById");
-
-                    b.ToTable("DoctorClinic");
                 });
 
             modelBuilder.Entity("Calmedic.Domain.File", b =>
@@ -693,11 +693,20 @@ namespace Calmedic.EntityFramework.MainDatabaseMigrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("DoctorId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("ModifiedById")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("ModifiedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("PatientId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -705,7 +714,11 @@ namespace Calmedic.EntityFramework.MainDatabaseMigrations
 
                     b.HasIndex("CreatedById");
 
+                    b.HasIndex("DoctorId");
+
                     b.HasIndex("ModifiedById");
+
+                    b.HasIndex("PatientId");
 
                     b.ToTable("Visits");
                 });
@@ -938,6 +951,29 @@ namespace Calmedic.EntityFramework.MainDatabaseMigrations
                         .HasForeignKey("ModifiedById");
                 });
 
+            modelBuilder.Entity("Calmedic.Domain.ClinicUser", b =>
+                {
+                    b.HasOne("Calmedic.Domain.Clinic", "Clinic")
+                        .WithMany("Users")
+                        .HasForeignKey("ClinicId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Calmedic.Domain.Person", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById");
+
+                    b.HasOne("Calmedic.Domain.Person", "ModifiedBy")
+                        .WithMany()
+                        .HasForeignKey("ModifiedById");
+
+                    b.HasOne("Calmedic.Domain.Person", "User")
+                        .WithMany("Clinics")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Calmedic.Domain.DisplaySequence", b =>
                 {
                     b.HasOne("Calmedic.Domain.Clinic", "Clinic")
@@ -981,29 +1017,6 @@ namespace Calmedic.EntityFramework.MainDatabaseMigrations
                         .HasForeignKey("SpecializationId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Calmedic.Domain.DoctorClinic", b =>
-                {
-                    b.HasOne("Calmedic.Domain.Clinic", "Clinic")
-                        .WithMany("Doctors")
-                        .HasForeignKey("ClinicId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Calmedic.Domain.Person", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById");
-
-                    b.HasOne("Calmedic.Domain.Doctor", "Doctor")
-                        .WithMany("Clinics")
-                        .HasForeignKey("DoctorId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Calmedic.Domain.Person", "ModifiedBy")
-                        .WithMany()
-                        .HasForeignKey("ModifiedById");
                 });
 
             modelBuilder.Entity("Calmedic.Domain.File", b =>
@@ -1066,19 +1079,31 @@ namespace Calmedic.EntityFramework.MainDatabaseMigrations
 
             modelBuilder.Entity("Calmedic.Domain.Visit", b =>
                 {
-                    b.HasOne("Calmedic.Domain.Patient", "Clinic")
+                    b.HasOne("Calmedic.Domain.Clinic", "Clinic")
                         .WithMany()
                         .HasForeignKey("ClinicId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Calmedic.Domain.Person", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
+                    b.HasOne("Calmedic.Domain.Doctor", "Doctor")
+                        .WithMany()
+                        .HasForeignKey("DoctorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("Calmedic.Domain.Person", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
+
+                    b.HasOne("Calmedic.Domain.Patient", "Patient")
+                        .WithMany()
+                        .HasForeignKey("PatientId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

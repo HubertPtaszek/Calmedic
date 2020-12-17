@@ -5,7 +5,7 @@ using Calmedic.Data;
 
 namespace Calmedic.DependencyResolver
 {
-    internal class EvidenceBindings
+    internal class VisitBindings
     {
         internal static void Load(ContainerBuilder builder)
         {
@@ -15,8 +15,8 @@ namespace Calmedic.DependencyResolver
 
             builder.RegisterType<VisitConverter>().AsSelf().PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies).InstancePerLifetimeScope();
 
-            builder.RegisterType<VisitRepository>().As<IVisitRepository>().PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies).InstancePerLifetimeScope();
-            builder.RegisterType<VisitRepository>().As<VisitRepository>().PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies).InstancePerLifetimeScope();
+            builder.RegisterType<PatientRepository>().As<IVisitRepository>().PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies).InstancePerLifetimeScope();
+            builder.RegisterType<PatientRepository>().As<PatientRepository>().PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies).InstancePerLifetimeScope();
             #endregion
         }
     }

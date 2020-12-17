@@ -141,4 +141,19 @@
   <data name="SexDictionary_Male" xml:space="preserve">
     <value>Mężczyzna</value>
   </data>
+  <data name="VisitStatus_Canceled" xml:space="preserve">
+    <value>Odwołana</value>
+  </data>
+  <data name="VisitStatus_Delayed" xml:space="preserve">
+    <value>Opóźniona</value>
+  </data>
+  <data name="VisitStatus_Finished" xml:space="preserve">
+    <value>Zakończona</value>
+  </data>
+  <data name="VisitStatus_InProgress" xml:space="preserve">
+    <value>W trakcie</value>
+  </data>
+  <data name="VisitStatus_Waiting" xml:space="preserve">
+    <value>Oczekująca</value>
+  </data>
 </root>

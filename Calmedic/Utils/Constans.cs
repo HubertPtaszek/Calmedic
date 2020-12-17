@@ -8,7 +8,7 @@ namespace Calmedic.Utils
     public class AreaNames
     {
         public const string Membership_Area = "Membership";
-        public const string AdminPanel_Area = "AdminPanel";
+        public const string DisplaySequence_Area = "DisplaySequence";
         public const string Evidence_Area = "Evidence";
         public const string Presentation_Area = "Presentation";
         public const string Dashboard_Area = "Dashboard";

@@ -131,5 +131,50 @@ namespace Calmedic.Resources.Shared {
                 return ResourceManager.GetString("SexDictionary_Male", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odwołana.
+        /// </summary>
+        public static string VisitStatus_Canceled {
+            get {
+                return ResourceManager.GetString("VisitStatus_Canceled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opóźniona.
+        /// </summary>
+        public static string VisitStatus_Delayed {
+            get {
+                return ResourceManager.GetString("VisitStatus_Delayed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zakończona.
+        /// </summary>
+        public static string VisitStatus_Finished {
+            get {
+                return ResourceManager.GetString("VisitStatus_Finished", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to W trakcie.
+        /// </summary>
+        public static string VisitStatus_InProgress {
+            get {
+                return ResourceManager.GetString("VisitStatus_InProgress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Oczekująca.
+        /// </summary>
+        public static string VisitStatus_Waiting {
+            get {
+                return ResourceManager.GetString("VisitStatus_Waiting", resourceCulture);
+            }
+        }
     }
 }

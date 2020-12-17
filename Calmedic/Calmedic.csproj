@@ -34,10 +34,14 @@
   <ItemGroup>
     <Folder Include="Areas\Dashboard\Data\" />
     <Folder Include="Areas\Dashboard\Models\" />
-    <Folder Include="Areas\Evidence\Controllers\" />
+    <Folder Include="Areas\DisplaySequence\Data\" />
+    <Folder Include="Areas\DisplaySequence\Models\" />
+    <Folder Include="Areas\DisplaySequence\Views\DisplaySequence\" />
     <Folder Include="Areas\Evidence\Data\" />
     <Folder Include="Areas\Evidence\Models\" />
-    <Folder Include="Areas\Evidence\Views\" />
+    <Folder Include="Areas\Evidence\Views\Patient\" />
+    <Folder Include="Areas\Evidence\Views\Doctor\" />
+    <Folder Include="Areas\Evidence\Views\Clinic\" />
     <Folder Include="Areas\Gallery\Controllers\" />
     <Folder Include="Areas\Gallery\Data\" />
     <Folder Include="Areas\Gallery\Models\" />
@@ -56,6 +60,17 @@
     <ProjectReference Include="..\Calmedic.Application.Abstraction\Calmedic.Application.Abstraction.csproj" />
     <ProjectReference Include="..\Calmedic.DependencyResolver\Calmedic.DependencyResolver.csproj" />
     <ProjectReference Include="..\Calmedic.Dictionaries\Calmedic.Dictionaries.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Areas\Evidence\Views\_ViewImports.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\Evidence\Views\_ViewStart.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

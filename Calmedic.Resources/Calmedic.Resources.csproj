@@ -40,6 +40,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>SharedResource.resx</DependentUpon>
     </Compile>
+    <Compile Update="Shared\UtilsResource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>UtilsResource.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -70,6 +75,10 @@
     <EmbeddedResource Update="Shared\SharedResource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SharedResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Shared\UtilsResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>UtilsResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

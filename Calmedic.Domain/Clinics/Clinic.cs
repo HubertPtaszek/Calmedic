@@ -20,6 +20,6 @@ namespace Calmedic.Domain
         public string PhoneNumber { get; set; }
         public TimeSpan OpenFrom { get; set; }
         public TimeSpan OpenTo { get; set; }
-        public virtual List<DoctorClinic> Doctors { get; set; } = new List<DoctorClinic>();
+        public virtual List<ClinicUser> Users { get; set; } = new List<ClinicUser>();
     }
 }

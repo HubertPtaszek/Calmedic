@@ -1,8 +1,5 @@
 using Calmedic.Dictionaries;
 using Calmedic.Domain;
-using Calmedic.Utils;
-using System;
-using System.IO;
 using System.Linq;
 using System.Net.Mail;
 using System.Net.Mime;

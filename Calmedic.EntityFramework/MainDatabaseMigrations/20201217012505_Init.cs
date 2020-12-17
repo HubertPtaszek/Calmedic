@@ -510,6 +510,48 @@ namespace Calmedic.EntityFramework.MainDatabaseMigrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ClinicUsers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CreatedById = table.Column<int>(nullable: true),
+                    CreatedDate = table.Column<DateTime>(nullable: false),
+                    ModifiedById = table.Column<int>(nullable: true),
+                    ModifiedDate = table.Column<DateTime>(nullable: true),
+                    UserId = table.Column<int>(nullable: false),
+                    ClinicId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ClinicUsers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ClinicUsers_Clinics_ClinicId",
+                        column: x => x.ClinicId,
+                        principalTable: "Clinics",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ClinicUsers_Peoples_CreatedById",
+                        column: x => x.CreatedById,
+                        principalTable: "Peoples",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ClinicUsers_Peoples_ModifiedById",
+                        column: x => x.ModifiedById,
+                        principalTable: "Peoples",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ClinicUsers_Peoples_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Peoples",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Files",
                 columns: table => new
                 {
@@ -559,24 +601,33 @@ namespace Calmedic.EntityFramework.MainDatabaseMigrations
                     CreatedDate = table.Column<DateTime>(nullable: false),
                     ModifiedById = table.Column<int>(nullable: true),
                     ModifiedDate = table.Column<DateTime>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
+                    DoctorId = table.Column<int>(nullable: false),
+                    PatientId = table.Column<int>(nullable: false),
                     DateFrom = table.Column<DateTime>(nullable: false),
                     DateTo = table.Column<DateTime>(nullable: false),
+                    Description = table.Column<string>(nullable: true),
+                    Status = table.Column<int>(nullable: false),
                     ClinicId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Visits", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Visits_Patients_ClinicId",
+                        name: "FK_Visits_Clinics_ClinicId",
                         column: x => x.ClinicId,
-                        principalTable: "Patients",
+                        principalTable: "Clinics",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Visits_Peoples_CreatedById",
                         column: x => x.CreatedById,
                         principalTable: "Peoples",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Visits_Doctors_DoctorId",
+                        column: x => x.DoctorId,
+                        principalTable: "Doctors",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -585,46 +636,10 @@ namespace Calmedic.EntityFramework.MainDatabaseMigrations
                         principalTable: "Peoples",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "DoctorClinic",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CreatedById = table.Column<int>(nullable: true),
-                    CreatedDate = table.Column<DateTime>(nullable: false),
-                    ModifiedById = table.Column<int>(nullable: true),
-                    ModifiedDate = table.Column<DateTime>(nullable: true),
-                    DoctorId = table.Column<int>(nullable: false),
-                    ClinicId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_DoctorClinic", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_DoctorClinic_Clinics_ClinicId",
-                        column: x => x.ClinicId,
-                        principalTable: "Clinics",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_DoctorClinic_Peoples_CreatedById",
-                        column: x => x.CreatedById,
-                        principalTable: "Peoples",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_DoctorClinic_Doctors_DoctorId",
-                        column: x => x.DoctorId,
-                        principalTable: "Doctors",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_DoctorClinic_Peoples_ModifiedById",
-                        column: x => x.ModifiedById,
-                        principalTable: "Peoples",
+                        name: "FK_Visits_Patients_PatientId",
+                        column: x => x.PatientId,
+                        principalTable: "Patients",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -780,6 +795,26 @@ namespace Calmedic.EntityFramework.MainDatabaseMigrations
                 column: "ModifiedById");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ClinicUsers_ClinicId",
+                table: "ClinicUsers",
+                column: "ClinicId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ClinicUsers_CreatedById",
+                table: "ClinicUsers",
+                column: "CreatedById");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ClinicUsers_ModifiedById",
+                table: "ClinicUsers",
+                column: "ModifiedById");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ClinicUsers_UserId",
+                table: "ClinicUsers",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_DisplaySequences_ClinicId",
                 table: "DisplaySequences",
                 column: "ClinicId");
@@ -797,26 +832,6 @@ namespace Calmedic.EntityFramework.MainDatabaseMigrations
             migrationBuilder.CreateIndex(
                 name: "IX_DisplaySequences_ModifiedById",
                 table: "DisplaySequences",
-                column: "ModifiedById");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_DoctorClinic_ClinicId",
-                table: "DoctorClinic",
-                column: "ClinicId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_DoctorClinic_CreatedById",
-                table: "DoctorClinic",
-                column: "CreatedById");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_DoctorClinic_DoctorId",
-                table: "DoctorClinic",
-                column: "DoctorId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_DoctorClinic_ModifiedById",
-                table: "DoctorClinic",
                 column: "ModifiedById");
 
             migrationBuilder.CreateIndex(
@@ -905,9 +920,19 @@ namespace Calmedic.EntityFramework.MainDatabaseMigrations
                 column: "CreatedById");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Visits_DoctorId",
+                table: "Visits",
+                column: "DoctorId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Visits_ModifiedById",
                 table: "Visits",
                 column: "ModifiedById");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Visits_PatientId",
+                table: "Visits",
+                column: "PatientId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -937,10 +962,10 @@ namespace Calmedic.EntityFramework.MainDatabaseMigrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "DisplaySequences");
+                name: "ClinicUsers");
 
             migrationBuilder.DropTable(
-                name: "DoctorClinic");
+                name: "DisplaySequences");
 
             migrationBuilder.DropTable(
                 name: "Visits");

@@ -1,0 +1,15 @@
+﻿@model VisitListVM
+@{
+    ViewBag.Title = UtilsResource.Visits;
+}
+
+<nav class="breadcrumb-header" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page"><a href="@Url.Action("Index", "Dashboard", new { area = AreaNames.Dashboard_Area })">@UtilsResource.Dashboard.ToHtmlStringSafe()</a></li>
+        <li class="breadcrumb-item active" aria-current="page">@UtilsResource.Visits.ToHtmlStringSafe()</li>
+    </ol>
+</nav>
+
+<div class="page-header">
+    <h4 class="page-header-title" aria-current="page">Lista oddziałów (<span id="totalCountId">0</span>)</h4>
+</div>

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Calmedic.Domain
 {
@@ -16,6 +15,5 @@ namespace Calmedic.Domain
         public virtual Specialization Specialization { get; set; }
         public string DocumentNumber { get; set; }
         public DateTime? DocumentDate { get; set; }
-        public virtual List<DoctorClinic> Clinics { get; set; } = new List<DoctorClinic>();
     }
 }
