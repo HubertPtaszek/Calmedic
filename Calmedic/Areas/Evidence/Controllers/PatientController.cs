@@ -1,4 +1,5 @@
 ﻿using Calmedic.Application;
+using Calmedic.Dictionaries;
 using Calmedic.Utils;
 using DevExtreme.AspNet.Mvc;
 using Microsoft.AspNetCore.Mvc;
@@ -21,7 +22,7 @@ namespace Calmedic.Areas.Evidence.Controllers
 
         public ActionResult GetData(DataSourceLoadOptions loadOptions)
         {
-            var data = _patientService.GetPatient(loadOptions);
+            var data = _patientService.GetPatients(loadOptions);
             return CustomJson(data);
         }
 
@@ -44,6 +45,33 @@ namespace Calmedic.Areas.Evidence.Controllers
                 return RedirectToAction("Details", new { id });
             }
             return View(model);
+        }
+
+        public ActionResult Details(int id)
+        {
+            PatientDetailsVM model = _patientService.GetPatientDetailsVM(id);
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(PatientEditVM model)
+        {
+            if (ModelState.IsValid)
+            {
+                int id = 0;//  _patientService.Edit(model);
+                return RedirectToAction("Details", new { id });
+            }
+            return View(model);
+        }
+
+        [HttpDelete]
+        [ValidateAntiForgeryToken]
+        [AppRoleAuthorization(new AppRoleType[] { AppRoleType.Administrator, AppRoleType.Clinic, AppRoleType.Reception })]
+        public ActionResult Delete(int id)
+        {
+            //_patientService.Delete(id);
+            return RedirectToAction("Index");
         }
     }
 }

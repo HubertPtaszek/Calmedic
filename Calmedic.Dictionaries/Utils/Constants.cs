@@ -9,6 +9,11 @@ namespace Calmedic.Utils
         public const string SystemUserEmail = "system@system.pl";
     }
 
+    public static class NumericConstants
+    {
+        public static int PatientNumberMinValue = 10000;
+    }
+
     public class Loggers
     {
         public const string NormalLogName = "NormalLog";

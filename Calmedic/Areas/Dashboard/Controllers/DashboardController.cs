@@ -1,4 +1,5 @@
-﻿using Calmedic.Utils;
+﻿using Calmedic.Application;
+using Calmedic.Utils;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Calmedic.Areas.Dashboard.Controllers
@@ -8,12 +9,22 @@ namespace Calmedic.Areas.Dashboard.Controllers
     {
         #region Dependencies
 
-        #endregion
+        private readonly IPatientService _patientService;
 
+        #endregion Dependencies
+
+        public DashboardController(IPatientService patientService)
+        {
+            _patientService = patientService;
+        }
 
         public ActionResult Index()
         {
-            return View();
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login");
+            }
+            return RedirectToAction("Index");
         }
     }
 }

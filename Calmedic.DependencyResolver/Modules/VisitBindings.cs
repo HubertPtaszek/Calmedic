@@ -15,8 +15,8 @@ namespace Calmedic.DependencyResolver
 
             builder.RegisterType<VisitConverter>().AsSelf().PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies).InstancePerLifetimeScope();
 
-            builder.RegisterType<PatientRepository>().As<IVisitRepository>().PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies).InstancePerLifetimeScope();
-            builder.RegisterType<PatientRepository>().As<PatientRepository>().PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies).InstancePerLifetimeScope();
+            builder.RegisterType<VisitRepository>().As<IVisitRepository>().PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies).InstancePerLifetimeScope();
+            builder.RegisterType<VisitRepository>().As<VisitRepository>().PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies).InstancePerLifetimeScope();
             #endregion
         }
     }

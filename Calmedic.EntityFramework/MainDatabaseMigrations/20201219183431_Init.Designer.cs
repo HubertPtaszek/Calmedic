@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Calmedic.EntityFramework.MainDatabaseMigrations
 {
     [DbContext(typeof(MainDatabaseContext))]
-    [Migration("20201217012505_Init")]
+    [Migration("20201219183431_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
