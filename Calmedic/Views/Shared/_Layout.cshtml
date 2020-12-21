@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@SharedResource.Calmedic.ToHtmlStringSafe()</title>
     <link rel="shortcut icon" href="~/images/utils/smallLogo.svg" />
-    <link rel="stylesheet" href="~/css/core-css.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/scss/main.css" />
     <script src="~/js/core-js.min.js"></script>
     <script src="~/js/globalize-core.min.js"></script>
     <script src="~/js/devextreme-core.min.js"></script>
@@ -14,15 +15,59 @@
     <script>
         DevExpress.utils.readyCallbacks.add((function () { Globalize.locale("pl") }).bind(this, jQuery));
     </script>
-    <header>
-        <ul class="navbar-links navbar-links-user">
-            <partial name="_LoginPartial" />
+    @*<header>
+            <ul class="navbar-links navbar-links-user">
+                <partial name="_LoginPartial" />
+            </ul>
+        </header>
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+        @RenderSection("Scripts", required: false)*@
+
+    <div class="left-nav">
+        <div class="left-nav-logo">
+            <a href="@Url.Action("Index", "Dashboard", new { area = "" })">
+                <img src="~/images/utils/logo.svg" class="logo-big" alt="logo">
+            </a>
+        </div>
+        <div class="left-nav-user">
+            <div class="left-nav-user-image">
+                    <partial name="_LoginPartial" />
+            </div>
+            @*<p class="left-nav-user-name left-nav-user-name-loading text-center text-white" data-name="@session.FirstName @session.LastName"></p>*@
+            <p class="left-nav-user-name left-nav-user-name-loading text-center">Joanna</p>
+        </div>
+        <ul class="left-nav-list">
+            <li class="left-nav-list-el active">
+                <a href="@Url.Action("Index", "Dashboard", new { area = "" })"><span class="icon-document"></span> <span>@UtilsResource.Dashboard.ToHtmlStringSafe()</span> </a>
+            </li>
+            <li class="left-nav-list-el">
+                <a href="#"><span class="icon-house"></span> <span>@UtilsResource.Clinics.ToHtmlStringSafe()</span></a>
+            </li>
+            <li class="left-nav-list-el">
+                <a href="#"><span class="icon-pie-chart"></span> <span>@UtilsResource.Visits.ToHtmlStringSafe()</span></a>
+            </li>
+            <li class="left-nav-list-el">
+                <a href="#"><span class="icon-dollar"></span> <span>@UtilsResource.Doctors.ToHtmlStringSafe()</span></a>
+            </li>
+            @{
+                if (true) //sprawdzanie uprawnień
+                {
+                    <li class="left-nav-list-el">
+                        <a href="#"><span class="icon-shield"></span> <span>@UtilsResource.Users.ToHtmlStringSafe()</span></a>
+                    </li>
+                }
+            }
         </ul>
-    </header>
+        <div class="left-nav-footer d-flex justify-content-between align-items-center">
+            <a href="#">@UtilsResource.About.ToHtmlStringSafe()</a>
+        </div>
+    </div>
     <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+        @RenderBody()
     </div>
     @RenderSection("Scripts", required: false)
 </body>

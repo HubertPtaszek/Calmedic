@@ -50,32 +50,35 @@
 .pt-5 {
     padding-top: $space-size-5;
 }
-.secondary-link {
-    color: $gray400;
-    float: right;
-}
 
 .mb-2 {
     margin-bottom: $space-size-2;
 }
+
 .mb-3 {
     margin-bottom: $space-size-3;
 }
+
 .mb-4 {
     margin-bottom: $space-size-4;
 }
+
 .mb-5 {
     margin-bottom: $space-size-5;
 }
+
 .mb-6 {
     margin-bottom: $space-size-6;
 }
+
 .ml-1 {
     margin-left: $space-size;
 }
+
 .mr-1 {
     margin-right: $space-size;
 }
+
 .ml-2 {
     margin-left: $space-size-2;
 }
@@ -91,9 +94,16 @@
 .space-between {
     justify-content: space-between;
 }
-.text-gray{
-    color: gray;
-}
+
 .popup-footer {
     justify-content: flex-end;
+}
+
+.form-group {
+    margin: 8px 0;
+
+    label {
+        display: inline-block;
+        margin-bottom: 4px;
+    }
 }

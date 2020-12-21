@@ -117,8 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About" xml:space="preserve">
+    <value>O nas</value>
+  </data>
+  <data name="Clinics" xml:space="preserve">
+    <value>Przychodnie</value>
+  </data>
   <data name="Dashboard" xml:space="preserve">
     <value>Panel główny</value>
+  </data>
+  <data name="DisplaySequences" xml:space="preserve">
+    <value>Wyświetlanie</value>
+  </data>
+  <data name="Doctors" xml:space="preserve">
+    <value>Lekarze</value>
+  </data>
+  <data name="Gallery" xml:space="preserve">
+    <value>Multimedia</value>
+  </data>
+  <data name="Patients" xml:space="preserve">
+    <value>Pacjenci</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Użytkownicy</value>
   </data>
   <data name="Visits" xml:space="preserve">
     <value>Wizyty</value>

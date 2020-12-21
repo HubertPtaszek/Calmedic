@@ -18,7 +18,7 @@ namespace Calmedic.Controllers
             {
                 return RedirectToAction("Login", "Account", new { area = AreaNames.Membership_Area });
             }
-            return RedirectToAction("Index", "Dashboard", new { area = AreaNames.Dashboard_Area });
+            return RedirectToAction("Index", "Dashboard");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

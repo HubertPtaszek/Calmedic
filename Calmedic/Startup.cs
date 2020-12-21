@@ -128,9 +128,6 @@ namespace Calmedic
                 endpoints.MapAreaControllerRoute("AdminPanel_default", AreaNames.DisplaySequence_Area,
                   AreaNames.DisplaySequence_Area + "/{controller=Home}/{action=Index}/{id?}");
 
-                endpoints.MapAreaControllerRoute("Dashboard_default", AreaNames.Dashboard_Area,
-                    AreaNames.Dashboard_Area + "/{controller=Home}/{action=Index}/{id?}");
-
                 endpoints.MapAreaControllerRoute("Membership_default", AreaNames.Membership_Area,
                     AreaNames.Membership_Area + "/{controller=Home}/{action=Index}/{id?}");
 

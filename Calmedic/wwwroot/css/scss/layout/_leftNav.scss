@@ -1,0 +1,133 @@
+﻿.left-nav {
+    width: 112px;
+    padding-bottom: 50px;
+    position: fixed !important;
+    height: 100vh;
+    background: $foreground;
+    z-index: 3;
+    -webkit-box-shadow: 2px 0px 2px 0px rgba(150,166,203,0.16);
+    -moz-box-shadow: 2px 0px 2px 0px rgba(150,166,203,0.16);
+    box-shadow: 2px 0px 2px 0px rgba(150,166,203,0.16);
+
+    &-logo {
+        background: $foreground;
+        position: fixed;
+        width: 112px;
+        z-index: 5;
+        margin-top: 18px;
+        display: flex;
+        justify-content: center;
+
+        .logo-big {
+            height: 94px;
+        }
+    }
+
+    &-user {
+        background: $foreground;
+        position: fixed;
+        width: 112px;
+        z-index: 4;
+        margin-top: 132px;
+
+        &-image {
+            margin: 0 auto;
+            width: 56px;
+            height: 56px;
+            border-radius: 100%;
+            border: 5px solid $gray200;
+            overflow: hidden;
+
+            img {
+                height: 100%;
+            }
+        }
+
+        &-name {
+            font-weight: 600;
+            text-align: center;
+            margin: 5px 0 0 0;
+
+            &-loading {
+                height: 22px;
+                display: block;
+            }
+        }
+    }
+
+    &-list {
+        padding: 0;
+        margin-top: 264px;
+        position: relative;
+        z-index: 3;
+        background: $foreground;
+
+        &-el {
+            list-style: none;
+            padding: 10px 0px;
+
+            &.active {
+                border-left: 3px solid $blue;
+
+                > a {
+                    color: $primary-text-color;
+                }
+            }
+
+            > a {
+                font-weight: 600;
+            }
+
+            a {
+                color: $secondary-text-color;
+                display: flex;
+                line-height: 1.188rem;
+                align-items: center;
+
+                i {
+                    line-height: 0;
+                }
+
+                &:hover {
+                    background: $foreground;
+
+                    span[class*="icon"] {
+                        opacity: 1;
+                    }
+                }
+
+                span[class*="icon"] {
+                    opacity: 0.3;
+                    margin-right: 21px;
+                    display: block;
+                    text-align: center;
+                }
+            }
+        }
+    }
+
+    &-footer {
+        position: absolute;
+        margin-bottom: 28px;
+        bottom: 0;
+        z-index: 3;
+        height: 50px;
+        width: 112px;
+        text-align: center;
+
+        &.active {
+            > a {
+                color: $blue;
+            }
+        }
+
+        a {
+            margin: 0px auto;
+            color: $gray200;
+
+            &:hover {
+                color: $blue;
+            }
+        }
+    }
+}

@@ -4,7 +4,7 @@
 @import "./base/typography";
 @import "./base/body";
 @import "./components/buttons";
-@import "./layout/navbar";
+@import "./layout/leftNav";
 @import "./components/pageHeader";
 @import "./components/mainDatagrid";
 @import "./components/tabPanel";
@@ -15,8 +15,6 @@
 @import "./components/input";
 @import "./components/player";
 @import "./components/playerScheduler";
-@import "./layout/topDetailsBar";
 @import "./utils/helpers";
 @import "./components/header";
-@import "./components/panel";
 @import "./pages/login";

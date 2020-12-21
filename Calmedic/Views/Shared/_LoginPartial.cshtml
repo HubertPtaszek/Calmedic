@@ -2,25 +2,20 @@
 
 @{
     string tab = Context.Request.RouteValues.FirstOrDefault(x => x.Key == "controller").Value.ToString();
-    string area = Context.Request.RouteValues.FirstOrDefault(x => x.Key == "area").Value.ToString();
+    string area = Context.Request.RouteValues.Any(x => x.Key == "area") ? Context.Request.RouteValues.FirstOrDefault(x => x.Key == "area").Value.ToString() : "";
 }
 
 @if (User.Identity.IsAuthenticated)
 {
-    <li class="nav-item navbar-dropdown">
-        <a href="#" style="display: @(tab != "Account" ? "" : "none")" class="navbar-avatar"><img id="avatarId" src="~/images/utils/defaultAvatar.png"/></a>
-        @if (area != "Membership")
-        {
-            <ul class="navbar-dropdown-el">
-                <li class="nav-item">
-                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Login", "Account", new { area = AreaNames.Membership_Area })">
-                        <button type="submit" class="nav-link btn btn-link text-dark">@SharedResource.Logout.ToHtmlStringSafe()</button>
-                    </form>
-                </li>
-            </ul>
-        }
-    </li>
+    <a href="#" style="display: @(tab != "Account" ? "" : "none")"><img id="avatarId" src="~/images/avatars/1.png" /></a>
+    @if (area != "Membership")
+    {
+        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Login", "Account", new { area = AreaNames.Membership_Area })">
+            <button type="submit" class="nav-link btn btn-link text-dark">@SharedResource.Logout.ToHtmlStringSafe()</button>
+        </form>
+    }
 }
+
 <script>
     $(function () {
         $(".navbar-dropdown").click(function () {

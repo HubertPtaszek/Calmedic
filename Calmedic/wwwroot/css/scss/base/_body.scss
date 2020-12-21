@@ -1,14 +1,23 @@
 ﻿body {
-    background: $gray100;
+    background: $background;
     margin: 0;
     font-family: "Poppins";
-    font-size: 12.5px;
+    font-size: 12px;
+    text-align: left;
 
     a {
         text-decoration: none;
         color: $blue;
     }
 }
+
 .container {
-    max-width: 1920px !important;
+    margin: 0px 0px 20px 112px;
+    padding: 30px 156px !important;
+    width: auto;
+    max-width: calc(100% - 268px) !important;
+
+    &-login {
+        margin: auto;
+    }
 }

@@ -32,8 +32,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Dashboard\Data\" />
-    <Folder Include="Areas\Dashboard\Models\" />
     <Folder Include="Areas\DisplaySequence\Data\" />
     <Folder Include="Areas\DisplaySequence\Models\" />
     <Folder Include="Areas\DisplaySequence\Views\DisplaySequence\" />
@@ -50,9 +48,7 @@
     <Folder Include="Areas\Presentation\Data\" />
     <Folder Include="Areas\Presentation\Models\" />
     <Folder Include="Areas\Presentation\Views\" />
-    <Folder Include="Controllers\" />
     <Folder Include="wwwroot\css\gallery\" />
-    <Folder Include="wwwroot\images\avatars\" />
     <Folder Include="wwwroot\images\media\" />
   </ItemGroup>
 

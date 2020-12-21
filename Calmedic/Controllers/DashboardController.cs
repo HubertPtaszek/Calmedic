@@ -1,0 +1,62 @@
+﻿using Calmedic.Application;
+using Calmedic.Dictionaries;
+using Calmedic.Utils;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Calmedic.Controllers
+{
+    public class DashboardController : AppController
+    {
+        #region Dependencies
+
+        private readonly IPatientService _patientService;
+
+        #endregion Dependencies
+
+        public DashboardController(IPatientService patientService)
+        {
+            _patientService = patientService;
+        }
+
+        public ActionResult Index()
+        {
+            if (UserHelper.UserHaveRole(HttpContext, AppRoleType.Administrator))
+            {
+                return RedirectToAction("AdminDashboard");
+            }
+            else if (UserHelper.UserHaveRole(HttpContext, AppRoleType.Clinic))
+            {
+                return RedirectToAction("ClinicDashboard");
+            }
+            else if (UserHelper.UserHaveRole(HttpContext, AppRoleType.Reception))
+            {
+                return RedirectToAction("ReceptionDashboard");
+            }
+            return RedirectToAction("DoctorDashboard");
+        }
+
+        [AppRoleAuthorization(AppRoleType.Administrator)]
+        public ActionResult AdminDashboard()
+        {
+            return View("AdminDashboard");
+        }
+
+        [AppRoleAuthorization(AppRoleType.Clinic)]
+        public ActionResult ClinicDashboard()
+        {
+            return View("ClinicDashboard");
+        }
+
+        [AppRoleAuthorization(AppRoleType.Reception)]
+        public ActionResult ReceptionDashboard()
+        {
+            return View("ReceptionDashboard");
+        }
+
+        [AppRoleAuthorization(AppRoleType.Doctor)]
+        public ActionResult DoctorDashboard()
+        {
+            return View("DoctorDashboard");
+        }
+    }
+}
