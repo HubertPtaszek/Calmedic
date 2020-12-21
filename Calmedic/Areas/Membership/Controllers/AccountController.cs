@@ -47,7 +47,7 @@ namespace Calmedic.Areas.Membership.Controllers
                     return View(model);
                 }
                 var signInResult = await _signInManager.CheckPasswordSignInAsync(user, model.Password, false);
-                if (!signInResult.Succeeded)
+                if (!signInResult.Succeeded || !user.EmailConfirmed)
                 {
                     ModelState.AddModelError("Email", "Invalid login attempt.");
                     return View(model);

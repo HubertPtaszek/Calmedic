@@ -42,22 +42,22 @@
         </div>
         <ul class="left-nav-list">
             <li class="left-nav-list-el active">
-                <a href="@Url.Action("Index", "Dashboard", new { area = "" })"><span class="icon-document"></span> <span>@UtilsResource.Dashboard.ToHtmlStringSafe()</span> </a>
+                <a href="@Url.Action("Index", "Dashboard", new { area = "" })"><i class="fas fa-home"></i><span>@UtilsResource.Dashboard.ToHtmlStringSafe()</span> </a>
             </li>
             <li class="left-nav-list-el">
-                <a href="#"><span class="icon-house"></span> <span>@UtilsResource.Clinics.ToHtmlStringSafe()</span></a>
+                <a href="#"><i class="fas fa-hospital-symbol"></i><span>@UtilsResource.Clinics.ToHtmlStringSafe()</span></a>
             </li>
             <li class="left-nav-list-el">
-                <a href="#"><span class="icon-pie-chart"></span> <span>@UtilsResource.Visits.ToHtmlStringSafe()</span></a>
+                <a href="#"><i class="far fa-calendar-alt"></i><span>@UtilsResource.Visits.ToHtmlStringSafe()</span></a>
             </li>
             <li class="left-nav-list-el">
-                <a href="#"><span class="icon-dollar"></span> <span>@UtilsResource.Doctors.ToHtmlStringSafe()</span></a>
+                <a href="#"><i class="fas fa-user-md"></i><span>@UtilsResource.Doctors.ToHtmlStringSafe()</span></a>
             </li>
             @{
                 if (true) //sprawdzanie uprawnień
                 {
                     <li class="left-nav-list-el">
-                        <a href="#"><span class="icon-shield"></span> <span>@UtilsResource.Users.ToHtmlStringSafe()</span></a>
+                        <a href="#"><i class="fas fa-users"></i><span>@UtilsResource.Users.ToHtmlStringSafe()</span></a>
                     </li>
                 }
             }

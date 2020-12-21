@@ -1,0 +1,29 @@
+﻿.wrapper {
+    border-radius: 4px;
+    background: white;
+    -webkit-box-shadow: 0 0 10px 0 rgba(0,0,0,.1);
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.1);
+    margin-bottom: 20px;
+
+    &-header {
+        padding: 20px 28px 12px 28px;
+
+        &-title {
+            font-size: 15px;
+            color: $primary-text-color;
+            margin: auto 0;
+        }
+
+        & + .wrapper-inner {
+            padding-top: 0;
+        }
+    }
+
+    &-inner {
+        padding: 20px;
+
+        .no-padding-top {
+            padding-top: 0;
+        }
+    }
+}
