@@ -12,21 +12,13 @@
     <script src="~/js/devextreme-core.min.js"></script>
 </head>
 <body>
+    @{
+        AppUserData session = UserHelper.GetUserData(Context);
+        string tab = Context.Request.RouteValues.FirstOrDefault(x => x.Key == "controller").Value.ToString();
+    }
     <script>
         DevExpress.utils.readyCallbacks.add((function () { Globalize.locale("pl") }).bind(this, jQuery));
     </script>
-    @*<header>
-            <ul class="navbar-links navbar-links-user">
-                <partial name="_LoginPartial" />
-            </ul>
-        </header>
-        <div class="container">
-            <main role="main" class="pb-3">
-                @RenderBody()
-            </main>
-        </div>
-        @RenderSection("Scripts", required: false)*@
-
     <div class="left-nav">
         <div class="left-nav-logo">
             <a href="@Url.Action("Index", "Dashboard", new { area = "" })">
@@ -34,36 +26,81 @@
             </a>
         </div>
         <div class="left-nav-user">
-            <div class="left-nav-user-image">
-                    <partial name="_LoginPartial" />
-            </div>
-            @*<p class="left-nav-user-name left-nav-user-name-loading text-center text-white" data-name="@session.FirstName @session.LastName"></p>*@
-            <p class="left-nav-user-name left-nav-user-name-loading text-center">Joanna</p>
+            <partial name="_LoginPartial" />
         </div>
         <ul class="left-nav-list">
-            <li class="left-nav-list-el active">
+            @*Dashboard*@
+            <li class="left-nav-list-el @(tab == "Dashboard" ? "active" : "")">
                 <a href="@Url.Action("Index", "Dashboard", new { area = "" })"><i class="fas fa-home"></i><span>@UtilsResource.Dashboard.ToHtmlStringSafe()</span> </a>
             </li>
-            <li class="left-nav-list-el">
-                <a href="#"><i class="fas fa-hospital-symbol"></i><span>@UtilsResource.Clinics.ToHtmlStringSafe()</span></a>
+            @*Clinics*@
+            <li class="left-nav-list-el @(tab == "Clinic" ? "active" : "")">
+                <a href="@Url.Action("Index", "Clinic", new { area = AreaNames.Evidence_Area })">
+                    <i class="fas fa-hospital-symbol"></i>
+                    @{
+                        if (session.Roles.Contains(AppRoleType.Doctor) || session.Roles.Contains(AppRoleType.Administrator))
+                        {
+                            <span>@UtilsResource.Clinics.ToHtmlStringSafe()</span>
+                        }
+                        else
+                        {
+                            <span>@UtilsResource.Clinic.ToHtmlStringSafe()</span>
+                        }
+                    }
+                </a>
             </li>
-            <li class="left-nav-list-el">
-                <a href="#"><i class="far fa-calendar-alt"></i><span>@UtilsResource.Visits.ToHtmlStringSafe()</span></a>
-            </li>
-            <li class="left-nav-list-el">
-                <a href="#"><i class="fas fa-user-md"></i><span>@UtilsResource.Doctors.ToHtmlStringSafe()</span></a>
-            </li>
+            @*Visits*@
             @{
-                if (true) //sprawdzanie uprawnień
+                if (!session.Roles.Contains(AppRoleType.Administrator))
                 {
-                    <li class="left-nav-list-el">
+                    <li class="left-nav-list-el @(tab == "Visit" ? "active" : "")">
+                        <a href="#"><i class="far fa-calendar-alt"></i><span>@UtilsResource.Visits.ToHtmlStringSafe()</span></a>
+                    </li>
+                }
+            }
+            @*Doctors*@
+            @{
+                if (!session.Roles.Contains(AppRoleType.Doctor))
+                {
+                    <li class="left-nav-list-el @(tab == "Doctor" ? "active" : "")">
+                        <a href="#"><i class="fas fa-user-md"></i><span>@UtilsResource.Doctors.ToHtmlStringSafe()</span></a>
+                    </li>
+                }
+            }
+            @*Patients*@
+            <li class="left-nav-list-el @(tab == "Patient" ? "active" : "")">
+                <a href="#"><i class="fas fa-user-injured"></i><span>@UtilsResource.Patients.ToHtmlStringSafe()</span></a>
+            </li>
+            @*DisplaySequence*@
+            @{
+                if (session.Roles.Contains(AppRoleType.Clinic) || session.Roles.Contains(AppRoleType.Reception))
+                {
+                    <li class="left-nav-list-el @(tab == "DisplaySequence" ? "active" : "")">
+                        <a href="#"><i class="fas fa-desktop"></i><span>@UtilsResource.DisplaySequences.ToHtmlStringSafe()</span></a>
+                    </li>
+                }
+            }
+            @*Gallery*@
+            @{
+                if (session.Roles.Contains(AppRoleType.Clinic) || session.Roles.Contains(AppRoleType.Reception))
+                {
+                    <li class="left-nav-list-el @(tab == "Gallery" ? "active" : "")">
+                        <a href="#"><i class="fas fa-photo-video"></i><span>@UtilsResource.Gallery.ToHtmlStringSafe()</span></a>
+                    </li>
+                }
+            }
+            @*Users*@
+            @{
+                if (session.Roles.Contains(AppRoleType.Administrator))
+                {
+                    <li class="left-nav-list-el @(tab == "User" ? "active" : "")">
                         <a href="#"><i class="fas fa-users"></i><span>@UtilsResource.Users.ToHtmlStringSafe()</span></a>
                     </li>
                 }
             }
         </ul>
-        <div class="left-nav-footer d-flex justify-content-between align-items-center">
-            <a href="#">@UtilsResource.About.ToHtmlStringSafe()</a>
+        <div class="left-nav-footer d-flex justify-content-between align-items-center @(tab == "Home" ? "active" : "")">
+            <a href="@Url.Action("About", "Home", new { area = "" })">@UtilsResource.About.ToHtmlStringSafe()</a>
         </div>
     </div>
     <div class="container">

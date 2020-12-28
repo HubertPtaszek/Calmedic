@@ -70,6 +70,15 @@ namespace Calmedic.Resources.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Przychodnia.
+        /// </summary>
+        public static string Clinic {
+            get {
+                return ResourceManager.GetString("Clinic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Przychodnie.
         /// </summary>
         public static string Clinics {
@@ -111,6 +120,15 @@ namespace Calmedic.Resources.Shared {
         public static string Gallery {
             get {
                 return ResourceManager.GetString("Gallery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Strona domowa.
+        /// </summary>
+        public static string Home {
+            get {
+                return ResourceManager.GetString("Home", resourceCulture);
             }
         }
         

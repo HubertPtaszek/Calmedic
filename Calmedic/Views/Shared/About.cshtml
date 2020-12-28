@@ -1,0 +1,20 @@
+﻿@{
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page"><a href="@Url.Action("Index", "Dashboard", new { area = AreaNames.Dashboard_Area })">@UtilsResource.Home.ToHtmlStringSafe()</a></li>
+        <li class="breadcrumb-item active" aria-current="page">@UtilsResource.About.ToHtmlStringSafe()</li>
+    </ol>
+</nav>
+
+<div class="wrapper">
+    <div class="wrapper-header-dashboard d-flex middle between">
+        <h4 class="wrapper-header-title">O nas</h4>
+    </div>
+    <hr />
+    <div class="wrapper-inner">
+        <div class="row" style="height: 500px"></div>
+    </div>
+</div>
+

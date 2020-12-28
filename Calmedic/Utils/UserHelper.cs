@@ -19,42 +19,12 @@ namespace Calmedic.Utils
             if (userData == null || userData.AppIdentityUserId != appIdentityUserId || userData.ValidDate < DateTime.Now)
             {
                 IAppUserService userService = httpContext.RequestServices.GetService(typeof(IAppUserService)) as IAppUserService;
-
-                //userData = userService.GetFirstUser();
-
                 userData = userService.GetUserDataByAppIdentityUserId(appIdentityUserId);
-
-
                 if (userData == null)
                     throw new AuthorizationException(ErrorResource.NoLoginAdded);
                 httpContext.Session.SetObject(SessionVariableNames.AppUserData, userData);
             }
             return userData;
-        }
-
-        public static void RefreshUserData(HttpContext httpContext)
-        {
-            string appIdentityUserId = httpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (appIdentityUserId.IsNullOrEmpty())
-                return;
-            AppUserData userData = httpContext.Session.GetObject<AppUserData>(SessionVariableNames.AppUserData);
-            if (userData != null && userData.AppIdentityUserId != appIdentityUserId)
-            {
-                IAppUserService userService = httpContext.RequestServices.GetService(typeof(IAppUserService)) as IAppUserService;
-#if DEBUG
-                userData = userService.GetFirstUser();
-#else
-                userData = userService.GetUserDataByAppIdentityUserId(appIdentityUserId);
-#endif
-                if (userData == null)
-                    throw new AuthorizationException(ErrorResource.NoLoginAdded);
-                httpContext.Session.SetObject(SessionVariableNames.AppUserData, userData);
-            }
-        }
-
-        public static void ResetPermissions(HttpContext httpContext)
-        {
-            httpContext.Session.SetObject(SessionVariableNames.AppUserData, null);
         }
 
         public static bool UserHaveRole(HttpContext httpContext, params AppRoleType[] roles)

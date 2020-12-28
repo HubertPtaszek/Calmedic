@@ -132,6 +132,9 @@
   <data name="Login" xml:space="preserve">
     <value>Zaloguj</value>
   </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Wyloguj</value>
+  </data>
   <data name="Ok" xml:space="preserve">
     <value>Ok</value>
   </data>

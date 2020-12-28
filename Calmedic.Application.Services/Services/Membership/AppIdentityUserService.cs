@@ -26,5 +26,10 @@ namespace Calmedic.Application
         {
             return AppUserRoleRepository.CheckIfIsReception(identityUserId);
         }
+
+        public virtual bool IsActive(string identityUserId)
+        {
+            return AppUserRepository.IsActive(identityUserId);
+        }
     }
 }

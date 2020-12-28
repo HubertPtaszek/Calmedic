@@ -120,6 +120,9 @@
   <data name="About" xml:space="preserve">
     <value>O nas</value>
   </data>
+  <data name="Clinic" xml:space="preserve">
+    <value>Przychodnia</value>
+  </data>
   <data name="Clinics" xml:space="preserve">
     <value>Przychodnie</value>
   </data>
@@ -134,6 +137,9 @@
   </data>
   <data name="Gallery" xml:space="preserve">
     <value>Multimedia</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Strona domowa</value>
   </data>
   <data name="Patients" xml:space="preserve">
     <value>Pacjenci</value>

@@ -106,6 +106,15 @@ namespace Calmedic.Resources.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Wyloguj.
+        /// </summary>
+        public static string Logout {
+            get {
+                return ResourceManager.GetString("Logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ok.
         /// </summary>
         public static string Ok {

@@ -2,31 +2,31 @@
 
 @{
     string tab = Context.Request.RouteValues.FirstOrDefault(x => x.Key == "controller").Value.ToString();
-    string area = Context.Request.RouteValues.Any(x => x.Key == "area") ? Context.Request.RouteValues.FirstOrDefault(x => x.Key == "area").Value.ToString() : "";
 }
 
-@if (User.Identity.IsAuthenticated)
+@if (User.Identity.IsAuthenticated && tab != "Account")
 {
-    <a href="#" style="display: @(tab != "Account" ? "" : "none")"><img id="avatarId" src="~/images/avatars/1.png" /></a>
-    @if (area != "Membership")
-    {
-        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Login", "Account", new { area = AreaNames.Membership_Area })">
-            <button type="submit" class="nav-link btn btn-link text-dark">@SharedResource.Logout.ToHtmlStringSafe()</button>
-        </form>
-    }
+    <div class="left-nav-user-image">
+        <img id="avatarId" src="@(Context.Session.GetObject<AppUserData>(SessionVariableNames.AppUserData).AvatarUrl)" />
+        @if (tab != "Account")
+        {
+            <form class="left-nav-user-login" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Login", "Account", new { area = AreaNames.Membership_Area })">
+                <button type="submit" id="logoutBtnId"><i class="fas fa-power-off"></i></button>
+            </form>
+        }
+    </div>
+    <p class="left-nav-user-name left-nav-user-name-loading text-center">@(Context.Session.GetObject<AppUserData>(SessionVariableNames.AppUserData).FirstName)</p>
 }
+
+<div id="logoutTooltip">@ButtonNameResource.Logout.ToHtmlStringSafe()</div>
 
 <script>
-    $(function () {
-        $(".navbar-dropdown").click(function () {
-            $(this).addClass("is-opened")
-        });
-
-        $(document).click(function (e) {
-            var container = $(".navbar-dropdown");
-            if (!container.is(e.target) && container.has(e.target).length === 0) {
-                $(".navbar-dropdown").removeClass("is-opened");
-            }
+    $(document).ready(function () {
+        $("#logoutTooltip").dxTooltip({
+            target: "#logoutBtnId",
+            showEvent: "mouseenter",
+            hideEvent: "mouseleave",
+            closeOnOutsideClick: false
         });
     });
 </script>

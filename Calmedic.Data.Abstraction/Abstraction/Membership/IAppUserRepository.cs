@@ -9,6 +9,7 @@ namespace Calmedic.Data
         object GetUsersLookup(DataSourceLoadOptionsBase loadOptions);
         object GetUsersToList(DataSourceLoadOptionsBase loadOptions);
         AppUser GetActive(int id);
+        bool IsActive(string identityUserId);
         List<string> GetUsersEmails(List<int> usersIds);  
     }
 }

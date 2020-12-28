@@ -176,8 +176,9 @@ namespace Calmedic.EntityFramework
                     Email = "admin@calmedic.pl",
                     AppIdentityUserId = identityUser.Id,
                     IsActive = true,
-                    LastName = "Kowalska",
-                    FirstName = "Joanna"
+                    EmailConfirmed = true,
+                    LastName = "",
+                    FirstName = "Administrator"
                 };
                 context.AppUsers.Add(admin);
                 context.SaveChanges();

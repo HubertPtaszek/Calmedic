@@ -15,7 +15,8 @@ namespace Calmedic.Application
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string UserName { get; set; }
+        public string Email { get; set; }
+        public string AvatarUrl { get; set; }
         public DateTime ValidDate { get; set; }
         public string AppIdentityUserId { get; set; }
         public List<AppRoleType> Roles { get; set; }

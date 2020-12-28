@@ -5,8 +5,16 @@
     box-shadow: 0 0 10px 0 rgba(0,0,0,.1);
     margin-bottom: 20px;
 
+    &-dashboard {
+        margin-top: 40px;
+    }
+
     &-header {
-        padding: 20px 28px 12px 28px;
+        padding: 12px 28px 8px 28px;
+
+        &-dashboard {
+            padding: 20px 28px 12px 28px;
+        }
 
         &-title {
             font-size: 15px;

@@ -1,46 +1,29 @@
 using Calmedic.Data;
-using Calmedic.Dictionaries;
 using Calmedic.Domain;
 using Calmedic.Resources.Shared;
 using Calmedic.Utils;
+using DevExtreme.AspNet.Data;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using DevExtreme.AspNet.Data;
-using Microsoft.AspNetCore.Identity;
 
 namespace Calmedic.Application
 {
     public class AppUserService : ServiceBase, IAppUserService
     {
         #region Dependencies
+
         public IAppUserRepository AppUserRepository { get; set; }
         public AppUserRoleService AppUserRoleService { get; set; }
         public AppUserConverter AppUserConverter { get; set; }
         public IServiceProvider ServiceProvider { get; set; }
-        #endregion
+        public IClinicRepository ClinicRepository { get; set; }
+
+        #endregion Dependencies
 
         public AppUserService()
         { }
-
-        public virtual AppUserData GetFirstUser()
-        {
-            AppUser user = AppUserRepository.GetSingle(x => x.Email == "admin@calmedic.pl");
-            if (user == null)
-            {
-                user = AppUserRepository.GetAll(x => x.LastName != null && x.LastName != "").OrderBy(x => x.LastName).FirstOrDefault();
-            }
-            AppUserData result = new AppUserData()
-            {
-                Id = user.Id,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                UserName = user.Email,
-                Roles = new List<AppRoleType>()
-            };
-            result.Roles.Add(AppRoleType.Administrator);
-            return result;
-        }
 
         public virtual AppUserData GetUserDataByAppIdentityUserId(string appIdentityUserId)
         {
@@ -52,9 +35,17 @@ namespace Calmedic.Application
                 Id = user.Id,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
-                UserName = user.Email,
+                Email = user.Email,
                 Roles = user.UserRoles.Select(x => x.AppRole.AppRoleType).Distinct().ToList()
             };
+            if (result.Roles.Contains(Dictionaries.AppRoleType.Clinic) && ClinicRepository.Any(x => x.EmailAddress == result.Email))
+            {
+                Clinic clinic = ClinicRepository.GetSingle(x => x.EmailAddress == result.Email);
+                result.AvatarUrl = "../images/logos/" + clinic.LogoUrl;
+            }
+            else {
+                result.AvatarUrl = user.AvatarUrl.IsNullOrEmpty() ? "../images/utils/defaultAvatar.png" : "../images/avatars/" + user.AvatarUrl;
+            }
             return result;
         }
 
@@ -81,6 +72,7 @@ namespace Calmedic.Application
             }
             return model;
         }
+
         public virtual void Edit(AppUserEditVM model, int userId)
         {
             AppUser crmUser = AppUserRepository.GetSingle(x => x.Id == userId);

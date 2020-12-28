@@ -49,6 +49,11 @@ namespace Calmedic.Data
             return _dbset.Where(x => x.IsActive).FirstOrDefault(x => x.Id == id);
         }
 
+        public bool IsActive(string identityUserId)
+        {
+            return _dbset.FirstOrDefault(x => x.AppIdentityUserId == identityUserId).IsActive;
+        }
+
         public List<string> GetUsersEmails(List<int> usersIds)
         {
             if (usersIds == null)

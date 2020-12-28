@@ -39,7 +39,6 @@
     <Folder Include="Areas\Evidence\Models\" />
     <Folder Include="Areas\Evidence\Views\Patient\" />
     <Folder Include="Areas\Evidence\Views\Doctor\" />
-    <Folder Include="Areas\Evidence\Views\Clinic\" />
     <Folder Include="Areas\Gallery\Controllers\" />
     <Folder Include="Areas\Gallery\Data\" />
     <Folder Include="Areas\Gallery\Models\" />
@@ -50,6 +49,7 @@
     <Folder Include="Areas\Presentation\Views\" />
     <Folder Include="wwwroot\css\gallery\" />
     <Folder Include="wwwroot\images\media\" />
+    <Folder Include="wwwroot\images\logos\" />
   </ItemGroup>
 
   <ItemGroup>

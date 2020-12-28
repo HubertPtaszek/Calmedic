@@ -1,6 +1,7 @@
 ﻿.breadcrumb {
     display: flex;
     padding: 0;
+    margin: 12px 0 10px 8px;
 
     li {
         list-style: none;
@@ -10,7 +11,7 @@
         margin-right: $space-size;
 
         * {
-            color: $secondary-text-color;
+            color: $third-text-color;
         }
 
         &:after {
@@ -18,10 +19,11 @@
             font-family: 'Font Awesome 5 Pro';
             font-size: 10px;
             margin-left: $space-size;
-            color: $secondary-text-color;
+            color: $third-text-color;
         }
 
         &:last-child {
+            color: $primary-text-color;
             &:after {
                 content: "";
             }

@@ -5,5 +5,6 @@ namespace Calmedic.Application
         bool IsAdmin(string identityUserId);
         bool IsDoctor(string identityUserId);
         bool IsReception(string identityUserId);
+        bool IsActive(string identityUserId);
     }
 }

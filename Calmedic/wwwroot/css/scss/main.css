@@ -13465,7 +13465,7 @@ body {
 
 .container {
   margin: 0px 0px 20px 112px;
-  padding: 30px 156px !important;
+  padding: 0px 156px 30px 156px !important;
   width: auto;
   max-width: calc(100% - 268px) !important; }
   .container-login {
@@ -13509,7 +13509,8 @@ hr {
   background: #FFFFFF;
   z-index: 3;
   -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1); }
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  top: 0; }
   .left-nav-logo {
     background: #FFFFFF;
     position: fixed;
@@ -13532,8 +13533,14 @@ hr {
       height: 56px;
       border-radius: 100%;
       border: 5px solid #D8DEE8;
-      overflow: hidden; }
+      overflow: hidden;
+      position: relative; }
+      .left-nav-user-image:hover > img {
+        opacity: 0.5; }
+      .left-nav-user-image:hover > form {
+        opacity: 1; }
       .left-nav-user-image img {
+        position: absolute;
         height: 100%; }
     .left-nav-user-name {
       font-weight: 600;
@@ -13542,6 +13549,22 @@ hr {
       .left-nav-user-name-loading {
         height: 22px;
         display: block; }
+    .left-nav-user-login {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 5;
+      opacity: 0; }
+      .left-nav-user-login > button {
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        border: none;
+        background: none;
+        color: #437ce3;
+        font-size: 24px; }
+        .left-nav-user-login > button:focus {
+          outline: none; }
   .left-nav-list {
     padding: 0;
     margin-top: 264px;
@@ -13606,8 +13629,12 @@ hr {
   -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
   margin-bottom: 20px; }
+  .wrapper-dashboard {
+    margin-top: 40px; }
   .wrapper-header {
-    padding: 20px 28px 12px 28px; }
+    padding: 12px 28px 8px 28px; }
+    .wrapper-header-dashboard {
+      padding: 20px 28px 12px 28px; }
     .wrapper-header-title {
       font-size: 15px;
       color: #2D3F5E;
@@ -13863,7 +13890,8 @@ div.dx-tabpanel .dx-tab {
 
 .breadcrumb {
   display: flex;
-  padding: 0; }
+  padding: 0;
+  margin: 12px 0 10px 8px; }
   .breadcrumb li {
     list-style: none;
     padding: 0;
@@ -13871,15 +13899,17 @@ div.dx-tabpanel .dx-tab {
     align-items: center;
     margin-right: 8px; }
     .breadcrumb li * {
-      color: #8CA4CF; }
+      color: #BAC1CE; }
     .breadcrumb li:after {
       content: "\f054";
       font-family: 'Font Awesome 5 Pro';
       font-size: 10px;
       margin-left: 8px;
-      color: #8CA4CF; }
-    .breadcrumb li:last-child:after {
-      content: ""; }
+      color: #BAC1CE; }
+    .breadcrumb li:last-child {
+      color: #2D3F5E; }
+      .breadcrumb li:last-child:after {
+        content: ""; }
 
 .visit-scheduler {
   border-radius: 4px;

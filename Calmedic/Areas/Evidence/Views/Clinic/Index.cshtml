@@ -1,0 +1,34 @@
+﻿@model ClinicListVM
+@{
+    ViewBag.Title = UtilsResource.Clinics;
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page"><a href="@Url.Action("Index", "Dashboard", new { area = AreaNames.Dashboard_Area })">@UtilsResource.Home.ToHtmlStringSafe()</a></li>
+        <li class="breadcrumb-item active" aria-current="page">@UtilsResource.Clinics.ToHtmlStringSafe()</li>
+    </ol>
+</nav>
+
+<div class="wrapper">
+    <div class="wrapper-header d-flex middle between">
+        <h4 class="wrapper-header-title">Przychodnie (62)</h4>
+        <div>
+            <div id="addBtnId"></div>
+        </div>
+    </div>
+    <hr />
+    <div class="wrapper-inner">
+        <div class="row" style="height: 500px"></div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#addBtnId").dxButton({
+            elementAttr: { class: "btn btn-primary" },
+            text: "@ButtonNameResource.Add.ToScriptStringSafe()",
+            type: "default"
+        });
+    });
+</script>

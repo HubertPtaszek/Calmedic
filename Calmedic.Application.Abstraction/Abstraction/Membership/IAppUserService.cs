@@ -4,7 +4,6 @@ namespace Calmedic.Application
 {
     public interface IAppUserService : IService
     {
-        AppUserData GetFirstUser();
         object GetUsersToLookup(DataSourceLoadOptionsBase loadOptions);
         object GetUsersToList(DataSourceLoadOptionsBase loadOptions);
         AppUserDetailsVM GetAppUserDetailsVM(int userId);
