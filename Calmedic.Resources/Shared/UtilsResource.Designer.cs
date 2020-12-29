@@ -88,6 +88,24 @@ namespace Calmedic.Resources.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Wystąpił problem?.
+        /// </summary>
+        public static string Conntact_Part1 {
+            get {
+                return ResourceManager.GetString("Conntact_Part1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skontaktuj się z nami!.
+        /// </summary>
+        public static string Conntact_Part2 {
+            get {
+                return ResourceManager.GetString("Conntact_Part2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Panel główny.
         /// </summary>
         public static string Dashboard {

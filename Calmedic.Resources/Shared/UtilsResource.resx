@@ -126,6 +126,12 @@
   <data name="Clinics" xml:space="preserve">
     <value>Przychodnie</value>
   </data>
+  <data name="Conntact_Part1" xml:space="preserve">
+    <value>Wystąpił problem?</value>
+  </data>
+  <data name="Conntact_Part2" xml:space="preserve">
+    <value>Skontaktuj się z nami!</value>
+  </data>
   <data name="Dashboard" xml:space="preserve">
     <value>Panel główny</value>
   </data>

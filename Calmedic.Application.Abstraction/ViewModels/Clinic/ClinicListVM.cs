@@ -9,6 +9,6 @@ namespace Calmedic.Application
         {
         }
 
-        public List<SelectModelBinder> ClinicTypes { get; set; } = new List<SelectModelBinder>();
+        public List<EnumModelBinder> ClinicTypeList { get; set; } = new List<EnumModelBinder>();
     }
 }

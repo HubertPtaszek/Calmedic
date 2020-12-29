@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Calmedic.Areas.Membership.Controllers
 {
     [Area(AreaNames.Membership_Area)]
-    public class UserController : AppController
+    public class AppUserController : AppController
     {
         public IActionResult Index()
         {

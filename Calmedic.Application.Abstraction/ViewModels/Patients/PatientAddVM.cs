@@ -1,6 +1,7 @@
 using Calmedic.Dictionaries;
+using Calmedic.Utils;
 using System;
-using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace Calmedic.Application
 {
@@ -15,6 +16,7 @@ namespace Calmedic.Application
         public string Pesel { get; set; }
         public DateTime? DateOfBirth { get; set; }
         public SexDictionary? Sex { get; set; }
+        public List<EnumModelBinder> SexDictionaryList { get; set; } = new List<EnumModelBinder>();
 
         //[Display(ResourceType = typeof(SharedResource), Name = "City")]
         //[RegularExpressionSafeString]
@@ -35,6 +37,7 @@ namespace Calmedic.Application
         //[Display(ResourceType = typeof(SharedResource), Name = "PostalCode")]
         //[RegularExpressionPostalCode]
         public string PostalCode { get; set; }
+
         public string EmailAddress { get; set; }
         public string PhoneNumber { get; set; }
         public string Comments { get; set; }

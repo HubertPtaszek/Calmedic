@@ -16,9 +16,10 @@
 
         &:after {
             content: "\f054";
-            font-family: 'Font Awesome 5 Pro';
-            font-size: 10px;
-            margin-left: $space-size;
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            font-size: 9px;
+            margin-left: $space-size - 1px;
             color: $third-text-color;
         }
 

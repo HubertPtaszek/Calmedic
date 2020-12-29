@@ -41,23 +41,30 @@ namespace Calmedic.Areas.Membership.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginVM model)
         {
+            //wyświetlanie info o błedzie na panelu logowania
+
             if (ModelState.IsValid)
             {
                 AppIdentityUser user = await _userManager.FindByNameAsync(model.Email);
                 if (user == null)
                 {
-                    ModelState.AddModelError("Email", "Invalid login attempt.");
+                    ModelState.AddModelError("User", "Invalid login attempt.");
                     return View(model);
                 }
                 if (!_appIdentityUserService.IsActive(user.Id))
                 {
-                    ModelState.AddModelError("Email", "Account is inactive");
+                    ModelState.AddModelError("Account", "Account is inactive");
+                    return View(model);
+                }
+                if (!user.EmailConfirmed)
+                {
+                    ModelState.AddModelError("Email", "Email is not confirmed.");
                     return View(model);
                 }
                 var signInResult = await _signInManager.CheckPasswordSignInAsync(user, model.Password, false);
-                if (!signInResult.Succeeded || !user.EmailConfirmed)
+                if (!signInResult.Succeeded)
                 {
-                    ModelState.AddModelError("Email", "Invalid login attempt.");
+                    ModelState.AddModelError("Login", "Invalid login attempt.");
                     return View(model);
                 }
                 var result = await _signInManager.PasswordSignInAsync(user, model.Password, false, false);
@@ -66,7 +73,7 @@ namespace Calmedic.Areas.Membership.Controllers
                     _logger.LogInformation("User logged in.");
                     return RedirectToAction("Index", "Dashboard", new { area = AreaNames.Dashboard_Area });
                 }
-                ModelState.AddModelError("Email", "Invalid login attempt.");
+                ModelState.AddModelError("Login", "Invalid login attempt.");
             }
             return View(model);
         }

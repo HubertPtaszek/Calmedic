@@ -93,8 +93,8 @@
             @{
                 if (session.Roles.Contains(AppRoleType.Administrator))
                 {
-                    <li class="left-nav-list-el @(tab == "User" ? "active" : "")">
-                        <a href="#"><i class="fas fa-users"></i><span>@UtilsResource.Users.ToHtmlStringSafe()</span></a>
+                    <li class="left-nav-list-el @(tab == "AppUser" ? "active" : "")">
+                        <a href="@Url.Action("Index", "AppUser", new { area = AreaNames.Membership_Area })"><i class="fas fa-users"></i><span>@UtilsResource.Users.ToHtmlStringSafe()</span></a>
                     </li>
                 }
             }

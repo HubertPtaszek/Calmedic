@@ -3,6 +3,20 @@
     justify-content: flex-end;
 }
 
+.ma {
+    margin: auto;
+}
+
+.ma-rl {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ma-tb {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
 .mt-1 {
     margin-top: $space-size;
 }
