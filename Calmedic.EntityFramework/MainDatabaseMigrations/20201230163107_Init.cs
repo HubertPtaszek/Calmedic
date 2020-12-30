@@ -73,6 +73,7 @@ namespace Calmedic.EntityFramework.MainDatabaseMigrations
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
+                    PhoneNumber = table.Column<string>(nullable: true),
                     AvatarUrl = table.Column<string>(nullable: true),
                     IsActive = table.Column<bool>(nullable: false),
                     EmailConfirmed = table.Column<bool>(nullable: false),

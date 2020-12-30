@@ -85,9 +85,9 @@ namespace Calmedic.Application
             return AppUserRepository.GetUsersLookup(loadOptions);
         }
 
-        public virtual object GetUsersToList(DataSourceLoadOptionsBase loadOptions)
+        public virtual object GetUsers(DataSourceLoadOptionsBase loadOptions)
         {
-            return AppUserRepository.GetUsersToList(loadOptions);
+            return AppUserRepository.GetUsers(loadOptions);
         }
 
         public virtual int Add(AppUserAddVM model)

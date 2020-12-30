@@ -1,8 +1,7 @@
-﻿.tabpanel-title {
-    font-weight: 500;
-    margin: $space-size $space-size-2 $space-size 0;
-    font-size: $space-size-2;
+﻿.tabpanel {
+    margin-bottom: -5px;
 }
+
 div.dx-tabpanel {
     &.dx-state-focused {
         .dx-multiview-wrapper {
@@ -17,18 +16,27 @@ div.dx-tabpanel {
     .dx-tabs {
         border: none;
         display: flex;
-        .dx-tabs-wrapper{
+        background: none;
+
+        .dx-tabs-wrapper {
             align-items: center;
             display: flex;
         }
     }
 
-    .dx-tabpanel-tabs {
-        margin-bottom: $space-size-2;
+    .dx-tabpanel-container {
+        position: absolute;
+        width: auto;
+        height: auto;
+        padding: 0 20px 20px $space-size;
     }
 
     & .dx-tab {
         width: auto;
+
+        .dx-item-content {
+            margin-bottom: $space-size-2;
+        }
 
         span, & {
             font-weight: 500;
@@ -36,7 +44,14 @@ div.dx-tabpanel {
             line-height: 25px;
         }
 
-        padding: $space-size/2 $space-size-2;
+        i {
+            font-size: 22px;
+            margin-right: $space-size-2;
+            color: $secondary-text-color;
+        }
+
+        margin: 0 $space-size-2 0 0;
+        padding: 0 $space-size;
 
         &.dx-state-hover {
             background: none;
@@ -54,21 +69,27 @@ div.dx-tabpanel {
             }
 
             span, & {
-                color: $black;
+                color: $primary-text-color;
+            }
+
+            i {
+                font-size: 22px;
+                margin-right: $space-size-2;
+                color: $blue;
             }
 
             &:after {
-                border: none;
-                height: 2px;
-                width: 70%;
+                content: '';
+                width: 100%;
+                height: 3px;
+                border: 1px solid $blue;
+                border-radius: 2px 2px 0px 0px;
                 background: $blue;
-                border-radius: 2px;
-                position: absolute;
                 top: auto;
+                position: absolute;
                 bottom: 0;
                 left: 0;
                 right: 0;
-                margin: auto;
             }
         }
     }

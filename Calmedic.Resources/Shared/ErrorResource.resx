@@ -120,6 +120,9 @@
   <data name="AccessDenied" xml:space="preserve">
     <value>Brak dostępu</value>
   </data>
+  <data name="AccountInactive" xml:space="preserve">
+    <value>Konto jest niaktywne</value>
+  </data>
   <data name="ConfirmationMessageContent" xml:space="preserve">
     <value>Twoje konto zostało utworzone, kliknij na poniższy link żeby utworzyć hasło: &lt;br /&gt; &lt;a href='{0}'&gt;Utwórz hasło&lt;/a&gt;</value>
   </data>
@@ -128,6 +131,9 @@
   </data>
   <data name="EditRoleAdmin" xml:space="preserve">
     <value>Nie można edytować roli Adminsitrator</value>
+  </data>
+  <data name="EmailNotConfirmed" xml:space="preserve">
+    <value>Niepotwierdzono adresu email</value>
   </data>
   <data name="ErrorOccured" xml:space="preserve">
     <value>Wystąpił błąd</value>
@@ -206,5 +212,8 @@
   </data>
   <data name="WrongFileType" xml:space="preserve">
     <value>Błędny typ pliku</value>
+  </data>
+  <data name="WrongLoginData" xml:space="preserve">
+    <value>Błędne dane logowania</value>
   </data>
 </root>

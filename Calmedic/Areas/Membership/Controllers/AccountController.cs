@@ -1,5 +1,6 @@
 ﻿using Calmedic.Application;
 using Calmedic.Domain;
+using Calmedic.Resources.Shared;
 using Calmedic.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -41,30 +42,28 @@ namespace Calmedic.Areas.Membership.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginVM model)
         {
-            //wyświetlanie info o błedzie na panelu logowania
-
             if (ModelState.IsValid)
             {
                 AppIdentityUser user = await _userManager.FindByNameAsync(model.Email);
                 if (user == null)
                 {
-                    ModelState.AddModelError("User", "Invalid login attempt.");
+                    ModelState.AddModelError("User", ErrorResource.WrongLoginData);
                     return View(model);
                 }
                 if (!_appIdentityUserService.IsActive(user.Id))
                 {
-                    ModelState.AddModelError("Account", "Account is inactive");
+                    ModelState.AddModelError("Account", ErrorResource.AccountInactive);
                     return View(model);
                 }
                 if (!user.EmailConfirmed)
                 {
-                    ModelState.AddModelError("Email", "Email is not confirmed.");
+                    ModelState.AddModelError("Email", ErrorResource.EmailNotConfirmed);
                     return View(model);
                 }
                 var signInResult = await _signInManager.CheckPasswordSignInAsync(user, model.Password, false);
                 if (!signInResult.Succeeded)
                 {
-                    ModelState.AddModelError("Login", "Invalid login attempt.");
+                    ModelState.AddModelError("Login", ErrorResource.WrongLoginData);
                     return View(model);
                 }
                 var result = await _signInManager.PasswordSignInAsync(user, model.Password, false, false);
@@ -73,7 +72,7 @@ namespace Calmedic.Areas.Membership.Controllers
                     _logger.LogInformation("User logged in.");
                     return RedirectToAction("Index", "Dashboard", new { area = AreaNames.Dashboard_Area });
                 }
-                ModelState.AddModelError("Login", "Invalid login attempt.");
+                ModelState.AddModelError("Login", ErrorResource.WrongLoginData);
             }
             return View(model);
         }

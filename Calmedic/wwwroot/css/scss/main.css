@@ -5697,6 +5697,11 @@ hr {
   margin-bottom: 20px; }
   .wrapper-dashboard {
     margin-top: 40px; }
+  .wrapper-tab-header {
+    height: 45px;
+    padding: 10px 28px 0px 16px; }
+    .wrapper-tab-header-btn {
+      margin-bottom: 7px; }
   .wrapper-header {
     padding: 12px 28px 8px 28px; }
     .wrapper-header-dashboard {
@@ -5708,44 +5713,22 @@ hr {
     .wrapper-header + .wrapper-inner {
       padding-top: 0; }
   .wrapper-inner {
-    padding: 20px; }
+    padding: 20px 24px; }
     .wrapper-inner .no-padding-top {
       padding-top: 0; }
 
-.main-datagrid .dx-editor-cell .dx-texteditor, .main-datagrid .dx-editor-cell .dx-texteditor .dx-texteditor-input {
-  background: none; }
+.dx-datagrid {
+  border: 1px solid #E6ECF5;
+  border-bottom: 0;
+  border-radius: 4px;
+  overflow: hidden; }
+  .dx-datagrid .dx-data-row.dx-row-alt td {
+    background: white; }
+  .dx-datagrid .dx-data-row td {
+    background: #EEF1F8; }
 
-.main-datagrid .dx-datagrid {
-  background: none; }
-  .main-datagrid .dx-datagrid td {
-    border: none !important; }
-
-.main-datagrid-user {
-  display: flex;
-  align-items: center; }
-
-.main-datagrid-featured-text {
-  font-weight: 500; }
-
-.main-datagrid .dx-editor-container {
-  border: 1px solid white;
-  margin-bottom: 8px;
-  margin-right: 4px;
-  height: 32px !important; }
-
-.main-datagrid-avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 100%;
-  overflow: hidden;
-  margin-right: 8px; }
-  .main-datagrid-avatar img {
-    width: 100%; }
-
-.tabpanel-title {
-  font-weight: 500;
-  margin: 8px 16px 8px 0;
-  font-size: 16px; }
+.tabpanel {
+  margin-bottom: -5px; }
 
 div.dx-tabpanel.dx-state-focused .dx-multiview-wrapper {
   border: none; }
@@ -5755,21 +5738,32 @@ div.dx-tabpanel .dx-multiview-wrapper {
 
 div.dx-tabpanel .dx-tabs {
   border: none;
-  display: flex; }
+  display: flex;
+  background: none; }
   div.dx-tabpanel .dx-tabs .dx-tabs-wrapper {
     align-items: center;
     display: flex; }
 
-div.dx-tabpanel .dx-tabpanel-tabs {
-  margin-bottom: 16px; }
+div.dx-tabpanel .dx-tabpanel-container {
+  position: absolute;
+  width: auto;
+  height: auto;
+  padding: 0 20px 20px 8px; }
 
 div.dx-tabpanel .dx-tab {
   width: auto;
-  padding: 4px 16px; }
+  margin: 0 16px 0 0;
+  padding: 0 8px; }
+  div.dx-tabpanel .dx-tab .dx-item-content {
+    margin-bottom: 16px; }
   div.dx-tabpanel .dx-tab span, div.dx-tabpanel .dx-tab {
     font-weight: 500;
     color: #8CA4CF;
     line-height: 25px; }
+  div.dx-tabpanel .dx-tab i {
+    font-size: 22px;
+    margin-right: 16px;
+    color: #8CA4CF; }
   div.dx-tabpanel .dx-tab.dx-state-hover {
     background: none; }
     div.dx-tabpanel .dx-tab.dx-state-hover span, div.dx-tabpanel .dx-tab.dx-state-hover {
@@ -5779,19 +5773,23 @@ div.dx-tabpanel .dx-tab {
     div.dx-tabpanel .dx-tab-selected:before {
       display: none; }
     div.dx-tabpanel .dx-tab-selected span, div.dx-tabpanel .dx-tab-selected {
-      color: #1C1C1C; }
+      color: #2D3F5E; }
+    div.dx-tabpanel .dx-tab-selected i {
+      font-size: 22px;
+      margin-right: 16px;
+      color: #437CE3; }
     div.dx-tabpanel .dx-tab-selected:after {
-      border: none;
-      height: 2px;
-      width: 70%;
+      content: '';
+      width: 100%;
+      height: 3px;
+      border: 1px solid #437CE3;
+      border-radius: 2px 2px 0px 0px;
       background: #437CE3;
-      border-radius: 2px;
-      position: absolute;
       top: auto;
+      position: absolute;
       bottom: 0;
       left: 0;
-      right: 0;
-      margin: auto; }
+      right: 0; }
 
 .file-thumb {
   border-radius: 2px;
@@ -6794,17 +6792,16 @@ div.dx-dropdownlist-popup-wrapper div.dx-item.dx-list-item {
       height: 100%; }
 
 .login-error {
-  color: #EB3B3B; }
+  color: #2D3F5E; }
   .login-error ul {
+    border: 1px solid #ecbcbf;
+    border-radius: 4px;
     list-style: none;
     padding: 0;
     width: 100%;
-    margin: 4px 0 0 2px; }
-    .login-error ul :before {
-      font-family: "Font Awesome 5 Free";
-      font-weight: 900;
-      content: "\f06a";
-      font-size: 14px;
-      margin-right: 4px; }
+    text-align: center;
+    height: 37px;
+    margin: 0;
+    background: #ffe3e6; }
     .login-error ul li {
-      font-weight: 600; }
+      padding: 9px 0; }

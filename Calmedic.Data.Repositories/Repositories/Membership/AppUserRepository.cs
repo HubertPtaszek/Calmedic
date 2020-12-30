@@ -20,25 +20,17 @@ namespace Calmedic.Data
             return result.data;
         }
 
-        public object GetUsersToList(DataSourceLoadOptionsBase loadOptions)
+        public object GetUsers(DataSourceLoadOptionsBase loadOptions)
         {
-            var internalQuery = _dbset.Select(x => new
+            var query = _dbset.Select(x => new
             {
                 Id = x.Id,
                 FirstName = x.FirstName,
                 LastName = x.LastName,
-                IsActive = x.IsActive,
                 Email = x.Email,
-                Roles = x.UserRoles.Select(y => y.AppRole.Name).ToList()
-            });
-            var query = internalQuery.ToList().Select(x => new
-            {
-                Id = x.Id,
-                FirstName = x.FirstName,
-                LastName = x.LastName,
+                Roles = x.UserRoles.FirstOrDefault().AppRole.Name,
                 IsActive = x.IsActive,
-                Email = x.Email,
-                Roles = string.Join(", ", x.Roles)
+                PhoneNumber = x.PhoneNumber
             });
             LoadResult result = DataSourceLoader.Load(query, loadOptions);
             return result;

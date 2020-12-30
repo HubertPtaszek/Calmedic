@@ -150,6 +150,9 @@
   <data name="Patients" xml:space="preserve">
     <value>Pacjenci</value>
   </data>
+  <data name="Roles" xml:space="preserve">
+    <value>Uprawnienia</value>
+  </data>
   <data name="Users" xml:space="preserve">
     <value>Użytkownicy</value>
   </data>

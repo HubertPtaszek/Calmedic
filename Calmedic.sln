@@ -17,25 +17,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{4478B693-E5B9-422E-B939-044EEC6F366F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calmedic.Resources", "Calmedic.Resources\Calmedic.Resources.csproj", "{87EE845E-BD7A-4D4F-9E5C-C3F713216CDA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calmedic.Resources", "Calmedic.Resources\Calmedic.Resources.csproj", "{87EE845E-BD7A-4D4F-9E5C-C3F713216CDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calmedic.Infrastructure", "Calmedic.Infrastructure\Calmedic.Infrastructure.csproj", "{480C1BE3-3450-47CB-B4F6-CDEDB497D4D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calmedic.Infrastructure", "Calmedic.Infrastructure\Calmedic.Infrastructure.csproj", "{480C1BE3-3450-47CB-B4F6-CDEDB497D4D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calmedic.Dictionaries", "Calmedic.Dictionaries\Calmedic.Dictionaries.csproj", "{DC39F370-2FD4-4BE3-AE62-18D58AD3AAAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calmedic.Dictionaries", "Calmedic.Dictionaries\Calmedic.Dictionaries.csproj", "{DC39F370-2FD4-4BE3-AE62-18D58AD3AAAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calmedic.Domain", "Calmedic.Domain\Calmedic.Domain.csproj", "{4D03E9CF-F24B-4037-8F6D-6C4D7FD26B14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calmedic.Domain", "Calmedic.Domain\Calmedic.Domain.csproj", "{4D03E9CF-F24B-4037-8F6D-6C4D7FD26B14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calmedic.DependencyResolver", "Calmedic.DependencyResolver\Calmedic.DependencyResolver.csproj", "{8A2AF625-8334-4A74-9796-2FAFB7ACC420}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calmedic.DependencyResolver", "Calmedic.DependencyResolver\Calmedic.DependencyResolver.csproj", "{8A2AF625-8334-4A74-9796-2FAFB7ACC420}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calmedic.Data.Abstraction", "Calmedic.Data.Abstraction\Calmedic.Data.Abstraction.csproj", "{DD916995-36AC-4A0B-926E-A882881CC129}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calmedic.Data.Abstraction", "Calmedic.Data.Abstraction\Calmedic.Data.Abstraction.csproj", "{DD916995-36AC-4A0B-926E-A882881CC129}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calmedic.Data.Repositories", "Calmedic.Data.Repositories\Calmedic.Data.Repositories.csproj", "{004BB453-55CA-48A0-B187-DEB509179301}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calmedic.Data.Repositories", "Calmedic.Data.Repositories\Calmedic.Data.Repositories.csproj", "{004BB453-55CA-48A0-B187-DEB509179301}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calmedic.EntityFramework", "Calmedic.EntityFramework\Calmedic.EntityFramework.csproj", "{A60392F7-9E7F-4EBA-8789-B50F8FEDF67D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calmedic.EntityFramework", "Calmedic.EntityFramework\Calmedic.EntityFramework.csproj", "{A60392F7-9E7F-4EBA-8789-B50F8FEDF67D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calmedic.Application.Abstraction", "Calmedic.Application.Abstraction\Calmedic.Application.Abstraction.csproj", "{ED32877F-0A8A-426D-8D1A-C070B6DE8BBE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calmedic.Application.Abstraction", "Calmedic.Application.Abstraction\Calmedic.Application.Abstraction.csproj", "{ED32877F-0A8A-426D-8D1A-C070B6DE8BBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calmedic.Application.Services", "Calmedic.Application.Services\Calmedic.Application.Services.csproj", "{99CBF183-217A-47A8-9BA2-67E67CB5CF96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calmedic.Application.Services", "Calmedic.Application.Services\Calmedic.Application.Services.csproj", "{99CBF183-217A-47A8-9BA2-67E67CB5CF96}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

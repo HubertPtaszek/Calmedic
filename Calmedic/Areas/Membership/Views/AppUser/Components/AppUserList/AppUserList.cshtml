@@ -1,0 +1,73 @@
+﻿@model AppUserListVM
+
+<div id="appUserGridId"></div>
+
+<script>
+    $(document).ready(function () {
+        var store = DevExpress.data.AspNet.createStore({
+                "loadUrl": "@Url.Action("GetData", "AppUser")"
+            });
+
+        $("#appUserGridId").dxDataGrid({
+            dataSource: {
+                store: store,
+            },
+            allowColumnResizing: true,
+            columnAutoWidth: true,
+            controlColumnResizing: true,
+            remoteOperations: {
+                sorting: true,
+                paging: true,
+                filtering: true
+            },
+            searchPanel: {
+                visible: false
+            },
+            filterRow: {
+                visible: true,
+                applyFilter: "auto",
+                showOperationChooser: false
+            },
+            loadPanel: {
+                enabled: true
+            },
+            sorting: {
+                mode: 'multiple'
+            },
+            paging: {
+                pageSize: 15,
+            },
+            pager: {
+                showPageSizeSelector: true,
+                allowedPageSizes: [5, 15, 25]
+            },
+            hoverStateEnabled: true,
+            rowAlternationEnabled: true,
+            columns: [
+                { dataField: "Id", visible: false, allowSearch: false },
+                { dataField: "LastName", caption: "@SharedResource.LastName.ToScriptStringSafe()" },
+                { dataField: "FirstName", caption: "@SharedResource.FirstName.ToScriptStringSafe()" },
+                { dataField: "Email", caption: "@SharedResource.EmailAddress.ToScriptStringSafe()" },
+                { dataField: "Roles", caption: "@SharedResource.Role.ToScriptStringSafe()" },
+                { dataField: "IsActive", caption: "@SharedResource.IsActive.ToScriptStringSafe()" },
+                { dataField: "PhoneNumber", caption: "@SharedResource.PhoneNumber.ToScriptStringSafe()" },
+                @*{
+                    caption: "",
+                    dataField: "",
+                    allowFiltering: false,
+                    allowSorting: false,
+                    alowSearch: false,
+                    cellTemplate: function (container, options) {
+                        var id = options.row.data["Id"];
+                        var temp = '__id__';
+                        var reId = new RegExp(temp, 'g');
+
+                        var detailsUrl = '<a class="btn-datagrid btn-datagrid-primary" href="@Url.Action("Details", "Brand", new { id = "__id__" }, null)"><span class="fas fa-angle-right"></span></a>';
+                        detailsUrl = detailsUrl.replace(reId, id);
+                        container.append(detailsUrl);
+                    }
+                }*@
+            ]
+        });
+    });
+</script>

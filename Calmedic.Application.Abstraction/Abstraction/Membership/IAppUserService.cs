@@ -5,7 +5,7 @@ namespace Calmedic.Application
     public interface IAppUserService : IService
     {
         object GetUsersToLookup(DataSourceLoadOptionsBase loadOptions);
-        object GetUsersToList(DataSourceLoadOptionsBase loadOptions);
+        object GetUsers(DataSourceLoadOptionsBase loadOptions);
         AppUserDetailsVM GetAppUserDetailsVM(int userId);
         AppUserEditVM GetAppUserEditVM(int userId, AppUserEditVM model = null);
         void Edit(AppUserEditVM model, int userId);

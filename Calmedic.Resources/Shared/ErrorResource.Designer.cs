@@ -70,6 +70,15 @@ namespace Calmedic.Resources.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Konto jest niaktywne.
+        /// </summary>
+        public static string AccountInactive {
+            get {
+                return ResourceManager.GetString("AccountInactive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Twoje konto zostało utworzone, kliknij na poniższy link żeby utworzyć hasło: &lt;br /&gt; &lt;a href=&apos;{0}&apos;&gt;Utwórz hasło&lt;/a&gt;.
         /// </summary>
         public static string ConfirmationMessageContent {
@@ -93,6 +102,15 @@ namespace Calmedic.Resources.Shared {
         public static string EditRoleAdmin {
             get {
                 return ResourceManager.GetString("EditRoleAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Niepotwierdzono adresu email.
+        /// </summary>
+        public static string EmailNotConfirmed {
+            get {
+                return ResourceManager.GetString("EmailNotConfirmed", resourceCulture);
             }
         }
         
@@ -327,6 +345,15 @@ namespace Calmedic.Resources.Shared {
         public static string WrongFileType {
             get {
                 return ResourceManager.GetString("WrongFileType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Błędne dane logowania.
+        /// </summary>
+        public static string WrongLoginData {
+            get {
+                return ResourceManager.GetString("WrongLoginData", resourceCulture);
             }
         }
     }

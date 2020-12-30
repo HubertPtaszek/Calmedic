@@ -174,6 +174,7 @@ namespace Calmedic.EntityFramework
                     CreatedById = sysAdmin.CreatedById,
                     CreatedDate = DateTime.Now,
                     Email = "admin@calmedic.pl",
+                    PhoneNumber = "+48 123 456 789",
                     AppIdentityUserId = identityUser.Id,
                     IsActive = true,
                     EmailConfirmed = true,
