@@ -7,7 +7,7 @@ namespace Calmedic.Data
 {
     public interface IAppRoleRepository : IRepository<AppRole>
     {
-        object GetRolesToList(DataSourceLoadOptionsBase loadOptions);
+        object GetRoles(DataSourceLoadOptionsBase loadOptions);
         List<SelectModelBinder<int>> GetRolesToSelect();
     }
 }

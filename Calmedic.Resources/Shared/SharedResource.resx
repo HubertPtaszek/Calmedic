@@ -348,4 +348,7 @@
   <data name="PhoneNumber" xml:space="preserve">
     <value>Numer telefonu</value>
   </data>
+  <data name="UserCount" xml:space="preserve">
+    <value>Ilość użytkowników</value>
+  </data>
 </root>

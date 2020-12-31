@@ -4,6 +4,6 @@ namespace Calmedic.Application
 {
     public interface IAppRoleService : IService
     {
-        object GetRolesToList(DataSourceLoadOptionsBase loadOptions);
+        object GetRoles(DataSourceLoadOptionsBase loadOptions);
     }
 }

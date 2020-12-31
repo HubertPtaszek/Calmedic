@@ -718,6 +718,15 @@ namespace Calmedic.Resources.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ilość użytkowników.
+        /// </summary>
+        public static string UserCount {
+            get {
+                return ResourceManager.GetString("UserCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wartość.
         /// </summary>
         public static string Value {

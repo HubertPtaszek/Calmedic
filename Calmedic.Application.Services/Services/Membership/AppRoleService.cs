@@ -10,9 +10,9 @@ namespace Calmedic.Application
         public AppRoleConverter AppRoleConverter { get; set; }
         #endregion
 
-        public virtual object GetRolesToList(DataSourceLoadOptionsBase loadOptions)
+        public virtual object GetRoles(DataSourceLoadOptionsBase loadOptions)
         {
-            return AppRoleRepository.GetRolesToList(loadOptions);
+            return AppRoleRepository.GetRoles(loadOptions);
         }
     }
 }

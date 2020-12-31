@@ -1,14 +1,14 @@
-﻿@model AppUserListVM
+﻿@model AppRoleListVM
 
-<div id="appUserGridId"></div>
+<div id="appRoleGridId"></div>
 
 <script>
     $(document).ready(function () {
         var store = DevExpress.data.AspNet.createStore({
-                "loadUrl": "@Url.Action("GetData", "AppUser")"
+                "loadUrl": "@Url.Action("GetData", "AppRole")"
             });
 
-        $("#appUserGridId").dxDataGrid({
+        $("#appRoleGridId").dxDataGrid({
             dataSource: {
                 store: store,
             },
@@ -45,12 +45,9 @@
             rowAlternationEnabled: true,
             columns: [
                 { dataField: "Id", visible: false, allowSearch: false },
-                { dataField: "LastName", caption: "@SharedResource.LastName.ToScriptStringSafe()" },
-                { dataField: "FirstName", caption: "@SharedResource.FirstName.ToScriptStringSafe()" },
-                { dataField: "Email", caption: "@SharedResource.EmailAddress.ToScriptStringSafe()" },
-                { dataField: "Roles", caption: "@SharedResource.Role.ToScriptStringSafe()" },
-                { dataField: "IsActive", caption: "@SharedResource.IsActive.ToScriptStringSafe()" },
-                { dataField: "PhoneNumber", caption: "@SharedResource.PhoneNumber.ToScriptStringSafe()" },
+                { dataField: "Name", caption: "@SharedResource.Name.ToScriptStringSafe()" },
+                { dataField: "Description", caption: "@SharedResource.Description.ToScriptStringSafe()" },
+                { dataField: "UserCount", caption: "@SharedResource.UserCount.ToScriptStringSafe()" },
                 {
                     caption: "",
                     dataField: "",

@@ -17,16 +17,12 @@
         </div>
     </div>
     <hr />
-    <div style="display:none">
+    <div class="wrapper-inner">
         <div id="usersContainerId">
-            <div class="wrapper-inner">
-                @await Component.InvokeAsync("AppUserList")
-            </div>
+            @await Component.InvokeAsync("AppUserList")
         </div>
-        <div id="rolesContainerId">
-            <div class="wrapper-inner">
-
-            </div>
+        <div id="rolesContainerId" style="display: none">
+            @await Component.InvokeAsync("AppRoleList")
         </div>
     </div>
 </div>
@@ -46,21 +42,23 @@
         $("#tabPanelId").dxTabPanel({
             items: [{
                 title: "@UtilsResource.Users.ToScriptStringSafe()",
-                icon: "fas fa-users",
-                template: function () {
-                    //$("#addBtnId").dxButton("instance").option("visible", true);
-                    return $("#usersContainerId")
-                }
+                icon: "fas fa-users"
             }, {
                 title: "@UtilsResource.Roles.ToScriptStringSafe()",
-                icon: "fas fa-users-cog",
-                template: function () {
-                    return $("#rolesContainerId")
-                }
+                icon: "fas fa-users-cog"
             }],
             height: "auto",
-            onContentReady: function (e) {
-
+            onSelectionChanged: function (e) {
+                if(e.addedItems[0].title == "@UtilsResource.Users.ToScriptStringSafe()") {
+                    $("#addBtnId").dxButton("instance").option("visible", true);
+                    $("#rolesContainerId").hide();
+                    $("#usersContainerId").show();
+                }
+                if (e.addedItems[0].title == "@UtilsResource.Roles.ToScriptStringSafe()") {
+                    $("#addBtnId").dxButton("instance").option("visible", false);
+                    $("#usersContainerId").hide();
+                    $("#rolesContainerId").show();
+                }
             }
         });
     });

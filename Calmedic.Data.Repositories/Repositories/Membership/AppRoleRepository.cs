@@ -13,13 +13,14 @@ namespace Calmedic.Data
         public AppRoleRepository(MainDatabaseContext context) : base(context)
         { }
 
-        public object GetRolesToList(DataSourceLoadOptionsBase loadOptions)
+        public object GetRoles(DataSourceLoadOptionsBase loadOptions)
         {
             IQueryable<RolerListDTO> query = _dbset.Select(x => new RolerListDTO()
             {
                 Id = x.Id,
                 Name = x.Name,
-                Description = x.Description
+                Description = x.Description,
+                UserCount = Context.AppUserRoles.Where(y => y.AppRoleId == x.Id).Count()
             });
             LoadResult result = DataSourceLoader.Load(query, loadOptions);
             return result;
