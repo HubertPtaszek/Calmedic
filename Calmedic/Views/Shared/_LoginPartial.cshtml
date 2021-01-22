@@ -7,7 +7,7 @@
 @if (User.Identity.IsAuthenticated && tab != "Account")
 {
     <div class="left-nav-user-image">
-        <img id="avatarId" src="@(Context.Session.GetObject<AppUserData>(SessionVariableNames.AppUserData).AvatarUrl)" />
+        <img id="avatarId" src="~/images/@(Context.Session.GetObject<AppUserData>(SessionVariableNames.AppUserData).AvatarUrl)" />
         @if (tab != "Account")
         {
             <form class="left-nav-user-login" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Login", "Account", new { area = AreaNames.Membership_Area })">

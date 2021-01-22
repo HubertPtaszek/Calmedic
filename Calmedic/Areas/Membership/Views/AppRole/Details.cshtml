@@ -1,0 +1,63 @@
+﻿@model AppRoleDetailsVM
+@{
+    ViewBag.Title = UtilsResource.Role_Details;
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page"><a href="@Url.Action("Index", "Dashboard", new { area = AreaNames.Dashboard_Area })">@UtilsResource.Home.ToHtmlStringSafe()</a></li>
+        <li class="breadcrumb-item" aria-current="page"><a href="@Url.Action("Index", "AppUser", new { area = AreaNames.Membership_Area })">@UtilsResource.Users.ToHtmlStringSafe()</a></li>
+        <li class="breadcrumb-item active" aria-current="page">@UtilsResource.Role_Details.ToHtmlStringSafe()</li>
+    </ol>
+</nav>
+
+
+<div class="wrapper">
+    <div class="wrapper-header d-flex middle between">
+        <h4 class="wrapper-header-title">@UtilsResource.Role_Details.ToHtmlStringSafe()</h4>
+    </div>
+    <hr />
+    <div class="wrapper-inner">
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="form-group">
+                    <label>@Html.DisplayNameFor(x => x.Name)</label>
+                    <div id="nameBoxId"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="form-group">
+                    <label>@Html.DisplayNameFor(x => x.Description)</label>
+                    <div id="descriptionAreaId"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                @await Component.InvokeAsync("RoleUsersList", Model)
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#nameBoxId").dxTextBox({
+            name: "Name",
+            readOnly: true,
+            width: "100%",
+            value: '@Model.Name.ToScriptStringSafe()'
+        });
+
+        $("#descriptionAreaId").dxTextArea({
+            height: "auto",
+            minHeight: "75px",
+            name: "Description",
+            readOnly: true,
+            width: "100%",
+            value: '@Model.Description.ToScriptStringSafe()'
+        });
+    });
+</script>

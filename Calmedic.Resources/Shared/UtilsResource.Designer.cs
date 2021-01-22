@@ -70,6 +70,24 @@ namespace Calmedic.Resources.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Przypisani użytkownicy.
+        /// </summary>
+        public static string AssignedUsers {
+            get {
+                return ResourceManager.GetString("AssignedUsers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Przypisywanie użytkownika do roli.
+        /// </summary>
+        public static string AssigningUser {
+            get {
+                return ResourceManager.GetString("AssigningUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Przychodnia.
         /// </summary>
         public static string Clinic {
@@ -102,6 +120,15 @@ namespace Calmedic.Resources.Shared {
         public static string Conntact_Part2 {
             get {
                 return ResourceManager.GetString("Conntact_Part2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kontakt.
+        /// </summary>
+        public static string Contact {
+            get {
+                return ResourceManager.GetString("Contact", resourceCulture);
             }
         }
         
@@ -160,11 +187,74 @@ namespace Calmedic.Resources.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rola.
+        /// </summary>
+        public static string Role {
+            get {
+                return ResourceManager.GetString("Role", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Szczegóły roli.
+        /// </summary>
+        public static string Role_Details {
+            get {
+                return ResourceManager.GetString("Role_Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Uprawnienia.
         /// </summary>
         public static string Roles {
             get {
                 return ResourceManager.GetString("Roles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usuwanie użytkownika z roli.
+        /// </summary>
+        public static string UnassigningUser {
+            get {
+                return ResourceManager.GetString("UnassigningUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Czy chcesz usunąć użytkownika.
+        /// </summary>
+        public static string UnassignUser_Part1 {
+            get {
+                return ResourceManager.GetString("UnassignUser_Part1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to z roli.
+        /// </summary>
+        public static string UnassignUser_Part2 {
+            get {
+                return ResourceManager.GetString("UnassignUser_Part2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Użytkownik.
+        /// </summary>
+        public static string User {
+            get {
+                return ResourceManager.GetString("User", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Szczegóły użytkownika.
+        /// </summary>
+        public static string User_Details {
+            get {
+                return ResourceManager.GetString("User_Details", resourceCulture);
             }
         }
         

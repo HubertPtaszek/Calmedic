@@ -21,9 +21,16 @@ namespace Calmedic.Application
         public string FirstName { get; set; }
         [Display(ResourceType = typeof(SharedResource), Name = "Email")]
         public string Email { get; set; }
+        [Display(ResourceType = typeof(SharedResource), Name = "PhoneNumber")]
+        public string PhoneNumber { get; set; }
         [Display(ResourceType = typeof(SharedResource), Name = "IsActive")]
         public bool IsActive { get; set; }
+        [Display(ResourceType = typeof(SharedResource), Name = "IsEmailConfirmed")]
         public bool IsEmailConfirmed { get; set; }
-        public List<SelectModelBinder> RoleTypes { get => EnumHelpers.GetSelectBinderList<AppRoleType>(); }
+        [Display(ResourceType = typeof(SharedResource), Name = "Role")]
+        public string Role { get; set; }
+        public AppRoleType RoleType { get; set; }
+        [Display(ResourceType = typeof(SharedResource), Name = "Clinic")]
+        public string Clinic { get; set; }
     }
 }

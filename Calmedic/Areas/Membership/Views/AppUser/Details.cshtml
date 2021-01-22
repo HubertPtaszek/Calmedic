@@ -1,0 +1,148 @@
+﻿@model AppUserDetailsVM
+@{
+    ViewBag.Title = UtilsResource.Users;
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page"><a href="@Url.Action("Index", "Dashboard", new { area = AreaNames.Dashboard_Area })">@UtilsResource.Home.ToHtmlStringSafe()</a></li>
+        <li class="breadcrumb-item" aria-current="page"><a href="@Url.Action("Index", "AppUser", new { area = AreaNames.Membership_Area })">@UtilsResource.Users.ToHtmlStringSafe()</a></li>
+        <li class="breadcrumb-item active" aria-current="page">@UtilsResource.User_Details.ToHtmlStringSafe()</li>
+    </ol>
+</nav>
+
+<div class="wrapper">
+    <div class="wrapper-header d-flex middle between">
+        <h4 class="wrapper-header-title">@UtilsResource.User_Details.ToHtmlStringSafe()</h4>
+        <div>
+            <div id="mailBtnId"></div>
+            <div class="ml-1" id="editBtnId"></div>
+        </div>
+    </div>
+    <hr />
+    <div class="wrapper-inner">
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="form-group form-group-horizontal row">
+                    <label class="col-xs-3">@Html.DisplayNameFor(x => x.FirstName)</label>
+                    <div class="col-xs-9" id="firstNameBoxId"></div>
+                </div>
+                <div class="form-group form-group-horizontal row">
+                    <label class="col-xs-3">@Html.DisplayNameFor(x => x.LastName)</label>
+                    <div class="col-xs-9" id="lastNameBoxId"></div>
+                </div>
+                <div class="form-group form-group-horizontal row">
+                    <label class="col-xs-3">@Html.DisplayNameFor(x => x.Role)</label>
+                    <div class="col-xs-9" id="roleBoxId"></div>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="form-group form-group-horizontal form-group-checkbox row">
+                    <label class="col-xs-5">@Html.DisplayNameFor(x => x.IsActive)</label>
+                    <div id="isActiveBoxId"></div>
+                </div>
+                <div class="form-group form-group-horizontal form-group-checkbox row">
+                    <label class="col-xs-5">@Html.DisplayNameFor(x => x.IsEmailConfirmed)</label>
+                    <div id="isEmailConfirmedBoxId"></div>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="form-group form-group-horizontal row">
+                    <label class="col-xs-3">@Html.DisplayNameFor(x => x.PhoneNumber)</label>
+                    <div class="col-xs-9" id="phoneBoxId"></div>
+                </div>
+                <div class="form-group form-group-horizontal row">
+                    <label class="col-xs-3">@Html.DisplayNameFor(x => x.Email)</label>
+                    <div class="col-xs-9" id="emailBoxId"></div>
+                </div>
+                @{
+                    if (Model.RoleType != AppRoleType.Administrator && Model.RoleType != AppRoleType.Doctor)
+                    {
+                        <div class="form-group form-group-horizontal row">
+                            <label class="col-xs-3">@Html.DisplayNameFor(x => x.Clinic)</label>
+                            <div class="col-xs-9" id="clinicBoxId"></div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#mailBtnId").dxButton({
+            elementAttr: { class: "btn btn-normal" },
+            onClick: function () {
+                //podpiąc resetowanie hasła
+            },
+            text: "@ButtonNameResource.ResetPassword.ToScriptStringSafe()",
+            type: "normal"
+        });
+
+        $("#editBtnId").dxButton({
+            elementAttr: { class: "btn btn-default" },
+            text: "@ButtonNameResource.Edit.ToScriptStringSafe()",
+            onClick: function () {
+                //podpiąc formularz edycji
+            },
+            type: "default"
+        });
+
+        $("#firstNameBoxId").dxTextBox({
+            name: "FirstName",
+            readOnly: true,
+            width: "100%",
+            value: '@Model.FirstName.ToScriptStringSafe()'
+        });
+
+        $("#lastNameBoxId").dxTextBox({
+            name: "LastName",
+            readOnly: true,
+            width: "100%",
+            value: '@Model.LastName.ToScriptStringSafe()'
+        });
+
+        $("#roleBoxId").dxTextBox({
+            name: "Role",
+            readOnly: true,
+            width: "100%",
+            value: '@Model.Role.ToScriptStringSafe()'
+        });
+
+        $("#isActiveBoxId").dxCheckBox({
+            name: "IsActive",
+            readOnly: true,
+            value: '@Model.IsActive.ToScriptStringSafe()'
+        });
+
+        $("#isEmailConfirmedBoxId").dxCheckBox({
+            name: "IsEmailConfirmed",
+            readOnly: true,
+            value: '@Model.IsEmailConfirmed.ToScriptStringSafe()'
+        });
+
+        $("#phoneBoxId").dxTextBox({
+            mode: "tel",
+            name: "PhoneNumber",
+            readOnly: true,
+            width: "100%",
+            value: '@Model.PhoneNumber.ToScriptStringSafe()'
+        });
+
+        $("#emailBoxId").dxTextBox({
+            mode: "email",
+            name: "Email",
+            readOnly: true,
+            width: "100%",
+            value: '@Model.Email.ToScriptStringSafe()'
+        });
+
+        $("#clinicBoxId").dxTextBox({
+            name: "Clinic",
+            readOnly: true,
+            width: "100%",
+            value: '@Model.Clinic.ToScriptStringSafe()'
+        });
+    });
+</script>

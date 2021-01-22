@@ -1,0 +1,75 @@
+﻿@model AppRoleDetailsVM
+
+<div id="unassignUserPopupId"></div>
+
+<div style="display: none;">
+    <div id="unassignUserPopupContent">
+        @Html.AntiForgeryToken()
+        <span>@UtilsResource.UnassignUser_Part1.ToHtmlStringSafe() <span class="bold" id="userNameId"></span> @UtilsResource.UnassignUser_Part2.ToHtmlStringSafe() <span class="bold">@Model.Name.ToHtmlStringSafe()</span>?</span>
+        <div class="popup-footer d-flex justify-content-end mt-2">
+            <div id="deleteBtnId"></div>
+            <div id="cancelDeleteBtnId" class="ml-1"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var componentUserId = null;
+
+    function unassignUser(userId, userName) {
+        componentUserId = userId;
+        $("#userNameId").text(userName);
+        $("#unassignUserPopupId").dxPopup("instance").show();
+    }
+
+    $(document).ready(function () {
+        $("#deleteBtnId").dxButton({
+            elementAttr: { class: "btn btn-danger" },
+            onClick: function () {
+                var token = $('input[name="__RequestVerificationToken"]').val();
+                var userId = $("#userLookupId").dxLookup("instance").option("value");
+                $("#loadPanelId").dxLoadPanel("show");
+                $("#unassignUserPopupId").dxPopup("instance").hide();
+                $.ajax({
+                    type: "delete",
+                    url: '@Url.Action("UnassignUserFromRole", "AppRole")',
+                    dataType: "json",
+                    data: {
+                        userId: componentUserId,
+                        roleId: '@Model.Id',
+                        __RequestVerificationToken: token,
+                    },
+                    success: function () {
+                        componentUserId = null;
+                        $("#roleUsersGridId").dxDataGrid("instance").refresh();
+                        $("#loadPanelId").dxLoadPanel("hide");
+                    }
+                });
+            },
+            text: "@ButtonNameResource.Delete.ToScriptStringSafe()",
+            type: "danger"
+         });
+
+        $("#cancelDeleteBtnId").dxButton({
+            elementAttr: { class: "btn btn-normal" },
+            onClick: function () {
+                componentUserId = null;
+                $("#unassignUserPopupId").dxPopup("instance").hide();
+            },
+            text: "@ButtonNameResource.Cancel.ToScriptStringSafe()",
+            type: "normal"
+        });
+
+        $("#unassignUserPopupId").dxPopup({
+            visible: false,
+            title: "@UtilsResource.UnassigningUser.ToScriptStringSafe()",
+            width: "700px",
+            height: "auto",
+            dragEnabled: false,
+            position: { my: 'bottom', at: 'center', of: window },
+            contentTemplate: function (container) {
+                container.append($("#unassignUserPopupContent"));
+            }
+        });
+    });
+</script>

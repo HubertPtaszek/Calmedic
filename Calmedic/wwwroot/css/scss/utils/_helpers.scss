@@ -3,6 +3,10 @@
     justify-content: flex-end;
 }
 
+.bold {
+    font-weight: 600;
+}
+
 .ma {
     margin: auto;
 }
@@ -110,7 +114,22 @@
 }
 
 .form-group {
-    margin: 8px 0;
+    margin: 12px 0;
+
+    &-checkbox {
+        margin-top: $space-size-2 + 2px;
+        margin-bottom: $space-size-3;
+    }
+
+    &-horizontal {
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+
+        label {
+            margin-bottom: 0px !important;
+        }
+    }
 
     label {
         display: inline-block;

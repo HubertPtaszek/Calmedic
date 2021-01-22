@@ -1,14 +1,20 @@
-﻿.color-selector {
-    .dx-list-item {
-        width: 30px;
-        height: 30px;
-        .dx-item-content{
-            padding: 0;
-        }
-    }
-}
-div.dx-dropdownlist-popup-wrapper {
+﻿div.dx-dropdownlist-popup-wrapper {
     div.dx-item.dx-list-item {
         width: 100% !important;
     }
+}
+
+.dx-state-readonly {
+    border: 1px solid #E7ECF9 !important;
+    background-color: #F6F8FC !important;
+}
+
+.dx-checkbox.dx-state-readonly .dx-checkbox-icon {
+    border: 1px solid #E7ECF9 !important;
+    background-color: #F6F8FC !important;
+}
+
+div.dx-empty-message {
+    text-align: center !important;
+    color: $third-text-color !important;
 }

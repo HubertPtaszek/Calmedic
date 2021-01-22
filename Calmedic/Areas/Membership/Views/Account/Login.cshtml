@@ -68,7 +68,7 @@
         $("#emailBoxId").dxTextBox({
             name: "Email",
             placeholder: "@SharedResource.EmailHolder.ToScriptStringSafe()",
-            widht: "100%"
+            width: "100%"
         }).dxValidator({
             validationRules: [{
                 type: "required",
@@ -84,7 +84,7 @@
             mode: 'password',
             name: "Password",
             placeholder: "@SharedResource.PasswordHash.ToScriptStringSafe()",
-            widht: "100%"
+            width: "100%"
         }).dxValidator({
             validationRules: [{
                 type: "required",
@@ -94,7 +94,7 @@
         });
 
         $("#loginBtnId").dxButton({
-            elementAttr: { class: "btn btn-primary" },
+            elementAttr: { class: "btn btn-default" },
             onClick: function () {
                 if (DevExpress.validationEngine.validateGroup('@validationGroup').isValid) {
                     $("#loadPanelId").dxLoadPanel("instance").show();
@@ -117,7 +117,7 @@
 
         $("#contactPopup").dxPopup({
             visible: false,
-            title: "Kontakt",
+            title: "@UtilsResource.Contact.ToScriptStringSafe()",
             width: "700px",
             height: "auto",
             dragEnabled: false,

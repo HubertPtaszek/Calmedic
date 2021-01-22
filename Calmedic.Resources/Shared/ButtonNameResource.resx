@@ -138,6 +138,9 @@
   <data name="Ok" xml:space="preserve">
     <value>Ok</value>
   </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>Resetuj hasło</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Zapisz</value>
   </data>

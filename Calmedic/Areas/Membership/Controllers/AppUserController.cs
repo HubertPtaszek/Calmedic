@@ -28,6 +28,18 @@ namespace Calmedic.Areas.Membership.Controllers
             return View();
         }
 
+        public ActionResult Add()
+        {
+            AppUserAddVM model = new AppUserAddVM(); //todo
+            return View(model);
+        }
+
+        public ActionResult Details(int id)
+        {
+            AppUserDetailsVM model = _appUserService.GetAppUserDetailsVM(id);
+            return View(model);
+        }
+
         [HttpGet]
         [AppRoleAuthorization(AppRoleType.Administrator)]
         public ActionResult GetData(DataSourceLoadOptions loadOptions)

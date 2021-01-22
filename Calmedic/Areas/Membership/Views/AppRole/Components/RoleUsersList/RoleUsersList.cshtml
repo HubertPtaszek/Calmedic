@@ -1,16 +1,46 @@
-﻿@model AppUserListVM
+﻿@model AppRoleDetailsVM
+@{
+    string validationGroup = Guid.NewGuid().ToString();
+}
 
-<div id="appUserGridId"></div>
+<div class="grid-header d-flex middle between">
+    <h6 class="grid-header-title">@UtilsResource.AssignedUsers.ToHtmlStringSafe() (<span id="totalCountId">0</span>)</h6>
+    <div>
+        <div id="addBtnId"></div>
+    </div>
+</div>
+
+<div id="roleUsersGridId"></div>
+
+@await Component.InvokeAsync("AssignUser", Model)
+@await Component.InvokeAsync("UnassignUser", Model)
 
 <script>
     $(document).ready(function () {
-        var store = DevExpress.data.AspNet.createStore({
-                "loadUrl": "@Url.Action("GetData", "AppUser")"
-            });
+        $("#addBtnId").dxButton({
+            elementAttr: { class: "btn btn-default" },
+            onClick: function () {
+                 $("#assignUserPopupId").dxPopup("instance").show();
+            },
+            text: "@ButtonNameResource.Add.ToScriptStringSafe()",
+            type: "default"
+        });
 
-        var dataGrid = $("#appUserGridId").dxDataGrid({
+        var store = DevExpress.data.AspNet.createStore({
+            loadUrl: "@Url.Action("GetRoleUsers", "AppRole")",
+            loadParams: {
+                roleId: '@Model.Id'
+            }
+        });
+
+        var dataGrid = $("#roleUsersGridId").dxDataGrid({
             dataSource: {
                 store: store,
+                onLoadingChanged: function (isLoading) {
+                    if (!isLoading) {
+                        $('#totalCountId').text(dataGrid.totalCount());
+                    }
+                }
             },
             allowColumnResizing: true,
             columnAutoWidth: true,
@@ -48,7 +78,6 @@
                 { dataField: "LastName", caption: "@SharedResource.LastName.ToScriptStringSafe()" },
                 { dataField: "FirstName", caption: "@SharedResource.FirstName.ToScriptStringSafe()" },
                 { dataField: "Email", caption: "@SharedResource.EmailAddress.ToScriptStringSafe()" },
-                { dataField: "Roles", caption: "@SharedResource.Role.ToScriptStringSafe()" },
                 { dataField: "IsActive", caption: "@SharedResource.IsActive.ToScriptStringSafe()" },
                 { dataField: "PhoneNumber", caption: "@SharedResource.PhoneNumber.ToScriptStringSafe()" },
                 {
@@ -60,11 +89,18 @@
                     width: 100,
                     cellTemplate: function (container, options) {
                         var id = options.row.data["Id"];
+                        var email = options.row.data["Email"];
+                        var userName = options.row.data["FirstName"] + " " + options.row.data["LastName"];
                         var temp = '__id__';
                         var reId = new RegExp(temp, 'g');
-
-                        var detailsUrl = '<a class="btn-datagrid" href="@Url.Action("Details", "AppUser", new { id = "__id__" }, null)"><i class="fas fa-arrow-right"></i></a>';
-                        detailsUrl = detailsUrl.replace(reId, id);
+                        var detailsUrl = '';
+                        if (email != "admin@calmedic.pl") {
+                            detailsUrl = '<a class="btn-datagrid btn-datagrid-danger" onclick="unassignUser(' + id + ', \'' + userName + '\')"><i class="fas fa-trash"></i></a>';
+                            detailsUrl = detailsUrl.replace(reId, id);
+                        }
+                        else {
+                            detailsUrl = '<a class="btn-datagrid btn-datagrid-normal"><i class="fas fa-trash"></i></a>';
+                        }
                         container.append(detailsUrl);
                     }
                 }

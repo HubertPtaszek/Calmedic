@@ -202,10 +202,10 @@
     <value>Calmedic</value>
   </data>
   <data name="IsActive" xml:space="preserve">
-    <value>Czy aktywny</value>
+    <value>Czy aktywny?</value>
   </data>
   <data name="IsAdded" xml:space="preserve">
-    <value>Czy dodany</value>
+    <value>Czy dodany?</value>
   </data>
   <data name="Language" xml:space="preserve">
     <value>Język</value>
@@ -350,5 +350,14 @@
   </data>
   <data name="UserCount" xml:space="preserve">
     <value>Ilość użytkowników</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Wybierz...</value>
+  </data>
+  <data name="IsEmailConfirmed" xml:space="preserve">
+    <value>Czy potwierdzono e-mail?</value>
+  </data>
+  <data name="Clinic" xml:space="preserve">
+    <value>Przychodnia</value>
   </data>
 </root>

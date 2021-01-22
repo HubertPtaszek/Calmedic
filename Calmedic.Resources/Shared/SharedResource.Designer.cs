@@ -97,6 +97,15 @@ namespace Calmedic.Resources.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Przychodnia.
+        /// </summary>
+        public static string Clinic {
+            get {
+                return ResourceManager.GetString("Clinic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Potwierdź hasło.
         /// </summary>
         public static string ConfirmedPassword {
@@ -322,7 +331,7 @@ namespace Calmedic.Resources.Shared {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Czy aktywny.
+        ///   Looks up a localized string similar to Czy aktywny?.
         /// </summary>
         public static string IsActive {
             get {
@@ -331,11 +340,20 @@ namespace Calmedic.Resources.Shared {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Czy dodany.
+        ///   Looks up a localized string similar to Czy dodany?.
         /// </summary>
         public static string IsAdded {
             get {
                 return ResourceManager.GetString("IsAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Czy potwierdzono e-mail?.
+        /// </summary>
+        public static string IsEmailConfirmed {
+            get {
+                return ResourceManager.GetString("IsEmailConfirmed", resourceCulture);
             }
         }
         
@@ -615,6 +633,15 @@ namespace Calmedic.Resources.Shared {
         public static string SavingMessage {
             get {
                 return ResourceManager.GetString("SavingMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wybierz....
+        /// </summary>
+        public static string Select {
+            get {
+                return ResourceManager.GetString("Select", resourceCulture);
             }
         }
         

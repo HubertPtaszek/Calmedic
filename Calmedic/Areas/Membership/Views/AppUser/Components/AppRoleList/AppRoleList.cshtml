@@ -8,7 +8,7 @@
                 "loadUrl": "@Url.Action("GetData", "AppRole")"
             });
 
-        $("#appRoleGridId").dxDataGrid({
+        var dataGrid = $("#appRoleGridId").dxDataGrid({
             dataSource: {
                 store: store,
             },
@@ -60,12 +60,12 @@
                         var temp = '__id__';
                         var reId = new RegExp(temp, 'g');
 
-                        var detailsUrl = '<a class="btn-datagrid" href="@Url.Action("Details", "AppUser", new { id = "__id__" }, null)"><i class="fas fa-arrow-right"></i></a>';
+                        var detailsUrl = '<a class="btn-datagrid" href="@Url.Action("Details", "AppRole", new { id = "__id__" }, null)"><i class="fas fa-arrow-right"></i></a>';
                         detailsUrl = detailsUrl.replace(reId, id);
                         container.append(detailsUrl);
                     }
                 }
             ]
-        });
+        }).dxDataGrid("instance");
     });
 </script>

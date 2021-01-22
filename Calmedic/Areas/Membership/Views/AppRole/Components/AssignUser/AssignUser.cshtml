@@ -1,0 +1,132 @@
+﻿@model AppRoleDetailsVM
+@{
+    string validationGroup = Guid.NewGuid().ToString();
+}
+
+<div id="assignUserPopupId"></div>
+
+<div style="display: none;">
+    <div id="assignUserPopupContent">
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group form-group-horizontal row">
+                    <label class="col-xs-3">@UtilsResource.Role.ToHtmlStringSafe()</label>
+                    <div class="col-xs-9" id="roleBoxId"></div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group form-group-horizontal row">
+                    <label class="col-xs-3">@UtilsResource.User.ToHtmlStringSafe()</label>
+                    <div class="col-xs-9" id="userLookupId"></div>
+                </div>
+            </div>
+        </div>
+        <div class="popup-footer d-flex justify-content-end mt-2">
+            <div id="saveBtnId"></div>
+            <div id="cancelBtnId" class="ml-1"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#roleBoxId").dxTextBox({
+            name: "Role",
+            readOnly: true,
+            width: "100%",
+            value: '@Model.Name.ToScriptStringSafe()'
+        }).dxValidator({
+            validationRules: [{
+                type: "required",
+                message: "@ErrorResource.RequiredShort.ToScriptStringSafe()"
+            }],
+            validationGroup: "@validationGroup"
+        });
+
+        var store = DevExpress.data.AspNet.createStore({
+            key: "Value",
+            loadUrl: "@Url.Action("GetUsersforAssign", "AppRole")",
+            loadParams: {
+                roleId: '@Model.Id'
+            }
+        });
+
+        var users = new DevExpress.data.DataSource({
+            store: store,
+        });
+
+        $("#userLookupId").dxLookup({
+            dataSource: users,
+            displayExpr: "Text",
+            name: "User",
+            placeholder: "@SharedResource.Select.ToScriptStringSafe()",
+            searchEnabled: true,
+            searchExpr: "Text",
+            selectionMode: "single",
+            showSelectionControls: false,
+            showPopupTitle: false,
+            width: "100%",
+            valueExpr: "Value"
+        }).dxValidator({
+            validationRules: [{
+                type: "required",
+                message: "@ErrorResource.RequiredShort.ToScriptStringSafe()"
+            }],
+            validationGroup: "@validationGroup"
+        });
+
+        $("#saveBtnId").dxButton({
+            elementAttr: { class: "btn btn-default" },
+            onClick: function () {
+                var token = $('input[name="__RequestVerificationToken"]').val();
+                var userId = $("#userLookupId").dxLookup("instance").option("value");
+                if (DevExpress.validationEngine.validateGroup('@validationGroup').isValid) {
+                    $("#loadPanelId").dxLoadPanel("show");
+                    $("#assignUserPopupId").dxPopup("instance").hide();
+                    $.ajax({
+                        type: "post",
+                        url: '@Url.Action("AssignUserToRole", "AppRole")',
+                        dataType: "json",
+                        data: {
+                            userId: userId,
+                            roleId: '@Model.Id',
+                            __RequestVerificationToken: token,
+                        },
+                        success: function () {
+                            $("#roleUsersGridId").dxDataGrid("instance").refresh();
+                            $("#userLookupId").dxLookup("instance").reset();
+                            $("#userLookupId").dxValidator("instance").reset();
+                            $("#loadPanelId").dxLoadPanel("hide");
+                        }
+                    });
+                }
+            },
+            text: "@ButtonNameResource.Save.ToScriptStringSafe()",
+            type: "default"
+         });
+
+        $("#cancelBtnId").dxButton({
+            elementAttr: { class: "btn btn-normal" },
+            onClick: function () {
+                $("#assignUserPopupId").dxPopup("instance").hide();
+                $("#userLookupId").dxLookup("instance").reset();
+                $("#userLookupId").dxValidator("instance").reset();
+            },
+            text: "@ButtonNameResource.Cancel.ToScriptStringSafe()",
+            type: "normal"
+        });
+
+        $("#assignUserPopupId").dxPopup({
+            visible: false,
+            title: "@UtilsResource.AssigningUser.ToScriptStringSafe()",
+            width: "550px",
+            height: "auto",
+            dragEnabled: false,
+            position: { my: 'bottom', at: 'center', of: window },
+            contentTemplate: function (container) {
+                container.append($("#assignUserPopupContent"));
+            }
+        });
+    });
+</script>

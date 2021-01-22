@@ -18,6 +18,17 @@
     }
     <script>
         DevExpress.utils.readyCallbacks.add((function () { Globalize.locale("pl") }).bind(this, jQuery));
+
+        $(document).ready(function () {
+            $("#loadPanelId").dxLoadPanel({
+                shadingColor: "rgba(0,0,0,0.4)",
+                visible: false,
+                showIndicator: true,
+                showPane: true,
+                shading: true,
+                closeOnOutsideClick: false,
+            }).dxLoadPanel("instance");
+        });
     </script>
     <div class="left-nav">
         <div class="left-nav-logo">
@@ -93,7 +104,7 @@
             @{
                 if (session.Roles.Contains(AppRoleType.Administrator))
                 {
-                    <li class="left-nav-list-el @(tab == "AppUser" ? "active" : "")">
+                    <li class="left-nav-list-el @((tab == "AppUser" || tab == "AppRole") ? "active" : "")">
                         <a href="@Url.Action("Index", "AppUser", new { area = AreaNames.Membership_Area })"><i class="fas fa-users"></i><span>@UtilsResource.Users.ToHtmlStringSafe()</span></a>
                     </li>
                 }
@@ -106,6 +117,7 @@
     <div class="container">
         @RenderBody()
     </div>
+    <div id="loadPanelId"></div>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

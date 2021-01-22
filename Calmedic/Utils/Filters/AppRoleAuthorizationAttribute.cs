@@ -32,7 +32,7 @@ namespace Calmedic.Utils
             if (!_appRoleTypes.Where(x => userFunctionalities.Contains(x)).Any())
             {
                 string message = String.Format(ErrorResource.AccessDenied, string.Join(", ", _appRoleTypes.Select(x => x.GetDisplayName())));
-                throw new FunctionalityAuthorizationException(message);
+                throw new FunctionalityAuthorizationException(message);//rename
             }
         }
     }

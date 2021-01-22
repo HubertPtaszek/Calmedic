@@ -15,6 +15,7 @@ namespace Calmedic.Application
         #region Dependencies
 
         public IAppUserRepository AppUserRepository { get; set; }
+        public IAppUserRoleRepository AppUserRoleRepository { get; set; }
         public AppUserRoleService AppUserRoleService { get; set; }
         public AppUserConverter AppUserConverter { get; set; }
         public IServiceProvider ServiceProvider { get; set; }
@@ -41,10 +42,11 @@ namespace Calmedic.Application
             if (result.Roles.Contains(Dictionaries.AppRoleType.Clinic) && ClinicRepository.Any(x => x.EmailAddress == result.Email))
             {
                 Clinic clinic = ClinicRepository.GetSingle(x => x.EmailAddress == result.Email);
-                result.AvatarUrl = "../images/logos/" + clinic.LogoUrl;
+                result.AvatarUrl = "logos/" + clinic.LogoUrl;
             }
-            else {
-                result.AvatarUrl = user.AvatarUrl.IsNullOrEmpty() ? "../images/utils/defaultAvatar.png" : "../images/avatars/" + user.AvatarUrl;
+            else
+            {
+                result.AvatarUrl = user.AvatarUrl.IsNullOrEmpty() ? "utils/defaultAvatar.png" : "avatars/" + user.AvatarUrl;
             }
             return result;
         }
@@ -52,10 +54,15 @@ namespace Calmedic.Application
         public virtual AppUserDetailsVM GetAppUserDetailsVM(int userId)
         {
             UserManager<AppIdentityUser> userManager = ServiceProvider.GetService(typeof(UserManager<AppIdentityUser>)) as UserManager<AppIdentityUser>;
-            AppUser crmUser = AppUserRepository.GetSingle(x => x.Id == userId);
-            AppUserDetailsVM result = AppUserConverter.ToAppUserDetailsVM(crmUser);
-            AppIdentityUser appUser = userManager.FindByIdAsync(crmUser.AppIdentityUserId).Result;
+            AppUser user = AppUserRepository.GetSingle(x => x.Id == userId);
+            AppUserDetailsVM result = AppUserConverter.ToAppUserDetailsVM(user);
+            AppIdentityUser appUser = userManager.FindByIdAsync(user.AppIdentityUserId).Result;
             result.IsEmailConfirmed = userManager.IsEmailConfirmedAsync(appUser).Result;
+            if (AppUserRoleRepository.Any(x => x.AppUserId == user.Id))
+            {
+                result.Role = AppUserRoleRepository.GetSingle(x => x.AppUserId == user.Id).AppRole.Name;
+                result.RoleType = AppUserRoleRepository.GetSingle(x => x.AppUserId == user.Id).AppRole.AppRoleType;
+            }
             return result;
         }
 

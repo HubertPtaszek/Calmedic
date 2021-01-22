@@ -16,3 +16,13 @@
         }
     }
 }
+
+.grid-header {
+    padding: $space-size-2 0 $space-size 0;
+
+    &-title {
+        font-size: 13px;
+        color: $primary-text-color;
+        margin: auto 1px;
+    }
+}

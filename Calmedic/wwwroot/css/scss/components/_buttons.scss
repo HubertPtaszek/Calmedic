@@ -1,4 +1,6 @@
 ﻿.dx-button {
+    border-radius: 4px;
+
     .dx-icon {
         font-size: 15px !important;
     }
@@ -19,6 +21,14 @@
     margin: 0 6px;
     font-size: 13.5px;
 
+    &-danger {
+        color: $red;
+    }
+
+    &-normal {
+        color: $secondary-text-color;
+    }
+
     &:hover {
         color: $secondary-text-color;
     }
@@ -32,6 +42,18 @@
     }
 }
 
-.dx-button-default {
-    background-color: $blue !important;
+.btn {
+    &-default {
+        background-color: $blue !important;
+    }
+
+    &-danger {
+        background-color: $red !important;
+    }
+
+    &-normal {
+        background-color: #E7E8EF !important;
+        border: none;
+        color: #646871 !important;
+    }
 }

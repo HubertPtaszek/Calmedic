@@ -120,6 +120,12 @@
   <data name="About" xml:space="preserve">
     <value>O nas</value>
   </data>
+  <data name="AssignedUsers" xml:space="preserve">
+    <value>Przypisani użytkownicy</value>
+  </data>
+  <data name="AssigningUser" xml:space="preserve">
+    <value>Przypisywanie użytkownika do roli</value>
+  </data>
   <data name="Clinic" xml:space="preserve">
     <value>Przychodnia</value>
   </data>
@@ -131,6 +137,9 @@
   </data>
   <data name="Conntact_Part2" xml:space="preserve">
     <value>Skontaktuj się z nami!</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Kontakt</value>
   </data>
   <data name="Dashboard" xml:space="preserve">
     <value>Panel główny</value>
@@ -150,11 +159,32 @@
   <data name="Patients" xml:space="preserve">
     <value>Pacjenci</value>
   </data>
+  <data name="Role" xml:space="preserve">
+    <value>Rola</value>
+  </data>
   <data name="Roles" xml:space="preserve">
     <value>Uprawnienia</value>
   </data>
+  <data name="Role_Details" xml:space="preserve">
+    <value>Szczegóły roli</value>
+  </data>
+  <data name="UnassigningUser" xml:space="preserve">
+    <value>Usuwanie użytkownika z roli</value>
+  </data>
+  <data name="UnassignUser_Part1" xml:space="preserve">
+    <value>Czy chcesz usunąć użytkownika</value>
+  </data>
+  <data name="UnassignUser_Part2" xml:space="preserve">
+    <value>z roli</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>Użytkownik</value>
+  </data>
   <data name="Users" xml:space="preserve">
     <value>Użytkownicy</value>
+  </data>
+  <data name="User_Details" xml:space="preserve">
+    <value>Szczegóły użytkownika</value>
   </data>
   <data name="Visits" xml:space="preserve">
     <value>Wizyty</value>
