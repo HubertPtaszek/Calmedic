@@ -41,6 +41,10 @@
     margin-top: $space-size-5;
 }
 
+.p-1 {
+    padding: $space-size;
+}
+
 .p-2 {
     padding: $space-size-2;
 }
@@ -67,6 +71,18 @@
 
 .pt-5 {
     padding-top: $space-size-5;
+}
+
+.pr-1 {
+    padding-right: $space-size;
+}
+
+.pr-2 {
+    padding-right: $space-size-2;
+}
+
+.pr-3 {
+    padding-right: $space-size-3;
 }
 
 .mb-2 {
@@ -115,6 +131,10 @@
 
 .form-group {
     margin: 12px 0;
+
+    &-title {
+        margin: 0px 0px $space-size-3 $space-size;
+    }
 
     &-checkbox {
         margin-top: $space-size-2 + 2px;

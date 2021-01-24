@@ -16,7 +16,7 @@
         <h4 class="wrapper-header-title">@UtilsResource.User_Details.ToHtmlStringSafe()</h4>
         <div>
             <div id="mailBtnId"></div>
-            <div id="editBtnId"></div>
+            <div class="ml-1" id="editBtnId"></div>
         </div>
     </div>
     <hr />
@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="col-xs-4">
-                <h4 class="form-group-title">@SharedResource.Account.ToHtmlStringSafe()</h4>
+                <h4 class="form-group-title">@SharedResource.Account</h4>
                 <div class="form-group form-group-horizontal form-group-checkbox row">
                     <label class="col-xs-5">@Html.DisplayNameFor(x => x.IsActive)</label>
                     <div id="isActiveBoxId"></div>
@@ -49,7 +49,7 @@
                 </div>
             </div>
             <div class="col-xs-4">
-                <h4 class="form-group-title">@SharedResource.AdditionalData.ToHtmlStringSafe()</h4>
+                <h4 class="form-group-title">@SharedResource.AdditionalData</h4>
                 <div class="form-group form-group-horizontal row">
                     <label class="col-xs-3">@Html.DisplayNameFor(x => x.PhoneNumber)</label>
                     <div class="col-xs-9" id="phoneBoxId"></div>
@@ -85,7 +85,7 @@
         });
 
         $("#editBtnId").dxButton({
-            elementAttr: { class: "btn btn-ml btn-default" },
+            elementAttr: { class: "btn btn-default" },
             height: 32,
             text: "@ButtonNameResource.Edit.ToScriptStringSafe()",
             onClick: function () {

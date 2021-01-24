@@ -151,6 +151,15 @@ namespace Calmedic.Resources.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Najpopularniejsi lekarze.
+        /// </summary>
+        public static string DoctorReport_Title {
+            get {
+                return ResourceManager.GetString("DoctorReport_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lekarze.
         /// </summary>
         public static string Doctors {
@@ -178,11 +187,29 @@ namespace Calmedic.Resources.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Wizyty pacjentów wg wieku.
+        /// </summary>
+        public static string PatientReport_Title {
+            get {
+                return ResourceManager.GetString("PatientReport_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pacjenci.
         /// </summary>
         public static string Patients {
             get {
                 return ResourceManager.GetString("Patients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ostatnio dodanie pacjenci.
+        /// </summary>
+        public static string Patients_WidgetTitle {
+            get {
+                return ResourceManager.GetString("Patients_WidgetTitle", resourceCulture);
             }
         }
         
@@ -250,11 +277,29 @@ namespace Calmedic.Resources.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nowy użytkownik.
+        /// </summary>
+        public static string User_Add {
+            get {
+                return ResourceManager.GetString("User_Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Szczegóły użytkownika.
         /// </summary>
         public static string User_Details {
             get {
                 return ResourceManager.GetString("User_Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edycja użytkownika.
+        /// </summary>
+        public static string User_Edit {
+            get {
+                return ResourceManager.GetString("User_Edit", resourceCulture);
             }
         }
         
@@ -268,11 +313,29 @@ namespace Calmedic.Resources.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Historia wizyt.
+        /// </summary>
+        public static string VisitReport_Title {
+            get {
+                return ResourceManager.GetString("VisitReport_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wizyty.
         /// </summary>
         public static string Visits {
             get {
                 return ResourceManager.GetString("Visits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Najbliższe wizyty - {0}.
+        /// </summary>
+        public static string Visits_WidgetTitle {
+            get {
+                return ResourceManager.GetString("Visits_WidgetTitle", resourceCulture);
             }
         }
     }

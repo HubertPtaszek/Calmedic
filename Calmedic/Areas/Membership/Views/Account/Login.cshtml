@@ -95,6 +95,7 @@
 
         $("#loginBtnId").dxButton({
             elementAttr: { class: "btn btn-default" },
+            height: 32,
             onClick: function () {
                 if (DevExpress.validationEngine.validateGroup('@validationGroup').isValid) {
                     $("#loadPanelId").dxLoadPanel("instance").show();

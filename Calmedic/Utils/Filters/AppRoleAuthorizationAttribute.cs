@@ -27,12 +27,12 @@ namespace Calmedic.Utils
                 return;
             }
 
-            IList<AppRoleType> userFunctionalities = UserHelper.GetUserRoles(context.HttpContext);
+            IList<AppRoleType> userRoles = UserHelper.GetUserRoles(context.HttpContext);
 
-            if (!_appRoleTypes.Where(x => userFunctionalities.Contains(x)).Any())
+            if (!_appRoleTypes.Where(x => userRoles.Contains(x)).Any())
             {
                 string message = String.Format(ErrorResource.AccessDenied, string.Join(", ", _appRoleTypes.Select(x => x.GetDisplayName())));
-                throw new FunctionalityAuthorizationException(message);//rename
+                throw new RoleAuthorizationException(message);
             }
         }
     }

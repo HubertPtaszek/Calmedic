@@ -25,6 +25,7 @@
     $(document).ready(function () {
         $("#deleteBtnId").dxButton({
             elementAttr: { class: "btn btn-danger" },
+            height: 32,
             onClick: function () {
                 var token = $('input[name="__RequestVerificationToken"]').val();
                 var userId = $("#userLookupId").dxLookup("instance").option("value");
@@ -52,6 +53,7 @@
 
         $("#cancelDeleteBtnId").dxButton({
             elementAttr: { class: "btn btn-normal" },
+            height: 32,
             onClick: function () {
                 componentUserId = null;
                 $("#unassignUserPopupId").dxPopup("instance").hide();

@@ -49,7 +49,6 @@
     <Folder Include="Areas\Presentation\Views\" />
     <Folder Include="wwwroot\css\gallery\" />
     <Folder Include="wwwroot\images\media\" />
-    <Folder Include="wwwroot\images\logos\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -14,13 +14,15 @@ namespace Calmedic.Areas.Membership.Controllers
 
         private IWebHostEnvironment _webHostEnvironment;
         private readonly IAppUserService _appUserService;
+        private readonly IAppMailMessageService _appMailMessageService;
 
         #endregion Dependencies
 
-        public AppUserController(IWebHostEnvironment webHostEnvironment, IAppUserService appUserService)
+        public AppUserController(IWebHostEnvironment webHostEnvironment, IAppUserService appUserService, IAppMailMessageService appMailMessageService)
         {
             _webHostEnvironment = webHostEnvironment;
             _appUserService = appUserService;
+            _appMailMessageService = appMailMessageService;
         }
 
         public IActionResult Index()
@@ -30,7 +32,7 @@ namespace Calmedic.Areas.Membership.Controllers
 
         public ActionResult Add()
         {
-            AppUserAddVM model = new AppUserAddVM(); //todo
+            AppUserAddVM model = _appUserService.GetAppUserAddVM();
             return View(model);
         }
 
@@ -40,12 +42,32 @@ namespace Calmedic.Areas.Membership.Controllers
             return View(model);
         }
 
+        public ActionResult Edit(int id)
+        {
+            AppUserEditVM model = new AppUserEditVM();//todo
+            return View(model);
+        }
+
         [HttpGet]
         [AppRoleAuthorization(AppRoleType.Administrator)]
         public ActionResult GetData(DataSourceLoadOptions loadOptions)
         {
             var data = _appUserService.GetUsers(loadOptions);
             return CustomJson(data);
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        [AppRoleAuthorization(AppRoleType.Administrator)]
+        public ActionResult Add(AppUserAddVM model)
+        {
+            if (ModelState.IsValid)
+            {
+                int id = _appUserService.Add(model);
+                var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = "__userId__", code = "__code__" }, protocol: Request.Scheme);
+                _appMailMessageService.AddCreateConfirmationMessage(id, callbackUrl);
+                return CustomJson(id);
+            }
+            return CustomJson(null);
         }
     }
 }

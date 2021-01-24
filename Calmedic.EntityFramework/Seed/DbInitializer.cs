@@ -34,6 +34,8 @@ namespace Calmedic.EntityFramework
             AddRoles(context);
             AddAppUsers(context, userManager);
             AddSpecialization(context);
+
+            AddTestData(context, userManager);
         }
 
         #region CoreData
@@ -164,8 +166,6 @@ namespace Calmedic.EntityFramework
             if (!context.AppUsers.Any())
             {
                 AppRole adminRole = context.AppRoles.FirstOrDefault(x => x.AppRoleType == AppRoleType.Administrator);
-                AppRole receptionRole = context.AppRoles.FirstOrDefault(x => x.AppRoleType == AppRoleType.Reception);
-                AppRole doctorRole = context.AppRoles.FirstOrDefault(x => x.AppRoleType == AppRoleType.Doctor);
 
                 var identityUser = new AppIdentityUser() { UserName = "admin@calmedic.pl", Email = "admin@calmedic.pl", EmailConfirmed = true };
                 IdentityResult identityResult = userManager.CreateAsync(identityUser, "Test.1234").Result;
@@ -177,7 +177,6 @@ namespace Calmedic.EntityFramework
                     PhoneNumber = "+48 123 456 789",
                     AppIdentityUserId = identityUser.Id,
                     IsActive = true,
-                    EmailConfirmed = true,
                     LastName = "",
                     FirstName = "Administrator"
                 };
@@ -462,5 +461,82 @@ namespace Calmedic.EntityFramework
         }
 
         #endregion Doctors
+
+        #region Test
+
+        private void AddTestData(MainDatabaseContext context, UserManager<AppIdentityUser> userManager)
+        {
+            SystemUser sysAdmin = context.SystemUsers.Where(x => x.Name == SystemUsers.SystemUserName).FirstOrDefault();
+            if (!context.Clinics.Any() && !context.Addresses.Any())
+            {
+                AppRole clinicRole = context.AppRoles.FirstOrDefault(x => x.AppRoleType == AppRoleType.Clinic);
+
+                var identityUser = new AppIdentityUser() { UserName = "melisa@calmedic.pl", Email = "melisa@calmedic.pl", EmailConfirmed = true };
+                IdentityResult identityResult = userManager.CreateAsync(identityUser, "Test.1234").Result;
+                var user = new AppUser()
+                {
+                    CreatedById = sysAdmin.CreatedById,
+                    CreatedDate = DateTime.Now,
+                    Email = "melisa@calmedic.pl",
+                    PhoneNumber = "+48 123 456 789",
+                    AppIdentityUserId = identityUser.Id,
+                    IsActive = true,
+                    LastName = "",
+                    FirstName = "Melisa"
+                };
+                context.AppUsers.Add(user);
+                context.SaveChanges();
+
+                var appUserRole = new AppUserRole()
+                {
+                    CreatedById = sysAdmin.CreatedById,
+                    CreatedDate = DateTime.Now,
+                    AppRoleId = clinicRole.Id,
+                    AppUserId = user.Id,
+                };
+                context.AppUserRoles.Add(appUserRole);
+
+                var address = new Address()
+                {
+                    CreatedById = sysAdmin.CreatedById,
+                    CreatedDate = DateTime.Now,
+                    ApartmentNo = "",
+                    BuildingNo = "17a",
+                    City = "Kielce",
+                    Street = "Wymyślna",
+                    PostalCode = "25-500",
+                    FullAdress = "Wymyślna 17a, 25-500 Kielce"
+                };
+                context.Addresses.Add(address);
+
+                var clinic = new Clinic()
+                {
+                    CreatedById = sysAdmin.CreatedById,
+                    CreatedDate = DateTime.Now,
+                    Name = "Melisa",
+                    Guid = new Guid(),
+                    LogoUrl = "melisa.png",
+                    Type = ClinicType.Private,
+                    Address = address,
+                    Email = "melisa@calmedic.pl",
+                    PhoneNumber = "+48 123 456 789",
+                    OpenFrom = new TimeSpan(6, 0, 0),
+                    OpenTo = new TimeSpan(18, 0, 0)
+                };
+                context.Clinics.Add(clinic);
+
+                var userClinic = new ClinicUser()
+                {
+                    CreatedById = sysAdmin.CreatedById,
+                    CreatedDate = DateTime.Now,
+                    Clinic = clinic,
+                    User = user
+                };
+                context.ClinicUsers.Add(userClinic);
+            }
+            context.SaveChanges();
+        }
+
+        #endregion Test
     }
 }

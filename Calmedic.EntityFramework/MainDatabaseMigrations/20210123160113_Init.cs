@@ -76,7 +76,6 @@ namespace Calmedic.EntityFramework.MainDatabaseMigrations
                     PhoneNumber = table.Column<string>(nullable: true),
                     AvatarUrl = table.Column<string>(nullable: true),
                     IsActive = table.Column<bool>(nullable: false),
-                    EmailConfirmed = table.Column<bool>(nullable: false),
                     Discriminator = table.Column<string>(nullable: false),
                     AppIdentityUserId = table.Column<string>(maxLength: 200, nullable: true),
                     Name = table.Column<string>(nullable: true)
@@ -351,7 +350,7 @@ namespace Calmedic.EntityFramework.MainDatabaseMigrations
                     LogoUrl = table.Column<string>(nullable: true),
                     Type = table.Column<int>(nullable: false),
                     AddressId = table.Column<int>(nullable: false),
-                    EmailAddress = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true),
                     PhoneNumber = table.Column<string>(nullable: true),
                     OpenFrom = table.Column<TimeSpan>(nullable: false),
                     OpenTo = table.Column<TimeSpan>(nullable: false)

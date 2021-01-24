@@ -5569,16 +5569,16 @@ hr {
   .btn-small .dx-button-content {
     padding: 3px 5px !important; }
 
-.btn-default {
-  background-color: #437CE3 !important; }
-
-.btn-danger {
-  background-color: #EB3B3B !important; }
-
-.btn-normal {
-  background-color: #E7E8EF !important;
-  border: none;
-  color: #646871 !important; }
+.btn {
+  margin-left: 5px; }
+  .btn-default {
+    background-color: #437CE3 !important; }
+  .btn-danger {
+    background-color: #EB3B3B !important; }
+  .btn-normal {
+    background-color: #E7E8EF !important;
+    border: none;
+    color: #646871 !important; }
 
 .left-nav {
   width: 112px;
@@ -5709,7 +5709,8 @@ hr {
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
   margin-bottom: 20px; }
   .wrapper-dashboard {
-    margin-top: 40px; }
+    margin-top: 40px;
+    margin-bottom: 1rem; }
   .wrapper-tab-header {
     height: 45px;
     padding: 10px 28px 0px 16px; }
@@ -5723,12 +5724,36 @@ hr {
       font-size: 15px;
       color: #2D3F5E;
       margin: auto 0; }
+      .wrapper-header-title-small {
+        font-size: 13px; }
     .wrapper-header + .wrapper-inner {
       padding-top: 0; }
   .wrapper-inner {
     padding: 20px 24px; }
-    .wrapper-inner .no-padding-top {
-      padding-top: 0; }
+    .wrapper-inner-dashboard {
+      min-height: 476px;
+      max-height: 476px;
+      height: 476px; }
+    .wrapper-inner-widget {
+      padding-top: 0;
+      padding-bottom: 0;
+      padding-left: 16px;
+      padding-right: 16px; }
+      .wrapper-inner-widget-visits {
+        min-height: 227px;
+        max-height: 227px;
+        height: 227px; }
+      .wrapper-inner-widget-patients {
+        min-height: 220px;
+        max-height: 220px;
+        height: 220px; }
+      .wrapper-inner-widget-no-data {
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        text-align: center;
+        margin-top: 80px;
+        color: #8CA4CF; }
 
 .dx-datagrid {
   border: 1px solid #E6ECF5;
@@ -6075,6 +6100,9 @@ div.dx-empty-message {
   text-align: center !important;
   color: #BAC1CE !important; }
 
+div.dx-dropdowneditor-icon {
+  background-color: transparent !important; }
+
 .canvas {
   z-index: 99998;
   position: relative;
@@ -6191,6 +6219,69 @@ div.dx-empty-message {
     opacity: 1; }
   100% {
     opacity: 0; } }
+
+.visits-widget {
+  border: 1px solid #8CA4CF;
+  border-radius: 4px;
+  height: 62px;
+  margin: 0 0 8px 0;
+  display: flex; }
+  .visits-widget-data {
+    margin: auto 0px auto 54px;
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+    width: 100%; }
+    .visits-widget-data-name {
+      font-weight: 600;
+      color: #2D3F5E; }
+    .visits-widget-data-number {
+      color: #8CA4CF; }
+  .visits-widget-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 100%;
+    background: indianred;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    margin: 8px 0;
+    font-size: 26px;
+    display: flex;
+    position: absolute; }
+    .visits-widget-avatar span {
+      margin: auto; }
+
+.patients-widget {
+  border: 1px solid #8CA4CF;
+  border-radius: 4px;
+  height: 88px;
+  margin: 0.5rem 0;
+  padding: 0 8px;
+  display: flex; }
+  .patients-widget-data {
+    margin: auto 0 auto 16px;
+    text-align: left; }
+    .patients-widget-data-name {
+      font-weight: 600;
+      color: #2D3F5E; }
+    .patients-widget-data-number {
+      color: #8CA4CF; }
+  .patients-widget-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 100%;
+    background: indianred;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    margin: 16px 0;
+    font-size: 24px;
+    display: flex; }
+    .patients-widget-avatar span {
+      margin: auto; }
 
 .dx-scheduler-date-table {
   margin-left: 0px !important; }
@@ -6692,6 +6783,9 @@ div.dx-empty-message {
 .mt-5 {
   margin-top: 40px; }
 
+.p-1 {
+  padding: 8px; }
+
 .p-2 {
   padding: 16px; }
 
@@ -6712,6 +6806,15 @@ div.dx-empty-message {
 
 .pt-5 {
   padding-top: 40px; }
+
+.pr-1 {
+  padding-right: 8px; }
+
+.pr-2 {
+  padding-right: 16px; }
+
+.pr-3 {
+  padding-right: 24px; }
 
 .mb-2 {
   margin-bottom: 16px; }
@@ -6748,6 +6851,8 @@ div.dx-empty-message {
 
 .form-group {
   margin: 12px 0; }
+  .form-group-title {
+    margin: 0px 0px 24px 8px; }
   .form-group-checkbox {
     margin-top: 18px;
     margin-bottom: 24px; }

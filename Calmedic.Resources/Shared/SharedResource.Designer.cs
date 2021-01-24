@@ -61,11 +61,38 @@ namespace Calmedic.Resources.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Konto.
+        /// </summary>
+        public static string Account {
+            get {
+                return ResourceManager.GetString("Account", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dodano.
         /// </summary>
         public static string Added {
             get {
                 return ResourceManager.GetString("Added", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dodatkowe dane.
+        /// </summary>
+        public static string AdditionalData {
+            get {
+                return ResourceManager.GetString("AdditionalData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adres.
+        /// </summary>
+        public static string Address {
+            get {
+                return ResourceManager.GetString("Address", resourceCulture);
             }
         }
         

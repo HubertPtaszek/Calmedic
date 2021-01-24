@@ -1,0 +1,84 @@
+﻿.visits-widget {
+    border: 1px solid $secondary-text-color;
+    border-radius: 4px;
+    height: 62px;
+    margin: 0 0 $space-size 0;
+    display: flex;
+
+    &-data {
+        margin: auto 0px auto 54px;
+        text-align: left;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+
+        &-name {
+            font-weight: 600;
+            color: $primary-text-color;
+        }
+
+        &-number {
+            color: $secondary-text-color;
+        }
+    }
+
+    &-avatar {
+        width: 44px;
+        height: 44px;
+        border-radius: 100%;
+        background: indianred;
+        color: white;
+        text-align: center;
+        overflow: hidden;
+        position: relative;
+        margin: $space-size 0;
+        font-size: 26px;
+        display: flex;
+        position: absolute;
+
+        span {
+            margin: auto;
+        }
+    }
+}
+
+.patients-widget {
+    border: 1px solid $secondary-text-color;
+    border-radius: 4px;
+    height: 88px;
+    margin: 0.5rem 0;
+    padding: 0 $space-size;
+    display: flex;
+
+    &-data {
+        margin: auto 0 auto $space-size-2;
+        text-align: left;
+
+        &-name {
+            font-weight: 600;
+            color: $primary-text-color;
+        }
+
+        &-number {
+            color: $secondary-text-color;
+        }
+    }
+
+    &-avatar {
+        width: 56px;
+        height: 56px;
+        border-radius: 100%;
+        background: indianred;
+        color: white;
+        text-align: center;
+        overflow: hidden;
+        position: relative;
+        margin: $space-size-2 0;
+        font-size: 24px;
+        display: flex;
+
+        span {
+            margin: auto;
+        }
+    }
+}

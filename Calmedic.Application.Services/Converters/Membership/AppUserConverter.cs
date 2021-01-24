@@ -13,9 +13,9 @@ namespace Calmedic.Application
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 IsActive = user.IsActive,
+                PhoneNumber = user.PhoneNumber,
                 IdentityUserId = user.AppIdentityUserId
             };
-
             return result;
         }
 
@@ -28,6 +28,7 @@ namespace Calmedic.Application
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 IsActive = user.IsActive,
+                PhoneNumber = user.PhoneNumber,
                 IdentityUserId = user.AppIdentityUserId
             };
             return result;
@@ -38,6 +39,7 @@ namespace Calmedic.Application
             user.Email = model.Email;
             user.FirstName = model.FirstName;
             user.LastName = model.LastName;
+            user.PhoneNumber = model.PhoneNumber;
             user.IsActive = model.IsActive;
             return user;
         }

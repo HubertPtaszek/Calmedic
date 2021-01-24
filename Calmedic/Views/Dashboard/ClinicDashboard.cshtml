@@ -1,4 +1,133 @@
-﻿@{
+﻿@model ClinicDashboardVM
+@{
+    ViewBag.Title = UtilsResource.Dashboard;
 }
 
-<h3>Clinic Dashboard</h3>
+<div class="row">
+    <div class="col-xs-8 start-xs">
+        <div class="wrapper wrapper-dashboard wrapper-tab">
+            <div class="wrapper-tab-header d-flex middle between">
+                <div id="tabPanelId" class="tabpanel"></div>
+            </div>
+            <hr />
+            <div class="wrapper-inner wrapper-inner-dashboard">
+                @await Component.InvokeAsync("DoctorReport")
+                @await Component.InvokeAsync("PatientReport")
+                @await Component.InvokeAsync("VisitReport")
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-4 end-xs">
+        <div class="wrapper wrapper-dashboard wrapper-tab">
+            <div class="wrapper-tab-header d-flex middle">
+                <h4 class="wrapper-header-title-small">@(String.Format(UtilsResource.Visits_WidgetTitle, DateTime.Today.ToString("dd MMMM yyyy")).ToHtmlStringSafe())</h4>
+            </div>
+            <div class="wrapper-inner-widget wrapper-inner-widget-visits">
+                @{
+                    if (Model.VisitsWidget.Count > 0)
+                    {
+                        foreach (VisitsWidgetVM item in Model.VisitsWidget)
+                        {
+                            <div class="col-xs-12 visits-widget">
+                                <div class="visits-widget-avatar">
+                                    <span>@item.FirstLetter</span>
+                                </div>
+                                <div class="visits-widget-data">
+                                    <div class="col-xs-8">
+                                        <span class="visits-widget-data-name row">@item.PatientName.ToHtmlStringSafe()</span>
+                                        <span class="visits-widget-data-number row">u @item.DoctorName.ToHtmlStringSafe()</span>
+                                    </div>
+                                    <div class="col-xs-4 end-xs">
+                                        <span class="visits-widget-data-number">od @item.From.ToShortTimeStringSafe() do @item.To.ToShortTimeStringSafe()</span>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="row">
+                            <div class="col-xs-12 wrapper-inner-widget-no-data">
+                                <span>@SharedResource.NoData.ToHtmlStringSafe()</span>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+        <div class="wrapper wrapper-tab">
+            <div class="wrapper-tab-header d-flex middle">
+                <h4 class="wrapper-header-title-small">@UtilsResource.Patients_WidgetTitle.ToHtmlStringSafe()</h4>
+            </div>
+            <div class="wrapper-inner-widget wrapper-inner-widget-patients">
+                <div class="row">
+                    @{
+                        if (Model.PatientsWidget.Count > 0)
+                        {
+                            foreach (PatientsWidgetVM item in Model.PatientsWidget)
+                            {
+                                <div class="col-xs-6">
+                                    <div class="patients-widget">
+                                        <div class="patients-widget-avatar">
+                                            <span>@item.FirstLetter</span>
+                                        </div>
+                                        <div class="patients-widget-data">
+                                            <span class="patients-widget-data-name">@item.Name.ToHtmlStringSafe()</span>
+                                            <span class="patients-widget-data-number">@item.PatientNumber</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div class="col-xs-12 wrapper-inner-widget-no-data">
+                                <span>@SharedResource.NoData.ToHtmlStringSafe()</span>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#tabPanelId").dxTabPanel({
+            items: [{
+                title: "@UtilsResource.Doctors.ToScriptStringSafe()",
+                icon: "fas fa-user-md"
+            }, {
+                title: "@UtilsResource.Patients.ToScriptStringSafe()",
+                icon: "fas fa-user-injured"
+            }, {
+                title: "@UtilsResource.Visits.ToScriptStringSafe()",
+                icon: "far fa-calendar-alt"
+            }],
+            height: "auto",
+            onInitialized: function (e) {
+                $("#doctorsContainerId").show();
+                $("#patientsContainerId").hide();
+                $("#visitsContainerId").hide();
+            },
+            onSelectionChanged: function (e) {
+                if(e.addedItems[0].title == "@UtilsResource.Doctors.ToScriptStringSafe()") {
+                    $("#doctorsContainerId").show();
+                    $("#patientsContainerId").hide();
+                    $("#visitsContainerId").hide();
+                }
+                if (e.addedItems[0].title == "@UtilsResource.Patients.ToScriptStringSafe()") {
+                    $("#doctorsContainerId").hide();
+                    $("#patientsContainerId").show();
+                    $("#visitsContainerId").hide();
+                }
+                if (e.addedItems[0].title == "@UtilsResource.Visits.ToScriptStringSafe()") {
+                    $("#doctorsContainerId").hide();
+                    $("#patientsContainerId").hide();
+                    $("#visitsContainerId").show();
+                }
+            }
+        });
+    });
+</script>

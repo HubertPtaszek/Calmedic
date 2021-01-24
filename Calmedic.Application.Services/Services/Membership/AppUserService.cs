@@ -16,6 +16,8 @@ namespace Calmedic.Application
 
         public IAppUserRepository AppUserRepository { get; set; }
         public IAppUserRoleRepository AppUserRoleRepository { get; set; }
+        public IAppRoleRepository AppRoleRepository { get; set; }
+        public IClinicUserRepository ClinicUserRepository { get; set; }
         public AppUserRoleService AppUserRoleService { get; set; }
         public AppUserConverter AppUserConverter { get; set; }
         public IServiceProvider ServiceProvider { get; set; }
@@ -39,9 +41,9 @@ namespace Calmedic.Application
                 Email = user.Email,
                 Roles = user.UserRoles.Select(x => x.AppRole.AppRoleType).Distinct().ToList()
             };
-            if (result.Roles.Contains(Dictionaries.AppRoleType.Clinic) && ClinicRepository.Any(x => x.EmailAddress == result.Email))
+            if (result.Roles.Contains(Dictionaries.AppRoleType.Clinic) && ClinicRepository.Any(x => x.Email == result.Email))
             {
-                Clinic clinic = ClinicRepository.GetSingle(x => x.EmailAddress == result.Email);
+                Clinic clinic = ClinicRepository.GetSingle(x => x.Email == result.Email);
                 result.AvatarUrl = "logos/" + clinic.LogoUrl;
             }
             else
@@ -111,6 +113,7 @@ namespace Calmedic.Application
             appIdentityUser = new AppIdentityUser() { UserName = model.Email, Email = model.Email };
 
             IdentityResult identityResult = userManager.CreateAsync(appIdentityUser).Result;
+
             if (!identityResult.Succeeded)
             {
                 throw new BussinesException(1001, ErrorResource.UserAlreadyAdded);
@@ -119,20 +122,44 @@ namespace Calmedic.Application
             {
                 CreatedById = MainContext.PersonId,
                 CreatedDate = DateTime.Now,
-                IsActive = true,
+                IsActive = model.IsActive,
                 LastName = model.LastName,
                 FirstName = model.FirstName,
                 Email = model.Email,
+                PhoneNumber = model.PhoneNumber,
                 AppIdentityUserId = appIdentityUser.Id
             };
             AppUserRepository.Add(user);
             AppUserRepository.Save();
+
+            AppRole role = AppRoleRepository.GetSingle(x => x.Id == model.RoleId);
+            AppUserRole appUserRole = new AppUserRole()
+            {
+                AppRole = role,
+                AppUser = user
+            };
+            AppUserRoleRepository.Add(appUserRole);
+
+            if (role.AppRoleType == Dictionaries.AppRoleType.Reception)
+            {
+                Clinic clinic = ClinicRepository.GetSingle(x => x.Id == model.ClinicId);
+                ClinicUser clinicUser = new ClinicUser()
+                {
+                    Clinic = clinic,
+                    User = user
+                };
+                ClinicUserRepository.Add(clinicUser);
+            }
             return user.Id;
         }
 
         public virtual AppUserAddVM GetAppUserAddVM()
         {
-            return new AppUserAddVM();
+            AppUserAddVM model = new AppUserAddVM();
+            model.RoleId = AppRoleRepository.GetSingle(x => x.AppRoleType == Dictionaries.AppRoleType.Reception).Id;
+            model.Roles = AppRoleRepository.GetRolesToSelect();
+            model.Clinics = ClinicRepository.GetClinicsToSelect();
+            return model;
         }
     }
 }

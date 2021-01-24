@@ -31,8 +31,9 @@
     $(document).ready(function () {
         $("#addBtnId").dxButton({
             elementAttr: { class: "btn btn-default" },
+            height: 32,
             onClick: function () {
-                alert("user");
+                window.location = '@Url.Action("Add", "AppUser")';
             },
             text: "@ButtonNameResource.Add.ToScriptStringSafe()",
             type: "default"
