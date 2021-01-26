@@ -132,6 +132,12 @@
   <data name="Clinics" xml:space="preserve">
     <value>Przychodnie</value>
   </data>
+  <data name="Clinic_Details" xml:space="preserve">
+    <value>Szczegóły przychodni</value>
+  </data>
+  <data name="Clinic_Edit" xml:space="preserve">
+    <value>Edycja przychodni</value>
+  </data>
   <data name="Conntact_Part1" xml:space="preserve">
     <value>Wystąpił problem?</value>
   </data>

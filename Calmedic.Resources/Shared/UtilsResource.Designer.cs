@@ -97,6 +97,24 @@ namespace Calmedic.Resources.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Szczegóły przychodni.
+        /// </summary>
+        public static string Clinic_Details {
+            get {
+                return ResourceManager.GetString("Clinic_Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edycja przychodni.
+        /// </summary>
+        public static string Clinic_Edit {
+            get {
+                return ResourceManager.GetString("Clinic_Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Przychodnie.
         /// </summary>
         public static string Clinics {

@@ -45,6 +45,11 @@
 .btn {
     margin-left: 5px;
 
+    &-default-outlined {
+        color: $blue !important;
+        border-color: $blue !important;
+    }
+
     &-default {
         background-color: $blue !important;
     }

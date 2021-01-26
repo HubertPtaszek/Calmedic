@@ -369,4 +369,31 @@
   <data name="Address" xml:space="preserve">
     <value>Adres</value>
   </data>
+  <data name="ApartmentNo" xml:space="preserve">
+    <value>Numer mieszkania</value>
+  </data>
+  <data name="BuildingNo" xml:space="preserve">
+    <value>Numer budynku</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Miasto</value>
+  </data>
+  <data name="ClinicType" xml:space="preserve">
+    <value>Typ przychodni</value>
+  </data>
+  <data name="Logo" xml:space="preserve">
+    <value>Logo</value>
+  </data>
+  <data name="OpenFrom" xml:space="preserve">
+    <value>Otwarta od</value>
+  </data>
+  <data name="OpenTo" xml:space="preserve">
+    <value>Otwarta do</value>
+  </data>
+  <data name="PostalCode" xml:space="preserve">
+    <value>Kod pocztowy</value>
+  </data>
+  <data name="Street" xml:space="preserve">
+    <value>Ulica</value>
+  </data>
 </root>

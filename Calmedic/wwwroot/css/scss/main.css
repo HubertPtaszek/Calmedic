@@ -5571,6 +5571,9 @@ hr {
 
 .btn {
   margin-left: 5px; }
+  .btn-default-outlined {
+    color: #437CE3 !important;
+    border-color: #437CE3 !important; }
   .btn-default {
     background-color: #437CE3 !important; }
   .btn-danger {
@@ -6851,6 +6854,13 @@ div.dx-dropdowneditor-icon {
 
 .form-group {
   margin: 12px 0; }
+  .form-group-btn {
+    display: flex;
+    flex-direction: column; }
+  .form-group-image {
+    height: 132px;
+    max-height: 132px;
+    width: auto; }
   .form-group-title {
     margin: 0px 0px 24px 8px; }
   .form-group-checkbox {
@@ -6860,6 +6870,8 @@ div.dx-dropdowneditor-icon {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center; }
+    .form-group-horizontal-big label {
+      margin-top: 8px; }
     .form-group-horizontal label {
       margin-bottom: 0px !important; }
   .form-group label {

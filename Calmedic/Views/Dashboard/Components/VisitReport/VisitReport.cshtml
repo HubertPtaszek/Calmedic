@@ -4,8 +4,53 @@
             <h3>@UtilsResource.VisitReport_Title.ToHtmlStringSafe()</h3>
         </div>
     </div>
+    <div class="row mt-1">
+        <div class="col-xs-12 center">
+            <div id="visitChartId"></div>
+        </div>
+    </div>
 </div>
 
 <script>
-    $(document).ready(function () { });
+    $(document).ready(function () {
+        var dataSource = [
+            {
+                Month: "08.2020",
+                Count: 455
+            }, {
+                Month: "09.2020",
+                Count: 400
+            }, {
+                Month: "10.2020",
+                Count: 450
+            }, {
+                Month: "11.2020",
+                Count: 445
+            }, {
+                Month: "12.2020",
+                Count: 382
+            }, {
+                Month: "01.2021",
+                Count: 275
+            }];
+
+        $("#visitChartId").dxChart({
+            argumentAxis: {
+                valueMarginsEnabled: false
+            },
+            dataSource: dataSource,
+            legend: {
+                visible: false,
+            },
+            palette: "Soft Blue",
+            series: {
+                type: "line",
+                valueField: "Count",
+                argumentField: "Month",
+            },
+            tooltip: {
+                enabled: true
+            }
+        });
+    });
 </script>

@@ -106,6 +106,24 @@ namespace Calmedic.Resources.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Numer mieszkania.
+        /// </summary>
+        public static string ApartmentNo {
+            get {
+                return ResourceManager.GetString("ApartmentNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Numer budynku.
+        /// </summary>
+        public static string BuildingNo {
+            get {
+                return ResourceManager.GetString("BuildingNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Calmedic.
         /// </summary>
         public static string Calmedic {
@@ -124,11 +142,29 @@ namespace Calmedic.Resources.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Miasto.
+        /// </summary>
+        public static string City {
+            get {
+                return ResourceManager.GetString("City", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Przychodnia.
         /// </summary>
         public static string Clinic {
             get {
                 return ResourceManager.GetString("Clinic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Typ przychodni.
+        /// </summary>
+        public static string ClinicType {
+            get {
+                return ResourceManager.GetString("ClinicType", resourceCulture);
             }
         }
         
@@ -412,6 +448,15 @@ namespace Calmedic.Resources.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Logo.
+        /// </summary>
+        public static string Logo {
+            get {
+                return ResourceManager.GetString("Logo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wyloguj.
         /// </summary>
         public static string Logout {
@@ -520,6 +565,24 @@ namespace Calmedic.Resources.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Otwarta od.
+        /// </summary>
+        public static string OpenFrom {
+            get {
+                return ResourceManager.GetString("OpenFrom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Otwarta do.
+        /// </summary>
+        public static string OpenTo {
+            get {
+                return ResourceManager.GetString("OpenTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Kolejność.
         /// </summary>
         public static string Order {
@@ -579,6 +642,15 @@ namespace Calmedic.Resources.Shared {
         public static string Photo {
             get {
                 return ResourceManager.GetString("Photo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kod pocztowy.
+        /// </summary>
+        public static string PostalCode {
+            get {
+                return ResourceManager.GetString("PostalCode", resourceCulture);
             }
         }
         
@@ -705,6 +777,15 @@ namespace Calmedic.Resources.Shared {
         public static string Status {
             get {
                 return ResourceManager.GetString("Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ulica.
+        /// </summary>
+        public static string Street {
+            get {
+                return ResourceManager.GetString("Street", resourceCulture);
             }
         }
         

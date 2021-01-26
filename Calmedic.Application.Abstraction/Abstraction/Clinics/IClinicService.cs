@@ -9,8 +9,10 @@ namespace Calmedic.Application
         object GetClinics(DataSourceLoadOptionsBase loadOptions);
         ClinicDetailsVM GetClinicDetailsVMForUser(HttpContext context);
         ClinicDetailsVM GetClinicDetailsVM(int id);
+        ClinicEditVM GetClinicEditVM(int id);
         ClinicAddVM GetClinicAddVM();
         int Add(ClinicAddVM model);
+        int Edit(ClinicEditVM model);
 
     }
 }

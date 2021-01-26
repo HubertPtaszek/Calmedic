@@ -12,7 +12,7 @@ namespace Calmedic.Application
             if (address != null)
             {
                 string cityAndPostalCode, apartmentNo;
-                apartmentNo = address.ApartmentNo != null ? $"/{address.ApartmentNo}" : string.Empty;
+                apartmentNo = !address.ApartmentNo.IsNullOrEmpty() ? $"/{address.ApartmentNo}" : string.Empty;
                 cityAndPostalCode = $",\n{address.PostalCode} {address.City}";
 
                 if (!IsAddressEmpty(address))
@@ -23,8 +23,8 @@ namespace Calmedic.Application
 
         public bool IsAddressEmpty(Address address)
         {
-            return ((address == null) || (address.Street.IsNullOrEmpty() && address.BuildingNo.IsNullOrEmpty() &&
-                address.ApartmentNo.IsNullOrEmpty() && address.City.IsNullOrEmpty() && address.PostalCode.IsNullOrEmpty()));
+            return ((address == null) || (address.Street.IsNullOrEmpty() && address.BuildingNo.IsNullOrEmpty()
+                && address.City.IsNullOrEmpty() && address.PostalCode.IsNullOrEmpty()));
         }
     }
 }

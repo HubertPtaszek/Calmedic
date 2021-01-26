@@ -10,6 +10,9 @@ namespace Calmedic.Application
             VisitsWidget = new List<VisitsWidgetVM>();
         }
 
+        public List<DoctorReportVM> DoctorReport { get; set; }
+        public List<PatientReportVM> PatientReportVM { get; set; }
+        public List<VisitReportVM> VisitReport { get; set; }
         public List<PatientsWidgetVM> PatientsWidget { get; set; }
         public List<VisitsWidgetVM> VisitsWidget { get; set; }
     }

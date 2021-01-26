@@ -2,7 +2,7 @@ namespace Calmedic.Utils
 {
     public class Constans
     {
-        public const int PaginationNumber = 12;
+        public const int PaginationNumber = 15;
     }
 
     public class AreaNames
@@ -18,7 +18,6 @@ namespace Calmedic.Utils
 
     public class SessionVariableNames
     {
-        public const string RoleSessionName = "Roles";
         public const string AppUserData = "AppUserData";
     }
 }

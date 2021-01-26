@@ -110,22 +110,26 @@
                 $("#doctorsContainerId").show();
                 $("#patientsContainerId").hide();
                 $("#visitsContainerId").hide();
+                $("#doctorChartId").dxChart("instance").refresh();
             },
             onSelectionChanged: function (e) {
                 if(e.addedItems[0].title == "@UtilsResource.Doctors.ToScriptStringSafe()") {
                     $("#doctorsContainerId").show();
                     $("#patientsContainerId").hide();
                     $("#visitsContainerId").hide();
+                    $("#doctorChartId").dxChart("instance").refresh();
                 }
                 if (e.addedItems[0].title == "@UtilsResource.Patients.ToScriptStringSafe()") {
                     $("#doctorsContainerId").hide();
                     $("#patientsContainerId").show();
                     $("#visitsContainerId").hide();
+                    $("#patientChartId").dxChart("instance").refresh();
                 }
                 if (e.addedItems[0].title == "@UtilsResource.Visits.ToScriptStringSafe()") {
                     $("#doctorsContainerId").hide();
                     $("#patientsContainerId").hide();
                     $("#visitsContainerId").show();
+                    $("#visitChartId").dxChart("instance").refresh();
                 }
             }
         });

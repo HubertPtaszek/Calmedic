@@ -22,7 +22,8 @@ namespace Calmedic.DependencyResolver
             builder.RegisterType<TransactionInterceptor>().InstancePerLifetimeScope();
 
             ClinicBindings.Load(builder);
-            CoreBindings.Load(builder); 
+            CoreBindings.Load(builder);
+            DashboardBindings.Load(builder);
             DisplaySequenceBindings.Load(builder);
             DoctorBindings.Load(builder);
             PatientBindings.Load(builder);

@@ -14,8 +14,8 @@ namespace Calmedic.Application
 
         public string Name { get; set; }
         public IFormFile Logo { get; set; }
-        public ClinicType Type { get; set; }
-        public List<EnumModelBinder> ClinicTypeList { get; set; } = new List<EnumModelBinder>();
+        public ClinicType ClinicType { get; set; }
+        public List<EnumModelBinder> ClinicTypes { get; set; } = EnumHelpers.GetEnumBinderList<ClinicType>();
         public string City { get; set; }
         public string Street { get; set; }
         public string BuildingNo { get; set; }

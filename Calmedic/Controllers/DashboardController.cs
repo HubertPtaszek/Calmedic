@@ -9,13 +9,13 @@ namespace Calmedic.Controllers
     {
         #region Dependencies
 
-        private readonly IPatientService _patientService;
+        private readonly IDashboardService _dashboardService;
 
         #endregion Dependencies
 
-        public DashboardController(IPatientService patientService)
+        public DashboardController(IDashboardService dashboardService)
         {
-            _patientService = patientService;
+            _dashboardService = dashboardService;
         }
 
         public ActionResult Index()

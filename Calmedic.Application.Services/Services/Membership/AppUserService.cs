@@ -36,6 +36,7 @@ namespace Calmedic.Application
             AppUserData result = new AppUserData()
             {
                 Id = user.Id,
+                AppIdentityUserId = user.AppIdentityUserId,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Email = user.Email,
@@ -44,6 +45,7 @@ namespace Calmedic.Application
             if (result.Roles.Contains(Dictionaries.AppRoleType.Clinic) && ClinicRepository.Any(x => x.Email == result.Email))
             {
                 Clinic clinic = ClinicRepository.GetSingle(x => x.Email == result.Email);
+                result.ClinicId = clinic.Id;
                 result.AvatarUrl = "logos/" + clinic.LogoUrl;
             }
             else

@@ -1,0 +1,292 @@
+﻿@model ClinicEditVM
+@{
+    ViewBag.Title = UtilsResource.Clinic_Edit;
+    string validationGroup = Guid.NewGuid().ToString();
+    List<AppRoleType> Roles = Context.Session.GetObject<AppUserData>(SessionVariableNames.AppUserData).Roles;
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page"><a href="@Url.Action("Index", "Dashboard", new { area = AreaNames.Dashboard_Area })">@UtilsResource.Home.ToHtmlStringSafe()</a></li>
+        <li class="breadcrumb-item" aria-current="page"><a href="@Url.Action("Index", "Clinic", new { area = AreaNames.Evidence_Area })">@((Roles.Contains(AppRoleType.Clinic) || Roles.Contains(AppRoleType.Reception)) ? UtilsResource.Clinic.ToHtmlStringSafe() : UtilsResource.Clinics.ToHtmlStringSafe())</a></li>
+        <li class="breadcrumb-item active" aria-current="page">@UtilsResource.Clinic_Edit.ToHtmlStringSafe()</li>
+    </ol>
+</nav>
+
+<div class="wrapper">
+    <div class="wrapper-header d-flex middle between">
+        <h4 class="wrapper-header-title">@UtilsResource.Clinic_Edit.ToHtmlStringSafe()</h4>
+    </div>
+    <hr />
+    @using (Html.BeginForm("Edit", "Clinic", FormMethod.Post, new { id = "formId", enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="wrapper-inner">
+            <div class="row">
+                <div class="col-xs-4">
+                    <h4 class="form-group-title">@SharedResource.PrimaryData.ToHtmlStringSafe()</h4>
+                    <div class="form-group form-group-horizontal-big row">
+                        <label class="col-xs-3">@Html.DisplayNameFor(x => x.LogoUrl)</label>
+                        <img class="form-group-image" src="~/images/logos/@(Model.LogoUrl.ToHtmlStringSafe())">
+                        <div class="col-xs-3 form-group-btn center">
+                            <div id="uploadBtnId"></div>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-horizontal row">
+                        <label class="col-xs-3">@Html.DisplayNameFor(x => x.Name)</label>
+                        <div class="col-xs-9" id="nameBoxId"></div>
+                    </div>
+                    <div class="form-group form-group-horizontal row">
+                        <label class="col-xs-3">@Html.DisplayNameFor(x => x.ClinicType)</label>
+                        <div class="col-xs-9" id="clinicTypeBoxId"></div>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <h4 class="form-group-title">@SharedResource.Address.ToHtmlStringSafe()</h4>
+                    <div class="form-group form-group-horizontal row">
+                        <label class="col-xs-3">@Html.DisplayNameFor(x => x.Street)</label>
+                        <div class="col-xs-9" id="streetBoxId"></div>
+                    </div>
+                    <div class="form-group form-group-horizontal row">
+                        <label class="col-xs-3">@Html.DisplayNameFor(x => x.BuildingNo)</label>
+                        <div class="col-xs-9" id="buildingNoBoxId"></div>
+                    </div>
+                    <div class="form-group form-group-horizontal row">
+                        <label class="col-xs-3">@Html.DisplayNameFor(x => x.PostalCode)</label>
+                        <div class="col-xs-9" id="postalCodeBoxId"></div>
+                    </div>
+                    <div class="form-group form-group-horizontal row">
+                        <label class="col-xs-3">@Html.DisplayNameFor(x => x.City)</label>
+                        <div class="col-xs-9" id="cityBoxId"></div>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <h4 class="form-group-title">@SharedResource.AdditionalData.ToHtmlStringSafe()</h4>
+                    <div class="form-group form-group-horizontal row">
+                        <label class="col-xs-3">@Html.DisplayNameFor(x => x.PhoneNumber)</label>
+                        <div class="col-xs-9" id="phoneBoxId"></div>
+                    </div>
+                    <div class="form-group form-group-horizontal row">
+                        <label class="col-xs-3">@Html.DisplayNameFor(x => x.Email)</label>
+                        <div class="col-xs-9" id="emailBoxId"></div>
+                    </div>
+                    <div class="form-group form-group-horizontal row">
+                        <label class="col-xs-3">@Html.DisplayNameFor(x => x.OpenFrom)</label>
+                        <div class="col-xs-9" id="openFromBoxId"></div>
+                    </div>
+                    <div class="form-group form-group-horizontal row">
+                        <label class="col-xs-3">@Html.DisplayNameFor(x => x.OpenTo)</label>
+                        <div class="col-xs-9" id="openToBoxId"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 end-xs mt-2">
+                    <div id="saveBtnId"></div>
+                    <div id="cancelBtnId"></div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#uploadBtnId").dxButton({
+            elementAttr: { class: "btn btn-default-outlined" },
+            height: 32,
+            width: 80,
+            text: "@ButtonNameResource.Change.ToScriptStringSafe()",
+            onClick: function () {
+
+            },
+            stylingMode: "outlined",
+            type: "default"
+        });
+
+         $("#saveBtnId").dxButton({
+            elementAttr: { class: "btn btn-default" },
+            height: 32,
+            onClick: function () {
+                if (DevExpress.validationEngine.validateGroup('@validationGroup').isValid) {
+                    $("#loadPanelId").dxLoadPanel('show');
+                    var array = $("#formId").serializeArray();
+                    var formData = new FormData();
+                    array.forEach(function (e) {
+                        formData.append(e.name, e.value);
+                    });
+                    $.ajax({
+                        type: "post",
+                        url: '@Url.Action("Edit", "Clinic")',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function (data) {
+                            if (data != null) {
+                                @{
+                                    if (Roles.Contains(AppRoleType.Administrator)) {
+                                        <text>
+                                            window.location = '@Url.Action("Details", "Clinic", new { id = Model.Id})';
+                                        </text>
+                                    }
+                                    else {
+                                        <text>
+                                            window.location = '@Url.Action("ClinicDetails", "Clinic")';
+                                        </text>
+                                    }
+                                }
+                            }
+                            $("#loadPanelId").dxLoadPanel('hide');
+                        }
+                    });
+                }
+            },
+            text: "@ButtonNameResource.Save.ToScriptStringSafe()",
+            type: "default"
+        });
+
+        $("#cancelBtnId").dxButton({
+            elementAttr: { class: "btn btn-ml btn-normal" },
+            height: 32,
+            text: "@ButtonNameResource.Cancel.ToScriptStringSafe()",
+            onClick: function () {
+                @{
+                    if (Roles.Contains(AppRoleType.Administrator)) {
+                        <text>
+                            window.location = '@Url.Action("Details", "Clinic", new { id = Model.Id})';
+                        </text>
+                    }
+                    else {
+                        <text>
+                            window.location = '@Url.Action("ClinicDetails", "Clinic")';
+                        </text>
+                    }
+                }
+            },
+            type: "normal"
+        });
+
+        $("#nameBoxId").dxTextBox({
+            name: "Name",
+            readOnly: false,
+            width: "100%",
+            value: '@Model.Name.ToScriptStringSafe()'
+        }).dxValidator({
+            validationRules: [{
+                type: "required",
+                message: "@ErrorResource.RequiredShort.ToScriptStringSafe()"
+            }],
+            validationGroup: "@validationGroup"
+        });
+
+        $("#clinicTypeBoxId").dxSelectBox({
+            items: @Html.Raw(Model.ClinicTypes.ToJson()),
+            displayExpr: "Text",
+            name: "ClinicType",
+            placeholder: "@SharedResource.Select.ToScriptStringSafe()",
+            readOnly: false,
+            width: "100%",
+            value: @((int)Model.ClinicType),
+            valueExpr: "Value"
+        }).dxValidator({
+            validationRules: [{
+                type: "required",
+                message: "@ErrorResource.RequiredShort.ToScriptStringSafe()"
+            }],
+            validationGroup: "@validationGroup"
+        });
+
+        $("#streetBoxId").dxTextBox({
+            name: "Street",
+            readOnly: false,
+            width: "100%",
+            value: '@Model.Street.ToScriptStringSafe()'
+        }).dxValidator({
+            validationRules: [{
+                type: "required",
+                message: "@ErrorResource.RequiredShort.ToScriptStringSafe()"
+            }],
+            validationGroup: "@validationGroup"
+        });
+
+        $("#buildingNoBoxId").dxTextBox({
+            name: "BuildingNo",
+            readOnly: false,
+            width: "100%",
+            value: '@Model.BuildingNo.ToScriptStringSafe()'
+        }).dxValidator({
+            validationRules: [{
+                type: "required",
+                message: "@ErrorResource.RequiredShort.ToScriptStringSafe()"
+            }],
+            validationGroup: "@validationGroup"
+        });
+
+        $("#postalCodeBoxId").dxTextBox({
+            name: "PostalCode",
+            readOnly: false,
+            width: "100%",
+            value: '@Model.PostalCode.ToScriptStringSafe()'
+        }).dxValidator({
+            validationRules: [{
+                type: "required",
+                message: "@ErrorResource.RequiredShort.ToScriptStringSafe()"
+            }],
+            validationGroup: "@validationGroup"
+        });
+
+        $("#cityBoxId").dxTextBox({
+            name: "City",
+            readOnly: false,
+            width: "100%",
+            value: '@Model.City.ToScriptStringSafe()'
+        }).dxValidator({
+            validationRules: [{
+                type: "required",
+                message: "@ErrorResource.RequiredShort.ToScriptStringSafe()"
+            }],
+            validationGroup: "@validationGroup"
+        });
+
+        $("#phoneBoxId").dxTextBox({
+            mode: "tel",
+            name: "PhoneNumber",
+            readOnly: false,
+            width: "100%",
+            value: '@Model.PhoneNumber.ToScriptStringSafe()'
+        });
+
+        $("#emailBoxId").dxTextBox({
+            mode: "email",
+            name: "Email",
+            readOnly: false,
+            width: "100%",
+            value: '@Model.Email.ToScriptStringSafe()'
+        }).dxValidator({
+            validationRules: [{
+                type: "required",
+                message: "@ErrorResource.RequiredShort.ToScriptStringSafe()"
+            }, {
+                type: "email",
+                message: "@ErrorResource.WrongEmail.ToScriptStringSafe()"
+            }],
+            validationGroup: "@validationGroup"
+        });
+
+        $("#openFromBoxId").dxDateBox({
+            name: "OpenFrom",
+            readOnly: false,
+            type: "time",
+            width: "100%",
+            value: '@Model.OpenFrom.ToScriptStringSafe()'
+        });
+
+        $("#openToBoxId").dxDateBox({
+            name: "OpenTo",
+            readOnly: false,
+            type: "time",
+            width: "100%",
+            value: '@Model.OpenTo.ToScriptStringSafe()'
+        });
+    });
+</script>

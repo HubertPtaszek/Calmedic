@@ -33,7 +33,7 @@ namespace Calmedic.Areas.Evidence.Controllers
             else
             {
                 ClinicDetailsVM model = _clinicService.GetClinicDetailsVMForUser(HttpContext);
-                return View("Details", model);
+                return View("ClinicDetails", model);
             }
         }
 
@@ -41,6 +41,19 @@ namespace Calmedic.Areas.Evidence.Controllers
         {
             ClinicAddVM model = _clinicService.GetClinicAddVM();
             return View(model);
+        }
+
+        public ActionResult Details(int id)
+        {
+            ClinicDetailsVM model = _clinicService.GetClinicDetailsVM(id);
+            return View(model);
+        }
+
+        [AppRoleAuthorization(new AppRoleType[] { AppRoleType.Clinic, AppRoleType.Reception })]
+        public ActionResult ClinicDetails()
+        {
+            ClinicDetailsVM model = _clinicService.GetClinicDetailsVMForUser(HttpContext);
+            return View("ClinicDetails", model);
         }
 
         [HttpPost]
@@ -54,6 +67,35 @@ namespace Calmedic.Areas.Evidence.Controllers
                 //zapis logo + dodanie konta dla przychodnii
                 int id = _clinicService.Add(model);
                 return RedirectToAction("Details", new { id = id });
+            }
+            return View(model);
+        }
+
+        [AppRoleAuthorization(new AppRoleType[] { AppRoleType.Administrator, AppRoleType.Clinic })]
+        public ActionResult Edit(int id)
+        {
+            ClinicEditVM model = _clinicService.GetClinicEditVM(id);
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [AppRoleAuthorization(new AppRoleType[] { AppRoleType.Administrator, AppRoleType.Clinic })]
+        public ActionResult Edit(ClinicEditVM model)
+        {
+            if (ModelState.IsValid)
+            {
+                string path = _webHostEnvironment.WebRootPath;
+                //zapis logo + dodanie konta dla przychodnii
+                int id = _clinicService.Edit(model);
+                if (UserHelper.UserHaveRole(HttpContext, AppRoleType.Administrator) || UserHelper.UserHaveRole(HttpContext, AppRoleType.Doctor))
+                {
+                    return RedirectToAction("Details", new { id = model.Id });
+                }
+                else
+                {
+                    return RedirectToAction("ClinicDetails");
+                }
             }
             return View(model);
         }

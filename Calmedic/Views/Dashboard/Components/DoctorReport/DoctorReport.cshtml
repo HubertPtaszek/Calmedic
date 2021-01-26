@@ -4,8 +4,76 @@
             <h3>@UtilsResource.DoctorReport_Title.ToHtmlStringSafe()</h3>
         </div>
     </div>
+    <div class="row mt-1">
+        <div class="col-xs-12 center">
+            <div id="doctorChartId"></div>
+        </div>
+    </div>
 </div>
 
 <script>
-    $(document).ready(function () { });
+    $(document).ready(function () {
+        var dataSource = [{
+            DoctorName: "Katarzyna Marcinek",
+            VisitsCount: 50
+        }, {
+            DoctorName: "Marek Pryliśki",
+            VisitsCount: 99
+        }, {
+            DoctorName: "Jan Nowak",
+            VisitsCount: 154
+        }, {
+            DoctorName: "Aleksandra Pruś",
+            VisitsCount: 120
+        }, {
+            DoctorName: "Marian Murawski",
+            VisitsCount: 75
+        }];
+
+        $("#doctorChartId").dxChart({
+            dataSource: dataSource,
+            legend: {
+                visible: false,
+            },
+            palette: "Harmony Light",
+            commonSeriesSettings: {
+                type: "bar",
+                valueField: "VisitsCount",
+                argumentField: "DoctorName",
+                ignoreEmptyPoints: true,
+                hoverStyle: {
+                    hatching: {
+                        direction: "right",
+                        opacity: 0.85,
+                        step: 8,
+                        width: 4
+                    }
+                },
+            },
+            seriesTemplate: {
+                nameField: "DoctorName"
+            },
+            tooltip: {
+                border: {
+                    width: 0
+                },
+                color: "none",
+                enabled: true,
+                font: {
+                    color: "#ffffff",
+                    size: 18,
+                    weight: 600
+                },
+                paddingLeftRight: 8,
+                paddingTopBottom: 8,
+                shadow: {
+                    blur: 1,
+                    color: "#000000",
+                    offsetX: 0,
+                    offsetY: 2,
+                    opacity: 0.2
+                }
+            }
+        });
+    });
 </script>

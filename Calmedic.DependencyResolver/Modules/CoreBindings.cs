@@ -30,6 +30,8 @@ namespace Calmedic.DependencyResolver
 
             builder.RegisterType<FileRepository>().As<IFileRepository>().InstancePerLifetimeScope().PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies);
             builder.RegisterType<FileRepository>().As<FileRepository>().InstancePerLifetimeScope().PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies);
+
+            builder.RegisterType<AddressConverter>().AsSelf().PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies).InstancePerLifetimeScope();
         }
     }
 }

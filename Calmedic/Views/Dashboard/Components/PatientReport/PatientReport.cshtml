@@ -4,8 +4,82 @@
             <h3>@UtilsResource.PatientReport_Title.ToHtmlStringSafe()</h3>
         </div>
     </div>
+    <div class="row mt-1">
+        <div class="col-xs-12 center">
+            <div id="patientChartId"></div>
+        </div>
+    </div>
 </div>
 
 <script>
-    $(document).ready(function () { });
+    $(document).ready(function () {
+        var dataSource = [{
+            Age: "0-4",
+            Count: 250
+        }, {
+            Age: "5-12",
+            Count: 199
+        }, {
+            Age: "13-17",
+            Count: 354
+        }, {
+            Age: "18-24",
+            Count: 420
+        }, {
+            Age: "25-39",
+            Count: 275
+        }, {
+            Age: "40-64",
+            Count: 275
+        }, {
+            Age: "65+",
+            Count: 675
+        }];
+
+        $("#patientChartId").dxChart({
+            dataSource: dataSource,
+            legend: {
+                visible: false,
+            },
+            palette: "Harmony Light",
+            commonSeriesSettings: {
+                type: "bar",
+                valueField: "Count",
+                argumentField: "Age",
+                ignoreEmptyPoints: true,
+                hoverStyle: {
+                    hatching: {
+                        direction: "right",
+                        opacity: 0.85,
+                        step: 8,
+                        width: 4
+                    }
+                },
+            },
+            seriesTemplate: {
+                nameField: "Age"
+            },
+            tooltip: {
+                border: {
+                    width: 0
+                },
+                color: "none",
+                enabled: true,
+                font: {
+                    color: "#ffffff",
+                    size: 18,
+                    weight: 600
+                },
+                paddingLeftRight: 8,
+                paddingTopBottom: 8,
+                shadow: {
+                    blur: 1,
+                    color: "#000000",
+                    offsetX: 0,
+                    offsetY: 2,
+                    opacity: 0.2
+                }
+            }
+        });
+    });
 </script>
