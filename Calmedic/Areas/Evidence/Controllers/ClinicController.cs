@@ -32,32 +32,18 @@ namespace Calmedic.Areas.Evidence.Controllers
             }
             else
             {
-                ClinicDetailsVM model = _clinicService.GetClinicDetailsVMForUser(HttpContext);
-                return View("ClinicDetails", model);
+                return RedirectToAction("ClinicDetails");
             }
         }
 
+        [AppRoleAuthorization(AppRoleType.Administrator)]
         public ActionResult Add()
         {
             ClinicAddVM model = _clinicService.GetClinicAddVM();
             return View(model);
         }
 
-        public ActionResult Details(int id)
-        {
-            ClinicDetailsVM model = _clinicService.GetClinicDetailsVM(id);
-            return View(model);
-        }
-
-        [AppRoleAuthorization(new AppRoleType[] { AppRoleType.Clinic, AppRoleType.Reception })]
-        public ActionResult ClinicDetails()
-        {
-            ClinicDetailsVM model = _clinicService.GetClinicDetailsVMForUser(HttpContext);
-            return View("ClinicDetails", model);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpPost, ValidateAntiForgeryToken]
         [AppRoleAuthorization(AppRoleType.Administrator)]
         public ActionResult Add(ClinicAddVM model)
         {
@@ -71,6 +57,20 @@ namespace Calmedic.Areas.Evidence.Controllers
             return View(model);
         }
 
+        [AppRoleAuthorization(new AppRoleType[] { AppRoleType.Administrator, AppRoleType.Doctor })]
+        public ActionResult Details(int id)
+        {
+            ClinicDetailsVM model = _clinicService.GetClinicDetailsVM(id);
+            return View(model);
+        }
+
+        [AppRoleAuthorization(new AppRoleType[] { AppRoleType.Clinic, AppRoleType.Reception })]
+        public ActionResult ClinicDetails()
+        {
+            ClinicDetailsVM model = _clinicService.GetClinicDetailsVMForUser(HttpContext);
+            return View("ClinicDetails", model);
+        }
+
         [AppRoleAuthorization(new AppRoleType[] { AppRoleType.Administrator, AppRoleType.Clinic })]
         public ActionResult Edit(int id)
         {
@@ -78,8 +78,7 @@ namespace Calmedic.Areas.Evidence.Controllers
             return View(model);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpPost, ValidateAntiForgeryToken]
         [AppRoleAuthorization(new AppRoleType[] { AppRoleType.Administrator, AppRoleType.Clinic })]
         public ActionResult Edit(ClinicEditVM model)
         {
@@ -98,6 +97,13 @@ namespace Calmedic.Areas.Evidence.Controllers
                 }
             }
             return View(model);
+        }
+
+        [HttpDelete, ValidateAntiForgeryToken]
+        [AppRoleAuthorization(AppRoleType.Administrator)]
+        public ActionResult Delete(int id)
+        {
+            return CustomJson(true);
         }
     }
 }

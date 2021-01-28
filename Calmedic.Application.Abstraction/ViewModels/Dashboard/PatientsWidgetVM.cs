@@ -11,7 +11,9 @@ namespace Calmedic.Application
         {
         }
 
+        public int Id { get; set; }
         public string FirstLetter { get; set; }
+        public string Color { get; set; }
         public string Name { get; set; }
         public int PatientNumber { get; set; }
     }

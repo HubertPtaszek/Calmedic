@@ -29,6 +29,15 @@ namespace Calmedic.Areas.Membership.Controllers
             return CustomJson(data);
         }
 
+        [HttpGet]
+        [AppRoleAuthorization(AppRoleType.Administrator)]
+        public ActionResult GetRoleUsers(DataSourceLoadOptions loadOptions, int roleId)
+        {
+            var data = _appRoleService.GetRoleUsers(loadOptions, roleId);
+            return CustomJson(data);
+        }
+
+        [AppRoleAuthorization(AppRoleType.Administrator)]
         public ActionResult Details(int id)
         {
             AppRoleDetailsVM model = _appRoleService.GetAppRoleDetailsVM(id);
@@ -57,14 +66,6 @@ namespace Calmedic.Areas.Membership.Controllers
         {
             _appRoleService.RemoveUserFromRole(userId, roleId);
             return CustomJson(true);
-        }
-
-        [HttpGet]
-        [AppRoleAuthorization(AppRoleType.Administrator)]
-        public ActionResult GetRoleUsers(DataSourceLoadOptions loadOptions, int roleId)
-        {
-            var data = _appRoleService.GetRoleUsers(loadOptions, roleId);
-            return CustomJson(data);
         }
     }
 }

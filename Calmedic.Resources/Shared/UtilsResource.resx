@@ -153,6 +153,9 @@
   <data name="DisplaySequences" xml:space="preserve">
     <value>Wyświetlanie</value>
   </data>
+  <data name="Doctor" xml:space="preserve">
+    <value>Lekarz</value>
+  </data>
   <data name="DoctorReport_Title" xml:space="preserve">
     <value>Najpopularniejsi lekarze</value>
   </data>
@@ -162,8 +165,17 @@
   <data name="Gallery" xml:space="preserve">
     <value>Multimedia</value>
   </data>
+  <data name="Gallery_Add" xml:space="preserve">
+    <value>Dodawanie pliku</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>Strona domowa</value>
+  </data>
+  <data name="NoCommingVisits" xml:space="preserve">
+    <value>Brak nadchodzących wizyt</value>
+  </data>
+  <data name="Patient" xml:space="preserve">
+    <value>Pacjent</value>
   </data>
   <data name="PatientReport_Title" xml:space="preserve">
     <value>Wizyty pacjentów wg wieku</value>
@@ -174,6 +186,12 @@
   <data name="Patients_WidgetTitle" xml:space="preserve">
     <value>Ostatnio dodanie pacjenci</value>
   </data>
+  <data name="Patient_Add" xml:space="preserve">
+    <value>Nowy pacjent</value>
+  </data>
+  <data name="Patient_Details" xml:space="preserve">
+    <value>Szczegóły pacjenta</value>
+  </data>
   <data name="Role" xml:space="preserve">
     <value>Rola</value>
   </data>
@@ -182,6 +200,18 @@
   </data>
   <data name="Role_Details" xml:space="preserve">
     <value>Szczegóły roli</value>
+  </data>
+  <data name="SequenceOrder" xml:space="preserve">
+    <value>Kolejność wyświetlania</value>
+  </data>
+  <data name="SetHigher" xml:space="preserve">
+    <value>Ustaw wyżej</value>
+  </data>
+  <data name="SetLower" xml:space="preserve">
+    <value>Ustaw niżej</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
   </data>
   <data name="UnassigningUser" xml:space="preserve">
     <value>Usuwanie użytkownika z roli</value>
@@ -215,5 +245,8 @@
   </data>
   <data name="Visits_WidgetTitle" xml:space="preserve">
     <value>Najbliższe wizyty - {0}</value>
+  </data>
+  <data name="Visit_Add" xml:space="preserve">
+    <value>Nowa wizyta</value>
   </data>
 </root>

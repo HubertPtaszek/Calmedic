@@ -86,8 +86,9 @@
         margin-right: 8px;
 
         &-visits {
-            width: 15px;
-            height: 15px;
+            width: 10px;
+            height: 10px;
+            border-radius: 100%;
         }
     }
 
@@ -96,12 +97,11 @@
         color: white;
         display: flex;
         align-items: center;
-        margin-right: 32px;
+        margin-right: 16px;
 
         &-visits {
             span {
                 font-size: 12px !important;
-                color: #000 !important;
             }
         }
 

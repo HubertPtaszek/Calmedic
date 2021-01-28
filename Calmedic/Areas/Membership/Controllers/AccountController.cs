@@ -21,6 +21,7 @@ namespace Calmedic.Areas.Membership.Controllers
         private readonly SignInManager<AppIdentityUser> _signInManager;
         private readonly ILogger<LoginVM> _logger;
         private readonly IAppIdentityUserService _appIdentityUserService;
+
         #endregion Dependencies
 
         public AccountController(SignInManager<AppIdentityUser> signInManager,
@@ -98,8 +99,8 @@ namespace Calmedic.Areas.Membership.Controllers
             });
         }
 
-        [AllowAnonymous]
         [HttpPost, ValidateAntiForgeryToken]
+        [AllowAnonymous]
         public async Task<IActionResult> ConfirmEmail(ConfirmEmailVM model)
         {
             if (ModelState.IsValid)
@@ -168,8 +169,8 @@ namespace Calmedic.Areas.Membership.Controllers
             });
         }
 
-        [AllowAnonymous]
         [HttpPost, ValidateAntiForgeryToken]
+        [AllowAnonymous]
         public async Task<IActionResult> ResetPassword(ResetPasswordVM model)
         {
             if (ModelState.IsValid)

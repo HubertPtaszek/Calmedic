@@ -43,12 +43,9 @@
     <Folder Include="Areas\Gallery\Data\" />
     <Folder Include="Areas\Gallery\Models\" />
     <Folder Include="Areas\Gallery\Views\" />
-    <Folder Include="Areas\Presentation\Controllers\" />
     <Folder Include="Areas\Presentation\Data\" />
     <Folder Include="Areas\Presentation\Models\" />
-    <Folder Include="Areas\Presentation\Views\" />
     <Folder Include="wwwroot\css\gallery\" />
-    <Folder Include="wwwroot\images\media\" />
   </ItemGroup>
 
   <ItemGroup>

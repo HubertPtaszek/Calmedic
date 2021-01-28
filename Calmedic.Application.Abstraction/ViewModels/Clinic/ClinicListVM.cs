@@ -1,3 +1,4 @@
+using Calmedic.Dictionaries;
 using Calmedic.Utils;
 using System.Collections.Generic;
 
@@ -9,6 +10,6 @@ namespace Calmedic.Application
         {
         }
 
-        public List<EnumModelBinder> ClinicTypeList { get; set; } = new List<EnumModelBinder>();
+        public List<EnumModelBinder> ClinicTypes { get; set; } = EnumHelpers.GetEnumBinderList<ClinicType>();
     }
 }

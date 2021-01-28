@@ -1,4 +1,0 @@
-﻿@using Portal
-@using Calmedic.Models
-@using Calmedic.Utils
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers

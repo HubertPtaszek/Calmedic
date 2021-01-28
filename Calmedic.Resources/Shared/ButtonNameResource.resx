@@ -147,4 +147,7 @@
   <data name="Save" xml:space="preserve">
     <value>Zapisz</value>
   </data>
+  <data name="Select" xml:space="preserve">
+    <value>Wybierz</value>
+  </data>
 </root>

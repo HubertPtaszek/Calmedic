@@ -16,22 +16,22 @@
         var dataSource = [
             {
                 Month: "08.2020",
-                Count: 455
+                Count: 5
             }, {
                 Month: "09.2020",
-                Count: 400
+                Count: 8
             }, {
                 Month: "10.2020",
-                Count: 450
+                Count: 4
             }, {
                 Month: "11.2020",
-                Count: 445
+                Count: 9
             }, {
                 Month: "12.2020",
-                Count: 382
+                Count: 12
             }, {
                 Month: "01.2021",
-                Count: 275
+                Count: 7
             }];
 
         $("#visitChartId").dxChart({
@@ -49,7 +49,13 @@
                 argumentField: "Month",
             },
             tooltip: {
-                enabled: true
+                enabled: true,
+                font: {
+                    size: 14,
+                    weight: 600
+                },
+                paddingLeftRight: 12,
+                paddingTopBottom: 12
             }
         });
     });

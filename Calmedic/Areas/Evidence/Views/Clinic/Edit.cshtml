@@ -275,18 +275,20 @@
 
         $("#openFromBoxId").dxDateBox({
             name: "OpenFrom",
+            pickerType: "rollers",
             readOnly: false,
             type: "time",
             width: "100%",
-            value: '@Model.OpenFrom.ToScriptStringSafe()'
+            value: '@(Model.OpenFrom)'
         });
 
         $("#openToBoxId").dxDateBox({
             name: "OpenTo",
+            pickerType: "rollers",
             readOnly: false,
             type: "time",
             width: "100%",
-            value: '@Model.OpenTo.ToScriptStringSafe()'
+            value: '@(Model.OpenTo)'
         });
     });
 </script>

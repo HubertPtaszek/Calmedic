@@ -25,35 +25,17 @@ namespace Calmedic.Areas.Membership.Controllers
             _appMailMessageService = appMailMessageService;
         }
 
+        [AppRoleAuthorization(AppRoleType.Administrator)]
         public IActionResult Index()
         {
             return View();
         }
 
+        [AppRoleAuthorization(AppRoleType.Administrator)]
         public ActionResult Add()
         {
             AppUserAddVM model = _appUserService.GetAppUserAddVM();
             return View(model);
-        }
-
-        public ActionResult Details(int id)
-        {
-            AppUserDetailsVM model = _appUserService.GetAppUserDetailsVM(id);
-            return View(model);
-        }
-
-        public ActionResult Edit(int id)
-        {
-            AppUserEditVM model = new AppUserEditVM();//todo
-            return View(model);
-        }
-
-        [HttpGet]
-        [AppRoleAuthorization(AppRoleType.Administrator)]
-        public ActionResult GetData(DataSourceLoadOptions loadOptions)
-        {
-            var data = _appUserService.GetUsers(loadOptions);
-            return CustomJson(data);
         }
 
         [HttpPost, ValidateAntiForgeryToken]
@@ -68,6 +50,27 @@ namespace Calmedic.Areas.Membership.Controllers
                 return CustomJson(id);
             }
             return CustomJson(null);
+        }
+
+        [AppRoleAuthorization(AppRoleType.Administrator)]
+        public ActionResult Details(int id)
+        {
+            AppUserDetailsVM model = _appUserService.GetAppUserDetailsVM(id);
+            return View(model);
+        }
+        [AppRoleAuthorization(AppRoleType.Administrator)]
+        public ActionResult Edit(int id)
+        {
+            AppUserEditVM model = new AppUserEditVM();//todo
+            return View(model);
+        }
+
+        [HttpGet]
+        [AppRoleAuthorization(AppRoleType.Administrator)]
+        public ActionResult GetData(DataSourceLoadOptions loadOptions)
+        {
+            var data = _appUserService.GetUsers(loadOptions);
+            return CustomJson(data);
         }
     }
 }

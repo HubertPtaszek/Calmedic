@@ -20,23 +20,28 @@ namespace Calmedic.Areas.Evidence.Controllers
             _patientService = patientService;
         }
 
+        [HttpGet]
+        [AppRoleAuthorization(new AppRoleType[] { AppRoleType.Administrator, AppRoleType.Clinic, AppRoleType.Reception, AppRoleType.Doctor })]
         public ActionResult GetData(DataSourceLoadOptions loadOptions)
         {
             var data = _patientService.GetPatients(loadOptions);
             return CustomJson(data);
         }
 
+        [AppRoleAuthorization(new AppRoleType[] { AppRoleType.Administrator, AppRoleType.Clinic, AppRoleType.Reception, AppRoleType.Doctor })]
         public ActionResult Index()
         {
             return View(new PatientListVM());
         }
 
+        [AppRoleAuthorization(new AppRoleType[] { AppRoleType.Administrator, AppRoleType.Clinic, AppRoleType.Reception })]
         public ActionResult Add()
         {
             return View(new PatientAddVM());
         }
 
         [HttpPost, ValidateAntiForgeryToken]
+        [AppRoleAuthorization(new AppRoleType[] { AppRoleType.Administrator, AppRoleType.Clinic, AppRoleType.Reception })]
         public ActionResult Add(PatientAddVM model)
         {
             if (ModelState.IsValid)
@@ -47,14 +52,21 @@ namespace Calmedic.Areas.Evidence.Controllers
             return View(model);
         }
 
+        [AppRoleAuthorization(new AppRoleType[] { AppRoleType.Administrator, AppRoleType.Clinic, AppRoleType.Reception })]
         public ActionResult Details(int id)
         {
             PatientDetailsVM model = _patientService.GetPatientDetailsVM(id);
             return View(model);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [AppRoleAuthorization(new AppRoleType[] { AppRoleType.Administrator, AppRoleType.Clinic, AppRoleType.Reception })]
+        public ActionResult Edit()
+        {
+            return View(new PatientEditVM());
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        [AppRoleAuthorization(new AppRoleType[] { AppRoleType.Administrator, AppRoleType.Clinic, AppRoleType.Reception })]
         public ActionResult Edit(PatientEditVM model)
         {
             if (ModelState.IsValid)

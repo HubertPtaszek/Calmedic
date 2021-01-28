@@ -1,0 +1,195 @@
+﻿@model DisplaySequenceListVM
+@{
+    ViewBag.Title = UtilsResource.DisplaySequences;
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page"><a href="@Url.Action("Index", "Dashboard", new { area = AreaNames.Dashboard_Area })">@UtilsResource.Home.ToHtmlStringSafe()</a></li>
+        <li class="breadcrumb-item active" aria-current="page">@UtilsResource.DisplaySequences.ToHtmlStringSafe()</li>
+    </ol>
+</nav>
+
+<div class="wrapper">
+    <div class="wrapper-header d-flex middle between">
+        <h4 class="wrapper-header-title">@UtilsResource.DisplaySequences.ToHtmlStringSafe() (<span id="totalCountId">0</span>)</h4>
+        <div>
+            <div id="addBtnId"></div>
+        </div>
+    </div>
+    <hr />
+    <div class="wrapper-inner">
+        <div id="displaySequenceGridId"></div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#addBtnId").dxButton({
+            elementAttr: { class: "btn btn-default" },
+            height: 32,
+            text: "@ButtonNameResource.Add.ToScriptStringSafe()",
+            type: "default"
+        });
+
+        var store = DevExpress.data.AspNet.createStore({
+            "loadUrl": "@Url.Action("GetData", "DisplaySequence")"
+        });
+
+        var dataGrid = $("#displaySequenceGridId").dxDataGrid({
+            dataSource: {
+                store: store,
+                onLoadingChanged: function (isLoading) {
+                    if (!isLoading) {
+                        $('#totalCountId').text(dataGrid.totalCount());
+                    }
+                }
+            },
+            allowColumnResizing: true,
+            columnAutoWidth: true,
+            controlColumnResizing: true,
+            remoteOperations: {
+                sorting: true,
+                paging: true,
+                filtering: true
+            },
+            searchPanel: {
+                visible: false
+            },
+            filterRow: {
+                visible: false,
+                applyFilter: "auto",
+                showOperationChooser: false
+            },
+            loadPanel: {
+                enabled: true
+            },
+            sorting: {
+                mode: 'multiple'
+            },
+            paging: {
+                pageSize: 15,
+            },
+            pager: {
+                showPageSizeSelector: true,
+                allowedPageSizes: [5, 15, 25]
+            },
+            hoverStateEnabled: true,
+            rowAlternationEnabled: true,
+            columns: [
+                { dataField: "Id", visible: false, allowSearch: false },
+                {
+                    dataField: "MediaType",
+                    lookup: {
+                        dataSource: @Html.Raw(Model.MediaTypes.ToJson()),
+                        displayExpr: 'Text',
+                        valueExpr: 'Value'
+                    },
+                    caption: "@SharedResource.MediaType.ToScriptStringSafe()"
+                },
+                { dataField: "DisplayTime", caption: "@SharedResource.DisplayTime.ToScriptStringSafe()" },
+                { dataField: "FileName", caption: "@SharedResource.Multimedia.ToScriptStringSafe()" },
+                { dataField: "Description", caption: "@SharedResource.Description.ToScriptStringSafe()" },
+                {
+                    dataField: "Order",
+                    visible: false,
+                    caption: "",
+                    sortOrder: "asc",
+                    sortIndex: 0,
+                    allowEditing: false,
+                    caption: "",
+                    formItem: {
+                        visible: false
+                    }
+                },
+                {
+                    caption: "@UtilsResource.SequenceOrder.ToScriptStringSafe()",
+                    dataField: "",
+                    alignment: "center",
+                    allowFiltering: false,
+                    allowSorting: false,
+                    alowSearch: false,
+                    formItem: {
+                        visible: false
+                    },
+                    cellTemplate: function (container, options) {
+                        var id = options.data["Id"];
+                        var empty = $('<span/>');
+                        empty.css({ "width": "26px", "display": "inline-block" });
+                        var arrowUp = $('<a/>').addClass('btn-datagrid').css({ 'display': 'inline-block', 'margin': '0 8px'})
+                            .attr({
+                                href: "#",
+                                "data-toggle": "tooltip",
+                                "data-placement": "top",
+                                title: "@UtilsResource.SetHigher.ToScriptStringSafe()"
+                            });
+                        var arrowDown = arrowUp.clone().attr("title", "@UtilsResource.SetLower.ToScriptStringSafe()");
+                        $('<span/>').addClass('fas fa-arrow-up').appendTo(arrowUp);
+                        $('<span/>').addClass('fas fa-arrow-down').appendTo(arrowDown);
+                        arrowUp.click(function () {
+                            setLower(id);
+                        });
+                        arrowDown.click(function () {
+                            setHigher(id);
+                        });
+                        if (!options.row.data["IsMin"]) {
+                            container.append(arrowUp);
+                        } else {
+                            container.append(empty);
+                        }
+                        if (!options.row.data["IsMax"]) {
+                            container.append(arrowDown);
+                        } else {
+                            container.append(empty);
+                        }
+                    }
+                },
+                {
+                    caption: "",
+                    dataField: "",
+                    allowFiltering: false,
+                    allowSorting: false,
+                    alowSearch: false,
+                    width: 100,
+                    cellTemplate: function (container, options) {
+                        var id = options.row.data["Id"];
+                        var temp = '__id__';
+                        var reId = new RegExp(temp, 'g');
+
+                        var detailsUrl = '<a class="btn-datagrid" href="@Url.Action("Details", "DisplaySequence", new { id = "__id__" }, null)"><i class="fas fa-arrow-right"></i></a>';
+                        detailsUrl = detailsUrl.replace(reId, id);
+                        container.append(detailsUrl);
+                    }
+                }
+            ]
+        }).dxDataGrid("instance");
+
+        function setLower(id) {
+            $.ajax({
+                url: '@Url.Action("SetElementLower", "DisplaySequence")',
+                dataType: "json",
+                type: "post",
+                data: {
+                    elementId: id,
+                },
+                complete: function () {
+                    $('#displaySequenceGridId').dxDataGrid("instance").refresh();
+                }
+            });
+        };
+
+        function setHigher(id) {
+            $.ajax({
+                url: '@Url.Action("SetElementHigher", "DisplaySequence")',
+                dataType: "json",
+                type: "post",
+                data: {
+                    elementId: id
+                },
+                complete: function () {
+                    $('#displaySequenceGridId').dxDataGrid("instance").refresh();
+                }
+            });
+        };
+    });
+</script>

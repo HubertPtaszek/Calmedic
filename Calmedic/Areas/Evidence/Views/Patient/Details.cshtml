@@ -1,0 +1,160 @@
+﻿@model PatientDetailsVM
+@{
+    ViewBag.Title = UtilsResource.Patient_Details;
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page"><a href="@Url.Action("Index", "Dashboard", new { area = AreaNames.Dashboard_Area })">@UtilsResource.Home.ToHtmlStringSafe()</a></li>
+        <li class="breadcrumb-item" aria-current="page"><a href="@Url.Action("Index", "Patient", new { area = AreaNames.Evidence_Area })">@UtilsResource.Patients.ToHtmlStringSafe()</a></li>
+        <li class="breadcrumb-item active" aria-current="page">@UtilsResource.Patient_Details.ToHtmlStringSafe()</li>
+    </ol>
+</nav>
+
+<div class="wrapper">
+    <div class="wrapper-header d-flex middle between">
+        <h4 class="wrapper-header-title">@UtilsResource.Patient_Details.ToHtmlStringSafe()</h4>
+        <div>
+            @*przycisk usuwania*@
+            <div id="editBtnId"></div>
+        </div>
+    </div>
+    <hr />
+    <div class="wrapper-inner">
+        <div class="row">
+            <div class="col-xs-4">
+                <h4 class="form-group-title">@SharedResource.PrimaryData.ToHtmlStringSafe()</h4>
+                <div class="form-group form-group-horizontal row">
+                    <label class="col-xs-3">@Html.DisplayNameFor(x => x.FirstName)</label>
+                    <div class="col-xs-9" id="firstNameBoxId"></div>
+                </div>
+                <div class="form-group form-group-horizontal row">
+                    <label class="col-xs-3">@Html.DisplayNameFor(x => x.LastName)</label>
+                    <div class="col-xs-9" id="lastNameBoxId"></div>
+                </div>
+                <div class="form-group form-group-horizontal row">
+                    <label class="col-xs-3">@Html.DisplayNameFor(x => x.Pesel)</label>
+                    <div class="col-xs-9" id="peselBoxId"></div>
+                </div>
+                <div class="form-group form-group-horizontal row">
+                    <label class="col-xs-3">@Html.DisplayNameFor(x => x.DateOfBirth)</label>
+                    <div class="col-xs-9" id="dateOfBirthBoxId"></div>
+                </div>
+                <div class="form-group form-group-horizontal row">
+                    <label class="col-xs-3">@Html.DisplayNameFor(x => x.Sex)</label>
+                    <div class="col-xs-9" id="sexBoxId"></div>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <h4 class="form-group-title">@SharedResource.Address.ToHtmlStringSafe()</h4>
+                <div class="form-group form-group-horizontal row">
+                    <label class="col-xs-3">@Html.DisplayNameFor(x => x.Address)</label>
+                    <div class="col-xs-9" id="addressAreaId"></div>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <h4 class="form-group-title">@SharedResource.AdditionalData.ToHtmlStringSafe()</h4>
+                <div class="form-group form-group-horizontal row">
+                    <label class="col-xs-3">@Html.DisplayNameFor(x => x.PhoneNumber)</label>
+                    <div class="col-xs-9" id="phoneBoxId"></div>
+                </div>
+                <div class="form-group form-group-horizontal row">
+                    <label class="col-xs-3">@Html.DisplayNameFor(x => x.EmailAddress)</label>
+                    <div class="col-xs-9" id="emailBoxId"></div>
+                </div>
+                <div class="form-group form-group-horizontal row">
+                    <label class="col-xs-3">@Html.DisplayNameFor(x => x.Comments)</label>
+                    <div class="col-xs-9" id="commentsAreaId"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#editBtnId").dxButton({
+            elementAttr: { class: "btn btn-ml btn-default" },
+            height: 32,
+            text: "@ButtonNameResource.Edit.ToScriptStringSafe()",
+            onClick: function () {
+                //podpiąc formularz edycji
+            },
+            type: "default"
+        });
+
+        $("#firstNameBoxId").dxTextBox({
+            name: "FirstName",
+            readOnly: true,
+            width: "100%",
+            value: '@Model.FirstName.ToScriptStringSafe()'
+        });
+
+        $("#lastNameBoxId").dxTextBox({
+            name: "LastName",
+            readOnly: true,
+            width: "100%",
+            value: '@Model.LastName.ToScriptStringSafe()'
+        });
+
+        $("#peselBoxId").dxTextBox({
+            name: "Pesel",
+            readOnly: true,
+            width: "100%",
+            value: '@Model.Pesel.ToScriptStringSafe()'
+        });
+
+        $("#dateOfBirthBoxId").dxDateBox({
+            name: "DateOfBirth",
+            readOnly: true,
+            width: "100%",
+            type: "date",
+            value: '@(Model.DateOfBirth.ToIsoDateTimeString())'
+        });
+
+        $("#sexBoxId").dxSelectBox({
+            items: @Html.Raw(Model.SexDictionary.ToJson()),
+            displayExpr: "Text",
+            name: "Sex",
+            placeholder: "@SharedResource.Select.ToScriptStringSafe()",
+            readOnly: true,
+            width: "100%",
+            value: @((int)Model.Sex),
+            valueExpr: "Value"
+        });
+
+        $("#addressAreaId").dxTextArea({
+            height: "auto",
+            minHeight: "75px",
+            name: "Role",
+            readOnly: true,
+            width: "100%",
+            value: '@Model.Address.ToScriptStringSafe()'
+        });
+
+        $("#phoneBoxId").dxTextBox({
+            mode: "tel",
+            name: "PhoneNumber",
+            readOnly: true,
+            width: "100%",
+            value: '@Model.PhoneNumber.ToScriptStringSafe()'
+        });
+
+        $("#emailBoxId").dxTextBox({
+            mode: "email",
+            name: "Email",
+            readOnly: true,
+            width: "100%",
+            value: '@Model.EmailAddress.ToScriptStringSafe()'
+        });
+
+        $("#commentsAreaId").dxTextArea({
+            height: "auto",
+            minHeight: "75px",
+            name: "Comments",
+            readOnly: true,
+            width: "100%",
+            value: '@Model.Comments.ToScriptStringSafe()'
+        });
+    });
+</script>

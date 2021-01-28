@@ -65,7 +65,7 @@
                 if (!session.Roles.Contains(AppRoleType.Administrator))
                 {
                     <li class="left-nav-list-el @(tab == "Visit" ? "active" : "")">
-                        <a href="#"><i class="far fa-calendar-alt"></i><span>@UtilsResource.Visits.ToHtmlStringSafe()</span></a>
+                        <a href="@Url.Action("Index", "Visit", new { area = AreaNames.Evidence_Area })"><i class="far fa-calendar-alt"></i><span>@UtilsResource.Visits.ToHtmlStringSafe()</span></a>
                     </li>
                 }
             }
@@ -74,29 +74,29 @@
                 if (!session.Roles.Contains(AppRoleType.Doctor))
                 {
                     <li class="left-nav-list-el @(tab == "Doctor" ? "active" : "")">
-                        <a href="#"><i class="fas fa-user-md"></i><span>@UtilsResource.Doctors.ToHtmlStringSafe()</span></a>
+                        <a href="@Url.Action("Index", "Doctor", new { area = AreaNames.Evidence_Area })"><i class="fas fa-user-md"></i><span>@UtilsResource.Doctors.ToHtmlStringSafe()</span></a>
                     </li>
                 }
             }
             @*Patients*@
             <li class="left-nav-list-el @(tab == "Patient" ? "active" : "")">
-                <a href="#"><i class="fas fa-user-injured"></i><span>@UtilsResource.Patients.ToHtmlStringSafe()</span></a>
+                <a href="@Url.Action("Index", "Patient", new { area = AreaNames.Evidence_Area })"><i class="fas fa-user-injured"></i><span>@UtilsResource.Patients.ToHtmlStringSafe()</span></a>
             </li>
             @*DisplaySequence*@
             @{
-                if (session.Roles.Contains(AppRoleType.Clinic) || session.Roles.Contains(AppRoleType.Reception))
+                if (session.Roles.Contains(AppRoleType.Clinic))
                 {
                     <li class="left-nav-list-el @(tab == "DisplaySequence" ? "active" : "")">
-                        <a href="#"><i class="fas fa-desktop"></i><span>@UtilsResource.DisplaySequences.ToHtmlStringSafe()</span></a>
+                        <a href="@Url.Action("Index", "DisplaySequence", new { area = AreaNames.DisplaySequence_Area })"><i class="fas fa-desktop"></i><span>@UtilsResource.DisplaySequences.ToHtmlStringSafe()</span></a>
                     </li>
                 }
             }
             @*Gallery*@
             @{
-                if (session.Roles.Contains(AppRoleType.Clinic) || session.Roles.Contains(AppRoleType.Reception))
+                if (session.Roles.Contains(AppRoleType.Clinic))
                 {
                     <li class="left-nav-list-el @(tab == "Gallery" ? "active" : "")">
-                        <a href="#"><i class="fas fa-photo-video"></i><span>@UtilsResource.Gallery.ToHtmlStringSafe()</span></a>
+                        <a href="@Url.Action("Index", "Gallery", new { area = AreaNames.Gallery_Area })"><i class="fas fa-photo-video"></i><span>@UtilsResource.Gallery.ToHtmlStringSafe()</span></a>
                     </li>
                 }
             }

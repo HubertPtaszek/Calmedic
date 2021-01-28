@@ -20,7 +20,6 @@ namespace Calmedic.Application
         public virtual ClinicListVM GetClinicListVM()
         {
             ClinicListVM model = new ClinicListVM();
-            model.ClinicTypeList = EnumHelpers.GetEnumBinderList<ClinicType>();
             return model;
         }
 

@@ -44,7 +44,7 @@ namespace Calmedic.Controllers
         [AppRoleAuthorization(AppRoleType.Clinic)]
         public ActionResult ClinicDashboard()
         {
-            ClinicDashboardVM model = new ClinicDashboardVM();
+            ClinicDashboardVM model = _dashboardService.GetClinicDashboardVM(HttpContext);
             return View("ClinicDashboard", model);
         }
 

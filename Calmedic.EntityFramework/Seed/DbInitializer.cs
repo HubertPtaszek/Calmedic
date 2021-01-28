@@ -572,14 +572,14 @@ namespace Calmedic.EntityFramework
                     CreatedById = sysAdmin.CreatedById,
                     CreatedDate = DateTime.Now.AddMinutes(-2),
                     Address = address1,
-                    FirstName = "Marian",
+                    FirstName = "Bartosz",
                     LastName = "Murarz",
                     Comments = "",
                     DateOfBirth = new DateTime(1958, 7, 3),
                     Pesel = "58070389859",
                     PatientNumber = 10002,
                     Sex = SexDictionary.Male,
-                    EmailAddress = "marianmurarz@wp.pl",
+                    EmailAddress = "bartoszmurarz@wp.pl",
                     PhoneNumber = "+48 123 456 789"
                 };
                 context.Patients.Add(patient2);
@@ -753,7 +753,7 @@ namespace Calmedic.EntityFramework
                     Pesel = "97071354914",
                     PatientNumber = 10008,
                     Sex = SexDictionary.Male,
-                    EmailAddress = "pawełnowak@gmail.com",
+                    EmailAddress = "pawelnowak@gmail.com",
                     PhoneNumber = "+48 123 456 789"
                 };
                 context.Patients.Add(patient8);
@@ -811,7 +811,7 @@ namespace Calmedic.EntityFramework
                     Pesel = "69092322386",
                     PatientNumber = 10010,
                     Sex = SexDictionary.Female,
-                    EmailAddress = "",
+                    EmailAddress = "mtokar@gmail.com",
                     PhoneNumber = "+48 123 456 789"
                 };
                 context.Patients.Add(patient10);
@@ -1019,6 +1019,92 @@ namespace Calmedic.EntityFramework
                 };
                 context.Patients.Add(patient17);
 
+                Address address18 = new Address()
+                {
+                    CreatedById = sysAdmin.CreatedById,
+                    CreatedDate = DateTime.Now,
+                    ApartmentNo = "",
+                    BuildingNo = "65",
+                    City = "Kielce",
+                    Street = "Wymyślna",
+                    PostalCode = "25-500",
+                    FullAdress = "Wymyślna 65, 25-500 Kielce"
+                };
+                context.Addresses.Add(address18);
+                Patient patient18 = new Patient()
+                {
+                    CreatedById = sysAdmin.CreatedById,
+                    CreatedDate = DateTime.Now.AddMinutes(-17),
+                    Address = address18,
+                    FirstName = "Jan",
+                    LastName = "Krawiec",
+                    Comments = "",
+                    DateOfBirth = new DateTime(2020, 7, 5),
+                    Pesel = "20270597116",
+                    PatientNumber = 10018,
+                    Sex = SexDictionary.Male,
+                    EmailAddress = "",
+                    PhoneNumber = "+48 123 456 789"
+                };
+                context.Patients.Add(patient18);
+
+                Address address19 = new Address()
+                {
+                    CreatedById = sysAdmin.CreatedById,
+                    CreatedDate = DateTime.Now,
+                    ApartmentNo = "",
+                    BuildingNo = "65",
+                    City = "Kielce",
+                    Street = "Wymyślna",
+                    PostalCode = "25-500",
+                    FullAdress = "Wymyślna 65, 25-500 Kielce"
+                };
+                context.Addresses.Add(address19);
+                Patient patient19 = new Patient()
+                {
+                    CreatedById = sysAdmin.CreatedById,
+                    CreatedDate = DateTime.Now.AddMinutes(-17),
+                    Address = address19,
+                    FirstName = "Anna",
+                    LastName = "Krawiec",
+                    Comments = "",
+                    DateOfBirth = new DateTime(2014, 7, 5),
+                    Pesel = "14270572688",
+                    PatientNumber = 10019,
+                    Sex = SexDictionary.Female,
+                    EmailAddress = "",
+                    PhoneNumber = "+48 123 456 789"
+                };
+                context.Patients.Add(patient19);
+
+                Address address20 = new Address()
+                {
+                    CreatedById = sysAdmin.CreatedById,
+                    CreatedDate = DateTime.Now,
+                    ApartmentNo = "",
+                    BuildingNo = "65",
+                    City = "Kielce",
+                    Street = "Wymyślna",
+                    PostalCode = "25-500",
+                    FullAdress = "Wymyślna 65, 25-500 Kielce"
+                };
+                context.Addresses.Add(address20);
+                Patient patient20 = new Patient()
+                {
+                    CreatedById = sysAdmin.CreatedById,
+                    CreatedDate = DateTime.Now.AddMinutes(-17),
+                    Address = address20,
+                    FirstName = "Marcin",
+                    LastName = "Krawiec",
+                    Comments = "",
+                    DateOfBirth = new DateTime(1970, 5, 5),
+                    Pesel = "70050574756",
+                    PatientNumber = 10020,
+                    Sex = SexDictionary.Male,
+                    EmailAddress = "marcinit@o2.pl",
+                    PhoneNumber = "+48 123 456 789"
+                };
+                context.Patients.Add(patient20);
 
                 Specialization specialization1 = context.Specializations.Where(x => x.Name == "Medycyna rodzinna").FirstOrDefault();
                 Specialization specialization2 = context.Specializations.Where(x => x.Name == "Stomatologia").FirstOrDefault();
@@ -1372,15 +1458,13 @@ namespace Calmedic.EntityFramework
                 };
                 context.AppUserRoles.Add(appUserRole8);
 
-
-
                 Visit visit1 = new Visit()
                 {
                     CreatedById = sysAdmin.CreatedById,
                     CreatedDate = DateTime.Now,
                     Clinic = clinic,
-                    DateFrom = DateTime.Today.AddHours(8),
-                    DateTo = DateTime.Today.AddHours(8).AddMinutes(30),
+                    DateFrom = DateTime.Today.AddHours(9),
+                    DateTo = DateTime.Today.AddHours(9).AddMinutes(30),
                     Doctor = doctor1,
                     Patient = patient1,
                     Description = "Od dwóch dni u pacjenta występują omdlenia po wysiłku fizycznym. Nie choruje przewlekle.",
@@ -1407,8 +1491,8 @@ namespace Calmedic.EntityFramework
                     CreatedById = sysAdmin.CreatedById,
                     CreatedDate = DateTime.Now,
                     Clinic = clinic,
-                    DateFrom = DateTime.Today.AddHours(8),
-                    DateTo = DateTime.Today.AddHours(8).AddMinutes(30),
+                    DateFrom = DateTime.Today.AddHours(10),
+                    DateTo = DateTime.Today.AddHours(10).AddMinutes(30),
                     Doctor = doctor3,
                     Patient = patient3,
                     Description = "",
@@ -1421,8 +1505,8 @@ namespace Calmedic.EntityFramework
                     CreatedById = sysAdmin.CreatedById,
                     CreatedDate = DateTime.Now,
                     Clinic = clinic,
-                    DateFrom = DateTime.Today.AddHours(8).AddMinutes(0),
-                    DateTo = DateTime.Today.AddHours(8).AddMinutes(30),
+                    DateFrom = DateTime.Today.AddHours(9).AddMinutes(15),
+                    DateTo = DateTime.Today.AddHours(9).AddMinutes(30),
                     Doctor = doctor4,
                     Patient = patient4,
                     Description = "U pacjenta od 3 dni występują ostre biegunki oraz wymiotowanie krwią. Pacjent cierpi na zapalenie jelita grubego.",
@@ -1436,21 +1520,21 @@ namespace Calmedic.EntityFramework
                     CreatedDate = DateTime.Now,
                     Clinic = clinic,
                     DateFrom = DateTime.Today.AddHours(8).AddMinutes(15),
-                    DateTo = DateTime.Today.AddHours(8).AddMinutes(30),
+                    DateTo = DateTime.Today.AddHours(9).AddMinutes(45),
                     Doctor = doctor5,
                     Patient = patient5,
                     Description = "Pacjent od kilku dni obserwuje zawroty głowy oraz ból w klatce piersiowej. Choruje na zaburzenia rytmu serca.",
                     Status = VisitStatus.Finished
                 };
-                context.Visits.Add(visit4);
+                context.Visits.Add(visit5);
 
                 Visit visit6 = new Visit()
                 {
                     CreatedById = sysAdmin.CreatedById,
                     CreatedDate = DateTime.Now,
                     Clinic = clinic,
-                    DateFrom = DateTime.Today.AddHours(8).AddMinutes(30),
-                    DateTo = DateTime.Today.AddHours(8).AddMinutes(45),
+                    DateFrom = DateTime.Today.AddHours(11).AddMinutes(30),
+                    DateTo = DateTime.Today.AddHours(12).AddMinutes(0),
                     Doctor = doctor6,
                     Patient = patient6,
                     Description = "",
@@ -1468,7 +1552,7 @@ namespace Calmedic.EntityFramework
                     Doctor = doctor7,
                     Patient = patient7,
                     Description = "",
-                    Status = VisitStatus.Canceled
+                    Status = VisitStatus.Finished
                 };
                 context.Visits.Add(visit7);
 
@@ -1491,12 +1575,12 @@ namespace Calmedic.EntityFramework
                     CreatedById = sysAdmin.CreatedById,
                     CreatedDate = DateTime.Now,
                     Clinic = clinic,
-                    DateFrom = DateTime.Today.AddHours(9).AddMinutes(30),
-                    DateTo = DateTime.Today.AddHours(9).AddMinutes(45),
+                    DateFrom = DateTime.Today.AddMonths(-6).AddHours(8).AddMinutes(0),
+                    DateTo = DateTime.Today.AddMonths(-6).AddHours(8).AddMinutes(30),
                     Doctor = doctor1,
                     Patient = patient3,
                     Description = "",
-                    Status = VisitStatus.Waiting
+                    Status = VisitStatus.Finished
                 };
                 context.Visits.Add(visit9);
 
@@ -1505,26 +1589,26 @@ namespace Calmedic.EntityFramework
                     CreatedById = sysAdmin.CreatedById,
                     CreatedDate = DateTime.Now,
                     Clinic = clinic,
-                    DateFrom = DateTime.Today.AddHours(9).AddMinutes(50),
-                    DateTo = DateTime.Today.AddHours(10).AddMinutes(20),
+                    DateFrom = DateTime.Today.AddMonths(-6).AddHours(8).AddMinutes(45),
+                    DateTo = DateTime.Today.AddMonths(-6).AddHours(9).AddMinutes(15),
                     Doctor = doctor1,
                     Patient = patient9,
                     Description = "Pacjent od dłuższego czasu obserwuje problemy z samopoczuciem oraz snem. Jednocześnie pacjent nie cierpi na żadne choroby przewlekłe.",
-                    Status = VisitStatus.Waiting
+                    Status = VisitStatus.Canceled
                 };
-                context.Visits.Add(visit9);
+                context.Visits.Add(visit10);
 
                 Visit visit11 = new Visit()
                 {
                     CreatedById = sysAdmin.CreatedById,
                     CreatedDate = DateTime.Now,
                     Clinic = clinic,
-                    DateFrom = DateTime.Today.AddHours(9).AddMinutes(50),
-                    DateTo = DateTime.Today.AddHours(10).AddMinutes(20),
+                    DateFrom = DateTime.Today.AddMonths(-5).AddHours(8).AddMinutes(0),
+                    DateTo = DateTime.Today.AddMonths(-5).AddHours(8).AddMinutes(15),
                     Doctor = doctor2,
                     Patient = patient10,
                     Description = "Od dwóch dni u pacjenta występują omdlenia po wysiłku fizycznym. Nie choruje przewlekle.",
-                    Status = VisitStatus.Waiting
+                    Status = VisitStatus.Finished
                 };
                 context.Visits.Add(visit11);
 
@@ -1533,12 +1617,12 @@ namespace Calmedic.EntityFramework
                     CreatedById = sysAdmin.CreatedById,
                     CreatedDate = DateTime.Now,
                     Clinic = clinic,
-                    DateFrom = DateTime.Today.AddHours(12).AddMinutes(20),
-                    DateTo = DateTime.Today.AddHours(12).AddMinutes(40),
+                    DateFrom = DateTime.Today.AddMonths(-5).AddHours(12).AddMinutes(20),
+                    DateTo = DateTime.Today.AddMonths(-5).AddHours(12).AddMinutes(40),
                     Doctor = doctor2,
                     Patient = patient10,
                     Description = "Pacjent od kilku dni obserwuje zawroty głowy oraz ból w klatce piersiowej. Choruje na zaburzenia rytmu serca.",
-                    Status = VisitStatus.Waiting
+                    Status = VisitStatus.Finished
                 };
                 context.Visits.Add(visit12);
 
@@ -1547,12 +1631,12 @@ namespace Calmedic.EntityFramework
                     CreatedById = sysAdmin.CreatedById,
                     CreatedDate = DateTime.Now,
                     Clinic = clinic,
-                    DateFrom = DateTime.Today.AddHours(12).AddMinutes(10),
-                    DateTo = DateTime.Today.AddHours(12).AddMinutes(40),
+                    DateFrom = DateTime.Today.AddMonths(-5).AddHours(12).AddMinutes(10),
+                    DateTo = DateTime.Today.AddMonths(-5).AddHours(12).AddMinutes(40),
                     Doctor = doctor3,
                     Patient = patient11,
                     Description = "",
-                    Status = VisitStatus.Canceled
+                    Status = VisitStatus.Finished
                 };
                 context.Visits.Add(visit13);
 
@@ -1561,12 +1645,12 @@ namespace Calmedic.EntityFramework
                     CreatedById = sysAdmin.CreatedById,
                     CreatedDate = DateTime.Now,
                     Clinic = clinic,
-                    DateFrom = DateTime.Today.AddHours(12).AddMinutes(50),
-                    DateTo = DateTime.Today.AddHours(13).AddMinutes(10),
+                    DateFrom = DateTime.Today.AddMonths(-4).AddHours(12).AddMinutes(50),
+                    DateTo = DateTime.Today.AddMonths(-4).AddHours(13).AddMinutes(10),
                     Doctor = doctor3,
                     Patient = patient12,
                     Description = "",
-                    Status = VisitStatus.Waiting
+                    Status = VisitStatus.Finished
                 };
                 context.Visits.Add(visit14);
 
@@ -1575,12 +1659,12 @@ namespace Calmedic.EntityFramework
                     CreatedById = sysAdmin.CreatedById,
                     CreatedDate = DateTime.Now,
                     Clinic = clinic,
-                    DateFrom = DateTime.Today.AddHours(10).AddMinutes(50),
-                    DateTo = DateTime.Today.AddHours(11).AddMinutes(10),
+                    DateFrom = DateTime.Today.AddMonths(-5).AddHours(10).AddMinutes(50),
+                    DateTo = DateTime.Today.AddMonths(-5).AddHours(11).AddMinutes(10),
                     Doctor = doctor4,
                     Patient = patient13,
                     Description = "Pacjent od dłuższego czasu obserwuje problemy z samopoczuciem oraz snem. Jednocześnie pacjent nie cierpi na żadne choroby przewlekłe.",
-                    Status = VisitStatus.Waiting
+                    Status = VisitStatus.Finished
                 };
                 context.Visits.Add(visit15);
 
@@ -1589,12 +1673,12 @@ namespace Calmedic.EntityFramework
                     CreatedById = sysAdmin.CreatedById,
                     CreatedDate = DateTime.Now,
                     Clinic = clinic,
-                    DateFrom = DateTime.Today.AddHours(11).AddMinutes(15),
-                    DateTo = DateTime.Today.AddHours(11).AddMinutes(45),
+                    DateFrom = DateTime.Today.AddMonths(-4).AddHours(11).AddMinutes(15),
+                    DateTo = DateTime.Today.AddMonths(-4).AddHours(11).AddMinutes(45),
                     Doctor = doctor4,
                     Patient = patient13,
                     Description = "U pacjenta od 3 dni występują ostre biegunki oraz wymiotowanie krwią. Pacjent cierpi na zapalenie jelita grubego.",
-                    Status = VisitStatus.Waiting
+                    Status = VisitStatus.Finished
                 };
                 context.Visits.Add(visit16);
 
@@ -1603,12 +1687,12 @@ namespace Calmedic.EntityFramework
                     CreatedById = sysAdmin.CreatedById,
                     CreatedDate = DateTime.Now,
                     Clinic = clinic,
-                    DateFrom = DateTime.Today.AddHours(11).AddMinutes(15),
-                    DateTo = DateTime.Today.AddHours(11).AddMinutes(45),
+                    DateFrom = DateTime.Today.AddMonths(-4).AddHours(11).AddMinutes(15),
+                    DateTo = DateTime.Today.AddMonths(-4).AddHours(11).AddMinutes(45),
                     Doctor = doctor5,
                     Patient = patient14,
                     Description = "U pacjenta od 3 dni występują ostre biegunki oraz wymiotowanie krwią. Pacjent cierpi na zapalenie jelita grubego.",
-                    Status = VisitStatus.Waiting
+                    Status = VisitStatus.Canceled
                 };
                 context.Visits.Add(visit17);
 
@@ -1617,8 +1701,8 @@ namespace Calmedic.EntityFramework
                     CreatedById = sysAdmin.CreatedById,
                     CreatedDate = DateTime.Now,
                     Clinic = clinic,
-                    DateFrom = DateTime.Today.AddHours(11).AddMinutes(45),
-                    DateTo = DateTime.Today.AddHours(12).AddMinutes(0),
+                    DateFrom = DateTime.Today.AddMonths(-3).AddHours(11).AddMinutes(45),
+                    DateTo = DateTime.Today.AddMonths(-3).AddHours(12).AddMinutes(0),
                     Doctor = doctor5,
                     Patient = patient15,
                     Description = "",
@@ -1631,12 +1715,12 @@ namespace Calmedic.EntityFramework
                     CreatedById = sysAdmin.CreatedById,
                     CreatedDate = DateTime.Now,
                     Clinic = clinic,
-                    DateFrom = DateTime.Today.AddHours(10).AddMinutes(45),
-                    DateTo = DateTime.Today.AddHours(11).AddMinutes(0),
+                    DateFrom = DateTime.Today.AddMonths(-3).AddHours(10).AddMinutes(45),
+                    DateTo = DateTime.Today.AddMonths(-3).AddHours(11).AddMinutes(0),
                     Doctor = doctor6,
                     Patient = patient16,
                     Description = "U pacjenta od kilku dni występuje ostry, kłujący ból brzucha po prawej stronie. Pacjent nie choruje przewlekle.",
-                    Status = VisitStatus.Waiting
+                    Status = VisitStatus.Finished
                 };
                 context.Visits.Add(visit19);
 
@@ -1645,12 +1729,12 @@ namespace Calmedic.EntityFramework
                     CreatedById = sysAdmin.CreatedById,
                     CreatedDate = DateTime.Now,
                     Clinic = clinic,
-                    DateFrom = DateTime.Today.AddHours(11).AddMinutes(15).AddDays(-1),
-                    DateTo = DateTime.Today.AddHours(11).AddMinutes(45).AddDays(-1),
+                    DateFrom = DateTime.Today.AddMonths(-3).AddHours(11).AddMinutes(15).AddDays(-1),
+                    DateTo = DateTime.Today.AddMonths(-3).AddHours(11).AddMinutes(45).AddDays(-1),
                     Doctor = doctor5,
                     Patient = patient1,
                     Description = "U pacjenta od 3 dni występują ostre biegunki oraz wymiotowanie krwią. Pacjent cierpi na zapalenie jelita grubego.",
-                    Status = VisitStatus.Finished
+                    Status = VisitStatus.Canceled
                 };
                 context.Visits.Add(visit20);
 
@@ -1659,8 +1743,8 @@ namespace Calmedic.EntityFramework
                     CreatedById = sysAdmin.CreatedById,
                     CreatedDate = DateTime.Now,
                     Clinic = clinic,
-                    DateFrom = DateTime.Today.AddHours(11).AddMinutes(45).AddDays(-1),
-                    DateTo = DateTime.Today.AddHours(12).AddMinutes(0).AddDays(-1),
+                    DateFrom = DateTime.Today.AddMonths(-7).AddHours(11).AddMinutes(45).AddDays(-1),
+                    DateTo = DateTime.Today.AddMonths(-7).AddHours(12).AddMinutes(0).AddDays(-1),
                     Doctor = doctor5,
                     Patient = patient12,
                     Description = "",
@@ -1673,8 +1757,8 @@ namespace Calmedic.EntityFramework
                     CreatedById = sysAdmin.CreatedById,
                     CreatedDate = DateTime.Now,
                     Clinic = clinic,
-                    DateFrom = DateTime.Today.AddHours(11).AddMinutes(45).AddDays(-1),
-                    DateTo = DateTime.Today.AddHours(12).AddMinutes(0).AddDays(-1),
+                    DateFrom = DateTime.Today.AddMonths(-3).AddHours(11).AddMinutes(45).AddDays(-1),
+                    DateTo = DateTime.Today.AddMonths(-3).AddHours(12).AddMinutes(0).AddDays(-1),
                     Doctor = doctor2,
                     Patient = patient12,
                     Description = "",
@@ -1687,8 +1771,8 @@ namespace Calmedic.EntityFramework
                     CreatedById = sysAdmin.CreatedById,
                     CreatedDate = DateTime.Now,
                     Clinic = clinic,
-                    DateFrom = DateTime.Today.AddHours(11).AddMinutes(45).AddDays(-1),
-                    DateTo = DateTime.Today.AddHours(12).AddMinutes(0).AddDays(-1),
+                    DateFrom = DateTime.Today.AddMonths(-7).AddHours(11).AddMinutes(45).AddDays(-1),
+                    DateTo = DateTime.Today.AddMonths(-7).AddHours(12).AddMinutes(0).AddDays(-1),
                     Doctor = doctor1,
                     Patient = patient12,
                     Description = "",
@@ -1701,8 +1785,8 @@ namespace Calmedic.EntityFramework
                     CreatedById = sysAdmin.CreatedById,
                     CreatedDate = DateTime.Now,
                     Clinic = clinic,
-                    DateFrom = DateTime.Today.AddHours(13).AddMinutes(45).AddDays(-1),
-                    DateTo = DateTime.Today.AddHours(14).AddMinutes(0).AddDays(-1),
+                    DateFrom = DateTime.Today.AddMonths(-7).AddHours(13).AddMinutes(45).AddDays(-1),
+                    DateTo = DateTime.Today.AddMonths(-7).AddHours(14).AddMinutes(0).AddDays(-1),
                     Doctor = doctor1,
                     Patient = patient14,
                     Description = "",
@@ -1715,8 +1799,8 @@ namespace Calmedic.EntityFramework
                     CreatedById = sysAdmin.CreatedById,
                     CreatedDate = DateTime.Now,
                     Clinic = clinic,
-                    DateFrom = DateTime.Today.AddHours(13).AddMinutes(45).AddDays(-1),
-                    DateTo = DateTime.Today.AddHours(14).AddMinutes(0).AddDays(-1),
+                    DateFrom = DateTime.Today.AddMonths(-3).AddHours(13).AddMinutes(45).AddDays(-1),
+                    DateTo = DateTime.Today.AddMonths(-3).AddHours(14).AddMinutes(0).AddDays(-1),
                     Doctor = doctor5,
                     Patient = patient17,
                     Description = "",
@@ -1729,12 +1813,12 @@ namespace Calmedic.EntityFramework
                     CreatedById = sysAdmin.CreatedById,
                     CreatedDate = DateTime.Now,
                     Clinic = clinic,
-                    DateFrom = DateTime.Today.AddHours(13).AddMinutes(45).AddDays(1),
-                    DateTo = DateTime.Today.AddHours(14).AddMinutes(0).AddDays(1),
+                    DateFrom = DateTime.Today.AddMonths(-7).AddHours(13).AddMinutes(45).AddDays(1),
+                    DateTo = DateTime.Today.AddMonths(-7).AddHours(14).AddMinutes(0).AddDays(1),
                     Doctor = doctor5,
                     Patient = patient16,
                     Description = "",
-                    Status = VisitStatus.Waiting
+                    Status = VisitStatus.Finished
                 };
                 context.Visits.Add(visit26);
 
@@ -1743,12 +1827,12 @@ namespace Calmedic.EntityFramework
                     CreatedById = sysAdmin.CreatedById,
                     CreatedDate = DateTime.Now,
                     Clinic = clinic,
-                    DateFrom = DateTime.Today.AddHours(11).AddMinutes(45).AddDays(1),
-                    DateTo = DateTime.Today.AddHours(12).AddMinutes(0).AddDays(1),
+                    DateFrom = DateTime.Today.AddMonths(-8).AddHours(11).AddMinutes(45).AddDays(1),
+                    DateTo = DateTime.Today.AddMonths(-8).AddHours(12).AddMinutes(0).AddDays(1),
                     Doctor = doctor5,
                     Patient = patient15,
                     Description = "",
-                    Status = VisitStatus.Waiting
+                    Status = VisitStatus.Finished
                 };
                 context.Visits.Add(visit27);
 
@@ -1757,12 +1841,12 @@ namespace Calmedic.EntityFramework
                     CreatedById = sysAdmin.CreatedById,
                     CreatedDate = DateTime.Now,
                     Clinic = clinic,
-                    DateFrom = DateTime.Today.AddHours(11).AddMinutes(45).AddDays(1),
-                    DateTo = DateTime.Today.AddHours(12).AddMinutes(0).AddDays(1),
+                    DateFrom = DateTime.Today.AddMonths(-2).AddHours(11).AddMinutes(45).AddDays(1),
+                    DateTo = DateTime.Today.AddMonths(-2).AddHours(12).AddMinutes(0).AddDays(1),
                     Doctor = doctor7,
                     Patient = patient2,
                     Description = "",
-                    Status = VisitStatus.Waiting
+                    Status = VisitStatus.Finished
                 };
                 context.Visits.Add(visit28);
 
@@ -1771,12 +1855,12 @@ namespace Calmedic.EntityFramework
                     CreatedById = sysAdmin.CreatedById,
                     CreatedDate = DateTime.Now,
                     Clinic = clinic,
-                    DateFrom = DateTime.Today.AddHours(10).AddMinutes(45).AddDays(1),
-                    DateTo = DateTime.Today.AddHours(11).AddMinutes(15).AddDays(1),
+                    DateFrom = DateTime.Today.AddMonths(-3).AddHours(10).AddMinutes(45).AddDays(1),
+                    DateTo = DateTime.Today.AddMonths(-3).AddHours(11).AddMinutes(15).AddDays(1),
                     Doctor = doctor7,
                     Patient = patient1,
                     Description = "",
-                    Status = VisitStatus.Waiting
+                    Status = VisitStatus.Finished
                 };
                 context.Visits.Add(visit29);
 
@@ -1785,14 +1869,230 @@ namespace Calmedic.EntityFramework
                     CreatedById = sysAdmin.CreatedById,
                     CreatedDate = DateTime.Now,
                     Clinic = clinic,
-                    DateFrom = DateTime.Today.AddHours(10).AddMinutes(45).AddDays(1),
-                    DateTo = DateTime.Today.AddHours(11).AddMinutes(15).AddDays(1),
+                    DateFrom = DateTime.Today.AddMonths(-2).AddHours(10).AddMinutes(45).AddDays(1),
+                    DateTo = DateTime.Today.AddMonths(-2).AddHours(11).AddMinutes(15).AddDays(1),
                     Doctor = doctor1,
                     Patient = patient7,
                     Description = "",
-                    Status = VisitStatus.Waiting
+                    Status = VisitStatus.Canceled
                 };
                 context.Visits.Add(visit30);
+
+                Visit visit31 = new Visit()
+                {
+                    CreatedById = sysAdmin.CreatedById,
+                    CreatedDate = DateTime.Now,
+                    Clinic = clinic,
+                    DateFrom = DateTime.Today.AddMonths(-2).AddHours(10).AddMinutes(45).AddDays(1),
+                    DateTo = DateTime.Today.AddMonths(-2).AddHours(11).AddMinutes(15).AddDays(1),
+                    Doctor = doctor2,
+                    Patient = patient5,
+                    Description = "",
+                    Status = VisitStatus.Finished
+                };
+                context.Visits.Add(visit31);
+
+                Visit visit32 = new Visit()
+                {
+                    CreatedById = sysAdmin.CreatedById,
+                    CreatedDate = DateTime.Now,
+                    Clinic = clinic,
+                    DateFrom = DateTime.Today.AddMonths(-2).AddHours(10).AddMinutes(45).AddDays(1),
+                    DateTo = DateTime.Today.AddMonths(-2).AddHours(11).AddMinutes(15).AddDays(1),
+                    Doctor = doctor3,
+                    Patient = patient4,
+                    Description = "",
+                    Status = VisitStatus.Finished
+                };
+                context.Visits.Add(visit32);
+
+                Visit visit33 = new Visit()
+                {
+                    CreatedById = sysAdmin.CreatedById,
+                    CreatedDate = DateTime.Now,
+                    Clinic = clinic,
+                    DateFrom = DateTime.Today.AddMonths(-2).AddHours(10).AddMinutes(45).AddDays(1),
+                    DateTo = DateTime.Today.AddMonths(-2).AddHours(11).AddMinutes(15).AddDays(1),
+                    Doctor = doctor3,
+                    Patient = patient19,
+                    Description = "",
+                    Status = VisitStatus.Finished
+                };
+                context.Visits.Add(visit33);
+
+                Visit visit34 = new Visit()
+                {
+                    CreatedById = sysAdmin.CreatedById,
+                    CreatedDate = DateTime.Now,
+                    Clinic = clinic,
+                    DateFrom = DateTime.Today.AddMonths(-1).AddHours(10).AddMinutes(45).AddDays(1),
+                    DateTo = DateTime.Today.AddMonths(-1).AddHours(11).AddMinutes(15).AddDays(1),
+                    Doctor = doctor5,
+                    Patient = patient19,
+                    Description = "",
+                    Status = VisitStatus.Finished
+                };
+                context.Visits.Add(visit34);
+
+                Visit visit35 = new Visit()
+                {
+                    CreatedById = sysAdmin.CreatedById,
+                    CreatedDate = DateTime.Now,
+                    Clinic = clinic,
+                    DateFrom = DateTime.Today.AddMonths(-1).AddHours(10).AddMinutes(45).AddDays(2),
+                    DateTo = DateTime.Today.AddMonths(-1).AddHours(11).AddMinutes(15).AddDays(2),
+                    Doctor = doctor2,
+                    Patient = patient20,
+                    Description = "",
+                    Status = VisitStatus.Finished
+                };
+                context.Visits.Add(visit35);
+
+                Visit visit36 = new Visit()
+                {
+                    CreatedById = sysAdmin.CreatedById,
+                    CreatedDate = DateTime.Now,
+                    Clinic = clinic,
+                    DateFrom = DateTime.Today.AddMonths(-1).AddHours(10).AddMinutes(45).AddDays(2),
+                    DateTo = DateTime.Today.AddMonths(-1).AddHours(11).AddMinutes(15).AddDays(2),
+                    Doctor = doctor7,
+                    Patient = patient18,
+                    Description = "",
+                    Status = VisitStatus.Finished
+                };
+                context.Visits.Add(visit36);
+
+                Visit visit37 = new Visit()
+                {
+                    CreatedById = sysAdmin.CreatedById,
+                    CreatedDate = DateTime.Now,
+                    Clinic = clinic,
+                    DateFrom = DateTime.Today.AddMonths(-1).AddHours(12).AddMinutes(45).AddDays(2),
+                    DateTo = DateTime.Today.AddMonths(-1).AddHours(13).AddMinutes(15).AddDays(2),
+                    Doctor = doctor7,
+                    Patient = patient17,
+                    Description = "",
+                    Status = VisitStatus.Finished
+                };
+                context.Visits.Add(visit37);
+
+                Visit visit38 = new Visit()
+                {
+                    CreatedById = sysAdmin.CreatedById,
+                    CreatedDate = DateTime.Now,
+                    Clinic = clinic,
+                    DateFrom = DateTime.Today.AddMonths(-1).AddHours(14).AddMinutes(45).AddDays(2),
+                    DateTo = DateTime.Today.AddMonths(-1).AddHours(15).AddMinutes(15).AddDays(2),
+                    Doctor = doctor6,
+                    Patient = patient20,
+                    Description = "",
+                    Status = VisitStatus.Finished
+                };
+                context.Visits.Add(visit38);
+
+                Visit visit39 = new Visit()
+                {
+                    CreatedById = sysAdmin.CreatedById,
+                    CreatedDate = DateTime.Now,
+                    Clinic = clinic,
+                    DateFrom = DateTime.Today.AddMonths(-1).AddHours(14).AddMinutes(45),
+                    DateTo = DateTime.Today.AddMonths(-1).AddHours(15).AddMinutes(15),
+                    Doctor = doctor1,
+                    Patient = patient18,
+                    Description = "",
+                    Status = VisitStatus.Finished
+                };
+                context.Visits.Add(visit39);
+
+                Visit visit40 = new Visit()
+                {
+                    CreatedById = sysAdmin.CreatedById,
+                    CreatedDate = DateTime.Now,
+                    Clinic = clinic,
+                    DateFrom = DateTime.Today.AddMonths(-1).AddHours(8).AddMinutes(45),
+                    DateTo = DateTime.Today.AddMonths(-1).AddHours(9).AddMinutes(30),
+                    Doctor = doctor2,
+                    Patient = patient16,
+                    Description = "",
+                    Status = VisitStatus.Finished
+                };
+                context.Visits.Add(visit40);
+
+                File file1 = new File()
+                {
+                    CreatedById = sysAdmin.CreatedById,
+                    CreatedDate = DateTime.Now,
+                    Clinic = clinic,
+                    ContentType = "image/png",
+                    Duration = null,
+                    Name = "plakat.png",
+                    OriginalName = "plakat.png",
+                    ThumbName = ""
+                };
+                context.Files.Add(file1);
+
+                File file2 = new File()
+                {
+                    CreatedById = sysAdmin.CreatedById,
+                    CreatedDate = DateTime.Now,
+                    Clinic = clinic,
+                    ContentType = "video/mp4",
+                    Duration = 30,
+                    Name = "reklama.mp4",
+                    OriginalName = "reklama.mp4",
+                    ThumbName = "thumb_reklama.png"
+                };
+                context.Files.Add(file2);
+
+                DisplaySequence displaySequence1 = new DisplaySequence()
+                {
+                    CreatedById = sysAdmin.CreatedById,
+                    CreatedDate = DateTime.Now,
+                    Clinic = clinic,
+                    Description = "",
+                    DisplayTime = 10,
+                    MediaType = MediaType.VisitGraphics,
+                    Order = 1
+                };
+                context.DisplaySequences.Add(displaySequence1);
+
+                DisplaySequence displaySequence2 = new DisplaySequence()
+                {
+                    CreatedById = sysAdmin.CreatedById,
+                    CreatedDate = DateTime.Now,
+                    Clinic = clinic,
+                    Description = "Kampania reklamowa dla zdrowia.",
+                    DisplayTime = 10,
+                    MediaType = MediaType.Image,
+                    File = file1,
+                    Order = 2
+                };
+                context.DisplaySequences.Add(displaySequence2);
+
+                DisplaySequence displaySequence3 = new DisplaySequence()
+                {
+                    CreatedById = sysAdmin.CreatedById,
+                    CreatedDate = DateTime.Now,
+                    Clinic = clinic,
+                    Description = "",
+                    DisplayTime = 10,
+                    MediaType = MediaType.VisitGraphics,
+                    Order = 3
+                };
+                context.DisplaySequences.Add(displaySequence3);
+
+                DisplaySequence displaySequence4 = new DisplaySequence()
+                {
+                    CreatedById = sysAdmin.CreatedById,
+                    CreatedDate = DateTime.Now,
+                    Clinic = clinic,
+                    Description = "Reklama suplementu diety.",
+                    DisplayTime = 30,
+                    MediaType = MediaType.Video,
+                    File = file2,
+                    Order = 4
+                };
+                context.DisplaySequences.Add(displaySequence4);
             }
             context.SaveChanges();
         }

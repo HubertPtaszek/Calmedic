@@ -169,6 +169,15 @@ namespace Calmedic.Resources.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Uwagi.
+        /// </summary>
+        public static string Comments {
+            get {
+                return ResourceManager.GetString("Comments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Potwierdź hasło.
         /// </summary>
         public static string ConfirmedPassword {
@@ -259,6 +268,15 @@ namespace Calmedic.Resources.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Data urodzenia.
+        /// </summary>
+        public static string DateOfBirth {
+            get {
+                return ResourceManager.GetString("DateOfBirth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Data do.
         /// </summary>
         public static string DateTo {
@@ -300,6 +318,15 @@ namespace Calmedic.Resources.Shared {
         public static string Details {
             get {
                 return ResourceManager.GetString("Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Czas wyświetlania [s].
+        /// </summary>
+        public static string DisplayTime {
+            get {
+                return ResourceManager.GetString("DisplayTime", resourceCulture);
             }
         }
         
@@ -363,6 +390,15 @@ namespace Calmedic.Resources.Shared {
         public static string FirstName {
             get {
                 return ResourceManager.GetString("FirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Od.
+        /// </summary>
+        public static string From {
+            get {
+                return ResourceManager.GetString("From", resourceCulture);
             }
         }
         
@@ -466,6 +502,24 @@ namespace Calmedic.Resources.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Typ.
+        /// </summary>
+        public static string MediaType {
+            get {
+                return ResourceManager.GetString("MediaType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minut.
+        /// </summary>
+        public static string Minutes {
+            get {
+                return ResourceManager.GetString("Minutes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Zmodyfikowane przez.
         /// </summary>
         public static string ModifiedBy {
@@ -498,6 +552,15 @@ namespace Calmedic.Resources.Shared {
         public static string More {
             get {
                 return ResourceManager.GetString("More", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Multimedia.
+        /// </summary>
+        public static string Multimedia {
+            get {
+                return ResourceManager.GetString("Multimedia", resourceCulture);
             }
         }
         
@@ -619,11 +682,29 @@ namespace Calmedic.Resources.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Numer pacjenta.
+        /// </summary>
+        public static string PatientNumber {
+            get {
+                return ResourceManager.GetString("PatientNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Użytkownik.
         /// </summary>
         public static string Person {
             get {
                 return ResourceManager.GetString("Person", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pesel.
+        /// </summary>
+        public static string Pesel {
+            get {
+                return ResourceManager.GetString("Pesel", resourceCulture);
             }
         }
         
@@ -745,6 +826,15 @@ namespace Calmedic.Resources.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Płeć.
+        /// </summary>
+        public static string Sex {
+            get {
+                return ResourceManager.GetString("Sex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sygnatura.
         /// </summary>
         public static string Signature {
@@ -840,6 +930,15 @@ namespace Calmedic.Resources.Shared {
         public static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do.
+        /// </summary>
+        public static string To {
+            get {
+                return ResourceManager.GetString("To", resourceCulture);
             }
         }
         

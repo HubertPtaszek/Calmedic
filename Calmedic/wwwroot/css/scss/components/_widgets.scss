@@ -50,9 +50,15 @@
     padding: 0 $space-size;
     display: flex;
 
+    &-a {
+        color: $secondary-text-color !important;
+    }
+
     &-data {
         margin: auto 0 auto $space-size-2;
         text-align: left;
+        display: flex;
+        flex-direction: column;
 
         &-name {
             font-weight: 600;

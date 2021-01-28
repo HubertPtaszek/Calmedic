@@ -34,6 +34,7 @@ namespace Calmedic.Application
             int patientNumber = GenerateNewPatientNumber();
             Patient patient = PatientConverter.FromPatientAddVM(model, patientNumber);
             PatientRepository.Add(patient);
+            PatientRepository.Save();
             return patient.Id;
         }
 

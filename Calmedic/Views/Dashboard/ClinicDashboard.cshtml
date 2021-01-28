@@ -11,7 +11,7 @@
             </div>
             <hr />
             <div class="wrapper-inner wrapper-inner-dashboard">
-                @await Component.InvokeAsync("DoctorReport")
+                @await Component.InvokeAsync("DoctorReport", Model.DoctorReport)
                 @await Component.InvokeAsync("PatientReport")
                 @await Component.InvokeAsync("VisitReport")
             </div>
@@ -29,7 +29,7 @@
                         foreach (VisitsWidgetVM item in Model.VisitsWidget)
                         {
                             <div class="col-xs-12 visits-widget">
-                                <div class="visits-widget-avatar">
+                                <div class="visits-widget-avatar" style="background: @(item.Color.ToHtmlStringSafe());">
                                     <span>@item.FirstLetter</span>
                                 </div>
                                 <div class="visits-widget-data">
@@ -48,7 +48,7 @@
                     {
                         <div class="row">
                             <div class="col-xs-12 wrapper-inner-widget-no-data">
-                                <span>@SharedResource.NoData.ToHtmlStringSafe()</span>
+                                <span>@UtilsResource.NoCommingVisits.ToHtmlStringSafe()</span>
                             </div>
                         </div>
                     }
@@ -67,15 +67,17 @@
                             foreach (PatientsWidgetVM item in Model.PatientsWidget)
                             {
                                 <div class="col-xs-6">
-                                    <div class="patients-widget">
-                                        <div class="patients-widget-avatar">
-                                            <span>@item.FirstLetter</span>
+                                    <a class="patients-widget-a" href="@Url.Action("Details", "Patient", new { area = AreaNames.Evidence_Area, id = item.Id})">
+                                        <div class="patients-widget">
+                                            <div class="patients-widget-avatar" style="background: @(item.Color.ToHtmlStringSafe());">
+                                                <span>@item.FirstLetter</span>
+                                            </div>
+                                            <div class="patients-widget-data">
+                                                <span class="patients-widget-data-name">@item.Name.ToHtmlStringSafe()</span>
+                                                <span class="patients-widget-data-number">@item.PatientNumber</span>
+                                            </div>
                                         </div>
-                                        <div class="patients-widget-data">
-                                            <span class="patients-widget-data-name">@item.Name.ToHtmlStringSafe()</span>
-                                            <span class="patients-widget-data-number">@item.PatientNumber</span>
-                                        </div>
-                                    </div>
+                                    </a>
                                 </div>
                             }
                         }

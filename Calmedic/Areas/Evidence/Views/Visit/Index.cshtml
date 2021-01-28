@@ -10,6 +10,337 @@
     </ol>
 </nav>
 
-<div class="page-header">
-    <h4 class="page-header-title" aria-current="page">Lista oddziałów (<span id="totalCountId">0</span>)</h4>
+<div class="wrapper">
+    <div class="wrapper-header d-flex middle between">
+        <h4 class="wrapper-header-title">@UtilsResource.Visits.ToHtmlStringSafe()</h4>
+        <div>
+            <div id="addBtnId"></div>
+        </div>
+    </div>
+    <hr />
+    <div class="wrapper-inner">
+        <div id="visitSchedulerId"></div>
+    </div>
 </div>
+
+<div style="display: none">
+    <ul class="legend-list legend-list-visits" id="legendContainerId">
+        <li class="legend-list-el legend-list-el-visits"><div class="legend-list-color legend-list-color-visits" style="background: #1E90FF;"></div><span style="color: #1E90FF;">Oczekująca</span></li>
+        <li class="legend-list-el legend-list-el-visits"><div class="legend-list-color legend-list-color-visits" style="background: #FF8817;"></div><span style="color: #FF8817;">Opóźniona</span></li>
+        <li class="legend-list-el legend-list-el-visits"><div class="legend-list-color legend-list-color-visits" style="background: #AE7FCC;"></div><span style="color: #AE7FCC;">W trakcie</span></li>
+        <li class="legend-list-el legend-list-el-visits"><div class="legend-list-color legend-list-color-visits" style="background: #E18E92;"></div><span style="color: #E18E92;">Odwołana</span></li>
+        <li class="legend-list-el legend-list-el-visits"><div class="legend-list-color legend-list-color-visits" style="background: #56CA85;"></div><span style="color: #56CA85;">Zakończona</span></li>
+    </ul>
+
+    <div id="addPopupInterlanId">
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="form-group form-group-horizontal row">
+                    <label class="col-xs-3">@UtilsResource.Doctor.ToHtmlStringSafe()</label>
+                    <div class="col-xs-9" id="doctorBoxId"></div>
+                </div>
+                <div class="form-group form-group-horizontal row">
+                    <label class="col-xs-3">@SharedResource.From.ToHtmlStringSafe()</label>
+                    <div class="col-xs-9" id="fromBoxId"></div>
+                </div>
+                <div class="form-group form-group-horizontal row">
+                    <label class="col-xs-3">@SharedResource.Description.ToHtmlStringSafe()</label>
+                    <div class="col-xs-9" id="descriptionAreaId"></div>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group form-group-horizontal row">
+                    <label class="col-xs-3">@UtilsResource.Patient.ToHtmlStringSafe()</label>
+                    <div class="col-xs-9" id="patientBoxId"></div>
+                </div>
+                <div class="form-group form-group-horizontal row">
+                    <label class="col-xs-3">@SharedResource.To.ToHtmlStringSafe()</label>
+                    <div class="col-xs-9" id="toBoxId"></div>
+                </div>
+                <div class="form-group form-group-horizontal row">
+                    <label class="col-xs-3">@UtilsResource.Status.ToHtmlStringSafe()</label>
+                    <div class="col-xs-9" id="statusBoxId"></div>
+                </div>
+            </div>
+        </div>
+        <div class="popup-footer d-flex justify-content-end mt-2">
+            <div id="saveBtnId"></div>
+            <div id="cancelBtnId" class="ml-1"></div>
+        </div>
+    </div>
+</div>
+<div id="addPopupId"></div>
+
+
+<script>
+    $(document).ready(function () {
+        $("#addBtnId").dxButton({
+            elementAttr: { class: "btn btn-default" },
+            height: 32,
+            onClick: function () {
+                $("#addPopupId").dxPopup("instance").show();
+            },
+            text: "@ButtonNameResource.Add.ToScriptStringSafe()",
+            type: "default"
+        });
+
+        $("#saveBtnId").dxButton({
+            elementAttr: { class: "btn btn-default" },
+            height: 32,
+            onClick: function () {
+                $("#loadPanelId").dxLoadPanel("show");
+                $("#addPopupId").dxPopup("instance").hide();
+                $.ajax({
+                    type: "post",
+                    url: '@Url.Action("Add", "Visit")',
+                    dataType: "json",
+                    data: [],
+                    success: function () {
+                        $("#visitSchedulerId").dxScheduler("instance").getDataSource().reload().done(function () {
+                            $("#visitSchedulerId").dxScheduler("instance").repaint();
+                            $("#loadPanelId").dxLoadPanel("hide");
+                        });
+                    }
+                });
+            },
+            text: "@ButtonNameResource.Save.ToScriptStringSafe()",
+            type: "default"
+         });
+
+        $("#cancelBtnId").dxButton({
+            elementAttr: { class: "btn btn-normal" },
+            height: 32,
+            onClick: function () {
+                $("#addPopupId").dxPopup("instance").hide();
+            },
+            text: "@ButtonNameResource.Cancel.ToScriptStringSafe()",
+            type: "normal"
+        });
+
+        $("#addPopupId").dxPopup({
+            visible: false,
+            title: "@UtilsResource.Visit_Add.ToScriptStringSafe()",
+            width: "700px",
+            height: "auto",
+            dragEnabled: false,
+            position: { my: 'bottom', at: 'center', of: window },
+            contentTemplate: function (container) {
+                container.append($("#addPopupInterlanId"));
+            }
+        });
+
+        $("#doctorBoxId").dxLookup({
+            dataSource: doctorStore,
+            displayExpr: "Name",
+            name: "DoctorId",
+            placeholder: "@SharedResource.Select.ToScriptStringSafe()",
+            searchEnabled: true,
+            searchExpr: "Name",
+            selectionMode: "single",
+            showSelectionControls: false,
+            showPopupTitle: false,
+            width: "100%",
+            valueExpr: "Id"
+        });
+
+        $("#patientBoxId").dxLookup({
+            dataSource: patientStore,
+            displayExpr: "Name",
+            name: "PatientId",
+            placeholder: "@SharedResource.Select.ToScriptStringSafe()",
+            searchEnabled: true,
+            searchExpr: "Name",
+            selectionMode: "single",
+            showSelectionControls: false,
+            showPopupTitle: false,
+            width: "100%",
+            valueExpr: "Id"
+        })
+
+        $("#fromBoxId").dxDateBox({
+            name: "From",
+            type: "datetime",
+            readOnly: false,
+            width: "100%",
+        });
+
+        $("#descriptionAreaId").dxTextArea({
+            height: "auto",
+            minHeight: "75px",
+            name: "Description",
+            readOnly: false,
+            width: "100%"
+        });
+
+        $("#toBoxId").dxDateBox({
+            name: "From",
+            type: "datetime",
+            readOnly: false,
+            width: "100%"
+        });
+
+        $("#statusBoxId").dxSelectBox({
+            items: @Html.Raw(Model.VisitStatuses.ToJson()),
+            displayExpr: "Text",
+            name: "Status",
+            placeholder: "",
+            readOnly: false,
+            width: "100%",
+            valueExpr: "Value"
+        });
+    });
+
+    var doctorStore = [{
+        Id: 1,
+        FirstName: "Marek",
+        LastName: "Pryliński",
+        Name: "Marek Pryliński",
+        Description: "Stomatolog",
+        Avatar: "1.png"
+    }, {
+        Id: 2,
+        FirstName: "Jakub",
+        LastName: "Panek",
+        Name: "Jakub Panek",
+        Description: "Okulista",
+        Avatar: "2.png"
+    }, {
+        Id: 3,
+        FirstName: "Łukasz",
+        LastName: "Biernat",
+        Name: "Łukasz Biernat",
+        Description: "Ginekolog",
+        Avatar: "3.png"
+    }, {
+        Id: 4,
+        FirstName: "Marlena",
+        LastName: "Długosz-Ptak",
+        Name: "Marlena Długosz-Ptak",
+        Description: "Pediatra",
+        Avatar: "4.png"
+    }, {
+        Id: 5,
+        FirstName: "Mariola",
+        LastName: "Partya",
+        Name: "Mariola Partya",
+        Description: "Stomatolog",
+        Avatar: "5.png"
+        }];
+
+    var patientStore = [{
+        Id: 1,
+        Name: "Teresa Krzak"
+    }, {
+        Id: 2,
+        Name: "Karolina Kowalczyk"
+    }, {
+        Id: 3,
+            Name: "Aleksandra Zawadzka"
+    }, {
+        Id: 4,
+            Name: "Mariola Worek"
+    }, {
+        Id: 5,
+            Name: "Wojciech Celjor"
+        }, {
+            Id: 6,
+            Name: "Bartosz Murarz"
+        }
+        , {
+            Id: 7,
+            Name: "Karol Kowalski"
+        }
+        , {
+            Id: 8,
+            Name: "Jarosław Kowalski"
+        }];
+
+    $(document).ready(function () {
+
+        var store = DevExpress.data.AspNet.createStore({
+            key: 'Id',
+            loadUrl: '@Url.Action("GetData", "Visit")',
+        });
+
+        var scheduler = $("#visitSchedulerId").dxScheduler({
+            dataSource: new DevExpress.data.DataSource({
+                store: store,
+            }),
+            views: ["timelineDay"],
+            currentView: "timelineDay",
+            elementAttr: { "class": "visit-scheduler" },
+            firstDayOfWeek: 0,
+            startDayHour: 6,
+            endDayHour: 18,
+            cellDuration: 15,
+            groups: ["DoctorId"],
+            showCurrentTimeIndicator: true,
+            shadeUntilCurrentTime: true,
+            currentDate: new Date(),
+            height: "auto",
+            startDateExpr: "StartDate",
+            endDateExpr: "EndDate",
+            resources: [
+                {
+                    fieldExpr: "DoctorId",
+                    allowMultiple: false,
+                    dataSource: new DevExpress.data.DataSource({
+                        store: doctorStore,
+                    }),
+                    label: "@UtilsResource.Doctors.ToScriptStringSafe()",
+                    useColorAsDefault: false,
+                    valueExpr: "Id",
+                }
+            ],
+            resourceCellTemplate: function (cellData) {
+                var avatarUrl = "/images/DefaultAvatar.png";
+                var avatar = cellData.data.Avatar;
+                if (avatar != null)
+                    avatarUrl = "../images/avatars/" + avatar;
+
+                var fullName = cellData.data.FirstName + " " + cellData.data.LastName;
+                var avatar = $("<div>")
+                    .addClass("visit-scheduler-avatar")
+                    .html("<img src=" + avatarUrl + ">")
+                    .attr("title", fullName);
+                var name = $("<div>")
+                    .addClass("visit-scheduler-text")
+                    .append($("<h5>")
+                        .text(fullName))
+                    .append($("<p>").css("color", "gray")
+                        .text(cellData.data.Description));
+                return $("<div>").css({ "display": "flex", "align-items": "center", "padding": "10px 5px"}).append([avatar, name]);
+            },
+            editing: {
+                allowAdding: true,
+                allowDeleting: true,
+                allowDragging: true,
+                allowResizing: true,
+                allowUpdating: true,
+                mode: "popup"
+            },
+            appointmentTemplate: function (data, index, element) {
+                $(element).parent().css("background", data.appointmentData.StatusColor);
+                return $("<div class='visit-scheduler-item'>" +
+                    "<div class='visit-scheduler-item-container'>" +
+                    "<div class='visit-scheduler-item-title'>" + data.appointmentData.PatientNumber + "</div>" +
+                    "<div class='visit-scheduler-item-text'>" + data.appointmentData.DurationInMinutes + " @SharedResource.Minutes.ToScriptStringSafe()" +"</div>" +
+                    "</div>" +
+                    "</div>");
+            },
+            onOptionChanged: function(e) {
+                if (e.name == "currentDate")
+                    currentDate = e.value;
+            },
+            onContentReady: function (e) {
+                e.component.scrollToTime((new Date().getHours() - 3), 0);;
+                var btnContainer = $("<div id='btnContainer' class='end-xs' style='height: 100%; display: flex;'></div>");
+                var container = $("<div style='display: flex; justify-content: space-between'></div>");
+                $("#legendContainerId").clone().appendTo(container);
+                container.appendTo(btnContainer)
+                if (e.element.find("#btnContainer").length == 0)
+                    btnContainer.appendTo(e.element.find(".dx-scheduler-header"));
+            },
+        }).dxScheduler("instance");
+    });
+</script>

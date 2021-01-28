@@ -21,12 +21,34 @@ namespace Calmedic.Utils
         public const string LogFormat = "{0} {1,-30} {2,-25} - {3}";
     }
 
+    public class Colors
+    {
+        public static string[] Values = {
+         "#26474E",
+         "#F27348",
+         "#37667E",
+         "#C54B6C",
+         "#218B82",
+         "#8DA47E",
+         "#AF8C72S",
+         "#40393E",
+         "#CD5C5C",
+         "#679EC5",
+        };
+
+        public static string GetRandomColor(string firstLetter)
+        {
+            int code = firstLetter.ToUpper().ToCharArray()[0] > 100 ? 0 : (firstLetter.ToUpper().ToCharArray()[0] % 10);
+            string color = Values[code];
+            return color;
+        }
+    }
+
     public static class DisplayFormats
     {
         public const string PercentValue = "{0} %";
         public const string Decimal92 = "N2";
         public const string DaysValue = "{0} dni";
-        public const string DolarValue = "{0}$";
         public const string DaysLeft = "0 days left";
 
         public static string ToDecimal92(this decimal? number)
@@ -35,6 +57,7 @@ namespace Calmedic.Utils
                 return number.Value.ToString(Decimal92);
             return string.Empty;
         }
+
         public static string ToDecimal92(this decimal number, string format = "")
         {
             if (format == string.Empty)
@@ -46,6 +69,7 @@ namespace Calmedic.Utils
     }
 
     #region DateTimeFormats
+
     public static class DateTimeFormats
     {
         public const string DateFormat = "dd.MM.yyyy";
@@ -87,6 +111,7 @@ namespace Calmedic.Utils
                 return date.ToString(ShortTimeFormat);
             return string.Empty;
         }
+
         public static string ToDateTimeStringSafe(this DateTime? date)
         {
             if (date.HasValue)
@@ -136,24 +161,28 @@ namespace Calmedic.Utils
                 return date.Value.ToString(IsoDateTimeFormat);
             return string.Empty;
         }
+
         public static string ToFileDateStringSafe(this DateTime? date)
         {
             if (date != null)
                 return date.Value.ToString(FileDateFormat);
             return string.Empty;
         }
+
         public static string ToFileDateTimeStringSafe(this DateTime? date)
         {
             if (date != null)
                 return date.Value.ToString(FileDateTimeFormat);
             return string.Empty;
         }
+
         public static string ToDashboardDateTimeStringSafe(this DateTime date)
         {
             if (date != null)
                 return date.ToString(DashboardDateTimeFormat);
             return string.Empty;
         }
+
         public static string ToDashboardDateTimeStringSafe(this DateTime? date)
         {
             if (date.HasValue)
@@ -190,5 +219,6 @@ namespace Calmedic.Utils
             return date.ToString(defaultFormat);
         }
     }
-    #endregion
+
+    #endregion DateTimeFormats
 }

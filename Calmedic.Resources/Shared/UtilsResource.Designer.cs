@@ -169,6 +169,15 @@ namespace Calmedic.Resources.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lekarz.
+        /// </summary>
+        public static string Doctor {
+            get {
+                return ResourceManager.GetString("Doctor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Najpopularniejsi lekarze.
         /// </summary>
         public static string DoctorReport_Title {
@@ -196,11 +205,56 @@ namespace Calmedic.Resources.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dodawanie pliku.
+        /// </summary>
+        public static string Gallery_Add {
+            get {
+                return ResourceManager.GetString("Gallery_Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Strona domowa.
         /// </summary>
         public static string Home {
             get {
                 return ResourceManager.GetString("Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Brak nadchodzących wizyt.
+        /// </summary>
+        public static string NoCommingVisits {
+            get {
+                return ResourceManager.GetString("NoCommingVisits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pacjent.
+        /// </summary>
+        public static string Patient {
+            get {
+                return ResourceManager.GetString("Patient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nowy pacjent.
+        /// </summary>
+        public static string Patient_Add {
+            get {
+                return ResourceManager.GetString("Patient_Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Szczegóły pacjenta.
+        /// </summary>
+        public static string Patient_Details {
+            get {
+                return ResourceManager.GetString("Patient_Details", resourceCulture);
             }
         }
         
@@ -255,6 +309,42 @@ namespace Calmedic.Resources.Shared {
         public static string Roles {
             get {
                 return ResourceManager.GetString("Roles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kolejność wyświetlania.
+        /// </summary>
+        public static string SequenceOrder {
+            get {
+                return ResourceManager.GetString("SequenceOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ustaw wyżej.
+        /// </summary>
+        public static string SetHigher {
+            get {
+                return ResourceManager.GetString("SetHigher", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ustaw niżej.
+        /// </summary>
+        public static string SetLower {
+            get {
+                return ResourceManager.GetString("SetLower", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status.
+        /// </summary>
+        public static string Status {
+            get {
+                return ResourceManager.GetString("Status", resourceCulture);
             }
         }
         
@@ -327,6 +417,15 @@ namespace Calmedic.Resources.Shared {
         public static string Users {
             get {
                 return ResourceManager.GetString("Users", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nowa wizyta.
+        /// </summary>
+        public static string Visit_Add {
+            get {
+                return ResourceManager.GetString("Visit_Add", resourceCulture);
             }
         }
         

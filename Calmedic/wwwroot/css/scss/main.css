@@ -6039,7 +6039,8 @@ div.dx-tabpanel .dx-tab {
     margin-top: 0;
     border-radius: 4px;
     overflow: hidden;
-    flex-shrink: 0; }
+    flex-shrink: 0;
+    border-radius: 100%; }
     .visit-scheduler-avatar img {
       height: 100%;
       width: 100%; }
@@ -6083,10 +6084,12 @@ div.dx-tabpanel .dx-tab {
     .visit-scheduler-item-container {
       margin-left: 5px; }
     .visit-scheduler-item-title {
-      font-size: 10px !important; }
+      font-size: 12px !important;
+      font-weight: 500;
+      color: #FFFFFF; }
     .visit-scheduler-item-text {
       font-size: 10px !important;
-      color: rgba(0, 0, 0, 0.5); }
+      color: #FFFFFF; }
 
 div.dx-dropdownlist-popup-wrapper div.dx-item.dx-list-item {
   width: 100% !important; }
@@ -6263,9 +6266,13 @@ div.dx-dropdowneditor-icon {
   margin: 0.5rem 0;
   padding: 0 8px;
   display: flex; }
+  .patients-widget-a {
+    color: #8CA4CF !important; }
   .patients-widget-data {
     margin: auto 0 auto 16px;
-    text-align: left; }
+    text-align: left;
+    display: flex;
+    flex-direction: column; }
     .patients-widget-data-name {
       font-weight: 600;
       color: #2D3F5E; }
@@ -6353,17 +6360,17 @@ div.dx-dropdowneditor-icon {
     display: block;
     margin-right: 8px; }
     .legend-list-color-visits {
-      width: 15px;
-      height: 15px; }
+      width: 10px;
+      height: 10px;
+      border-radius: 100%; }
   .legend-list-el {
     list-style: none;
     color: white;
     display: flex;
     align-items: center;
-    margin-right: 32px; }
+    margin-right: 16px; }
     .legend-list-el-visits span {
-      font-size: 12px !important;
-      color: #000 !important; }
+      font-size: 12px !important; }
     .legend-list-el span {
       font-size: 21px;
       color: #c2c2c2;
@@ -6929,3 +6936,7 @@ div.dx-dropdowneditor-icon {
     background: #ffe3e6; }
     .login-error ul li {
       padding: 9px 0; }
+
+.about-image {
+  height: 360px;
+  padding: 4px; }

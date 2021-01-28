@@ -1,5 +1,6 @@
 ﻿using Calmedic.Application;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Calmedic.Core.Views.Dashboard.Components.DoctorReport
@@ -11,9 +12,9 @@ namespace Calmedic.Core.Views.Dashboard.Components.DoctorReport
         {
         }
 
-        public async Task<IViewComponentResult> InvokeAsync()
+        public async Task<IViewComponentResult> InvokeAsync(List<DoctorReportVM> model)
         {
-            return View("DoctorReport");
+            return View("DoctorReport", model);
         }
     }
 }

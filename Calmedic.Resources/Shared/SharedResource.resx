@@ -396,4 +396,37 @@
   <data name="Street" xml:space="preserve">
     <value>Ulica</value>
   </data>
+  <data name="PatientNumber" xml:space="preserve">
+    <value>Numer pacjenta</value>
+  </data>
+  <data name="Sex" xml:space="preserve">
+    <value>Płeć</value>
+  </data>
+  <data name="Comments" xml:space="preserve">
+    <value>Uwagi</value>
+  </data>
+  <data name="DateOfBirth" xml:space="preserve">
+    <value>Data urodzenia</value>
+  </data>
+  <data name="DisplayTime" xml:space="preserve">
+    <value>Czas wyświetlania [s]</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>Od</value>
+  </data>
+  <data name="MediaType" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>Minut</value>
+  </data>
+  <data name="Multimedia" xml:space="preserve">
+    <value>Multimedia</value>
+  </data>
+  <data name="Pesel" xml:space="preserve">
+    <value>Pesel</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>Do</value>
+  </data>
 </root>

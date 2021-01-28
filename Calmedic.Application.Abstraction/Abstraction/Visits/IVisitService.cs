@@ -9,5 +9,8 @@ using System.Threading.Tasks;
 namespace Calmedic.Application
 {
     public interface IVisitService : IService
-    { }
+    {
+        object GetVisits();
+        void Add();
+    }
 }

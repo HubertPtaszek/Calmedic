@@ -11,7 +11,7 @@ namespace Calmedic.Application
         }
 
         public List<DoctorReportVM> DoctorReport { get; set; }
-        public List<PatientReportVM> PatientReportVM { get; set; }
+        public List<PatientReportVM> PatientReport { get; set; }
         public List<VisitReportVM> VisitReport { get; set; }
         public List<PatientsWidgetVM> PatientsWidget { get; set; }
         public List<VisitsWidgetVM> VisitsWidget { get; set; }

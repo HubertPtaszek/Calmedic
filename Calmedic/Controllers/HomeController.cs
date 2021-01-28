@@ -1,4 +1,5 @@
-﻿using Calmedic.Models;
+﻿using Calmedic.Dictionaries;
+using Calmedic.Models;
 using Calmedic.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -27,7 +28,7 @@ namespace Calmedic.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        [AllowAnonymous]
+        [AppRoleAuthorization(new AppRoleType[] { AppRoleType.Administrator, AppRoleType.Clinic, AppRoleType.Reception, AppRoleType.Doctor })]
         public IActionResult About()
         {
             return View("About");
