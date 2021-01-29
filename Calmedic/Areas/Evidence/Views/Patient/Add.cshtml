@@ -120,20 +120,6 @@
                         }
                     });
                 }*@
-
-                $.ajax({
-                    type: "post",
-                    url: '@Url.Action("Add", "Patient")',
-                        data: [],
-                        processData: false,
-                        contentType: false,
-                        success: function (data) {
-                            if (data != null) {
-                                window.location = '@Url.Action("Details", "Patient")?id=' + data;
-                            }
-                            $("#loadPanelId").dxLoadPanel('hide');
-                        }
-                });
             },
             text: "@ButtonNameResource.Save.ToScriptStringSafe()",
             type: "default"
@@ -169,8 +155,9 @@
             width: "100%",
             value: '@Model.Pesel.ToScriptStringSafe()',
             onValueChanged: function () {
-                $("#dateOfBirthBoxId").dxDateBox("instance").option("value", new Date(1964, 8, 20));
-                $("#sexBoxId").dxSelectBox("instance").option("value", 1);
+                //ajax and set this data
+                //$("#dateOfBirthBoxId").dxDateBox("instance").option("value", new Date(1964, 8, 20));
+                //$("#sexBoxId").dxSelectBox("instance").option("value", 1);
             }
         });
 
