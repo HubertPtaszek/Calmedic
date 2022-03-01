@@ -120,6 +120,15 @@
   <data name="About" xml:space="preserve">
     <value>O nas</value>
   </data>
+  <data name="About_Subtitle" xml:space="preserve">
+    <value>System wspomagania pracy przeznaczony do obsługi przychodni lekarskiej.</value>
+  </data>
+  <data name="About_Title" xml:space="preserve">
+    <value>O nas - Calmedic</value>
+  </data>
+  <data name="AssignedDoctors" xml:space="preserve">
+    <value>Przypisani lekarze</value>
+  </data>
   <data name="AssignedUsers" xml:space="preserve">
     <value>Przypisani użytkownicy</value>
   </data>
@@ -131,6 +140,9 @@
   </data>
   <data name="Clinics" xml:space="preserve">
     <value>Przychodnie</value>
+  </data>
+  <data name="Clinic_Add" xml:space="preserve">
+    <value>Nowa przychodnia</value>
   </data>
   <data name="Clinic_Details" xml:space="preserve">
     <value>Szczegóły przychodni</value>

@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <span class="login-form-footer">@UtilsResource.Conntact_Part1.ToHtmlStringSafe() <a href="#" id="contactButton">@UtilsResource.Conntact_Part2.ToHtmlStringSafe()</a></span>
-                    <div id="contactPopup"></div>
+                    <div id="contactPopupId"></div>
                 </div>
             </div>
         </div>
@@ -116,7 +116,7 @@
             closeOnOutsideClick: false
         });
 
-        $("#contactPopup").dxPopup({
+        $("#contactPopupId").dxPopup({
             visible: false,
             title: "@UtilsResource.Contact.ToScriptStringSafe()",
             width: "700px",

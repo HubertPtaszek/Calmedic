@@ -429,4 +429,13 @@
   <data name="To" xml:space="preserve">
     <value>Do</value>
   </data>
+  <data name="Document" xml:space="preserve">
+    <value>Dokument</value>
+  </data>
+  <data name="DocumentNumber" xml:space="preserve">
+    <value>Numer dokumentu</value>
+  </data>
+  <data name="Specialization" xml:space="preserve">
+    <value>Specjalizacja</value>
+  </data>
 </root>

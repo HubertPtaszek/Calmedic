@@ -98,7 +98,7 @@
             elementAttr: { class: "btn btn-default" },
             height: 32,
             onClick: function () {
-                @*if (DevExpress.validationEngine.validateGroup('@validationGroup').isValid) {
+                if (DevExpress.validationEngine.validateGroup('@validationGroup').isValid) {
                     $("#loadPanelId").dxLoadPanel('show');
                     var array = $("#formId").serializeArray();
                     var formData = new FormData();
@@ -119,7 +119,7 @@
                             $("#loadPanelId").dxLoadPanel('hide');
                         }
                     });
-                }*@
+                }
             },
             text: "@ButtonNameResource.Save.ToScriptStringSafe()",
             type: "default"

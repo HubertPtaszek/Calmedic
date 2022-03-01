@@ -1,0 +1,209 @@
+﻿@model GalleyAddItemVM
+
+<div id="addPopupId"></div>
+
+<div style="display: none;">
+    <div id="addPopupInterlanId">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group-horizontal row">
+                    <div class="col-xs-12" id="fileUploaderId"></div>
+                    <div id="dropzone-external" class="flex-box dx-theme-border-color" onclick="upload()">
+                        <img id="dropzone-image" src="#" hidden alt="" />
+                        <div id="dropzone-text" class="flex-box">
+                            <i class="far fa-image flex-box-i"></i>
+                            <span>Przeciągnij i upuść</span>
+                            <span style="margin-bottom: 4px;">lub</span>
+                            <div id="uploadBtnId"></div>
+                        </div>
+                        <div id="upload-progress"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<style>
+    #dropzone-external {
+        width: 480px;
+        height: 240px;
+        background-color: none;
+        border-width: 2px;
+        border-style: dashed;
+        padding: 10px 20px;
+        margin: auto;
+        cursor: pointer;
+        margin-top: -68px;
+    }
+
+        #dropzone-external.dropzone-active {
+            border-style: solid;
+        }
+
+    .widget-container > span {
+        font-size: 22px;
+        font-weight: bold;
+        color: #2D3F5E;
+        margin-bottom: 16px;
+    }
+
+    #dropzone-image {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    #dropzone-text > span {
+        font-weight: 100;
+        color: #2D3F5E;
+    }
+
+    #upload-progress {
+        display: flex;
+        margin-top: 10px;
+    }
+
+    .flex-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .flex-box-i {
+        color: #D8DEE8;
+        font-size: 64px;
+        margin-bottom: 4px;
+    }
+
+    .dx-fileuploader-show-file-list .dx-fileuploader-files-container {
+        padding: 0;
+    }
+</style>
+
+
+<script>
+    function upload() {
+        $(".dx-fileuploader-input-wrapper").find(".dx-fileuploader-button")[0].click();
+    }
+
+    $(document).ready(function () {
+        $("#addBtnId").dxButton({
+            elementAttr: { class: "btn btn-default" },
+            height: 32,
+            text: "@ButtonNameResource.Add.ToScriptStringSafe()",
+            onClick: function () {
+                $("#addPopupId").dxPopup("instance").show();
+            },
+            type: "default"
+        });
+
+        $("#uploadBtnId").dxButton({
+            elementAttr: { class: "btn btn-default-outlined" },
+            height: 32,
+            text: "@ButtonNameResource.Select.ToScriptStringSafe()",
+            onClick: function () {
+
+            },
+            type: "outlined"
+        })
+
+        $("#addPopupId").dxPopup({
+            visible: false,
+            title: "@UtilsResource.Gallery_Add.ToScriptStringSafe()",
+            width: "520px",
+            height: "auto",
+            dragEnabled: false,
+            position: { my: 'bottom', at: 'center', of: window },
+            contentTemplate: function (container) {
+                container.append($("#addPopupInterlanId"));
+            }
+        });
+
+        $("#fileUploaderId").dxFileUploader({
+            accept: "*",
+            dialogTrigger: "#dropzone-external",
+            dropZone: "#dropzone-external",
+            multiple: false,
+            visible: true,
+            uploadMode: "instantly",
+            uploadUrl: "https://js.devexpress.com/Demos/NetCore/FileUploader/Upload",
+            onValueChanged: function () {
+                setTimeout(function () {
+                    $("#loadPanelId").dxLoadPanel("show");
+                    $("#totalCountId").text("4");
+                    $("#addPopupId").dxPopup("instance").hide();
+                }, 4000);
+                setTimeout(function () {
+                    $("#loadPanelId").dxLoadPanel("hide");
+                    $("#fileContainer4").show();
+                },4700);
+            },
+            onContentReady: function (e) {
+                $(".dx-fileuploader-input-wrapper").css("opacity", 0);
+                $(".dx-fileuploader-files-container").css("opacity", 0);
+            },
+            onDropZoneEnter: function (e) {
+                if (e.dropZoneElement.id === "dropzone-external")
+                    toggleDropZoneActive(e.dropZoneElement, true);
+            },
+            onDropZoneLeave: function (e) {
+                if (e.dropZoneElement.id === "dropzone-external")
+                    toggleDropZoneActive(e.dropZoneElement, false);
+            },
+            onUploaded: function (e) {
+                const file = e.file;
+                const dropZoneText = document.getElementById("dropzone-text");
+                const fileReader = new FileReader();
+                fileReader.onload = function () {
+                    toggleDropZoneActive(document.getElementById("dropzone-external"), false);
+                    const dropZoneImage = document.getElementById("dropzone-image");
+                    dropZoneImage.src = fileReader.result;
+                }
+                fileReader.readAsDataURL(file);
+                dropZoneText.style.display = "none";
+                uploadProgressBar.option({
+                    visible: false,
+                    value: 0
+                });
+            },
+            onProgress: function (e) {
+                uploadProgressBar.option("value", e.bytesLoaded / e.bytesTotal * 100)
+            },
+            onUploadStarted: function () {
+                $(".dx-fileuploader-input-wrapper").hide();
+                toggleImageVisible(false);
+                uploadProgressBar.option("visible", true);
+            }
+        }).dxFileUploader("instance");
+
+        var uploadProgressBar = $("#upload-progress").dxProgressBar({
+            min: 0,
+            max: 100,
+            width: "30%",
+            showStatus: false,
+            visible: false
+        }).dxProgressBar("instance");
+
+        function toggleDropZoneActive(dropZone, isActive) {
+            if (isActive) {
+                dropZone.classList.add("dx-theme-accent-as-border-color");
+                dropZone.classList.remove("dx-theme-border-color");
+                dropZone.classList.add("dropzone-active");
+            } else {
+                dropZone.classList.remove("dx-theme-accent-as-border-color");
+                dropZone.classList.add("dx-theme-border-color");
+                dropZone.classList.remove("dropzone-active");
+            }
+        }
+
+        function toggleImageVisible(visible) {
+            const dropZoneImage = document.getElementById("dropzone-image");
+            dropZoneImage.hidden = !visible;
+        }
+
+        document.getElementById("dropzone-image").onload = function () { toggleImageVisible(true); };
+    });
+</script>

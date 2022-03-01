@@ -68,5 +68,31 @@ namespace Calmedic.Application
 
             return clinic;
         }
+
+        public Clinic FromClinicAddVM(ClinicAddVM model)
+        {
+            Clinic clinic = new Clinic()
+            {
+                //clinic.LogoUrl = nowy url,
+                Name = model.Name,
+                Type = model.ClinicType,
+                PhoneNumber = model.PhoneNumber,
+                Email = model.Email,
+                OpenFrom = model.OpenFrom,
+                OpenTo = model.OpenTo
+            };
+
+            Address address = new Address()
+            {
+                City = model.City,
+                PostalCode = model.PostalCode,
+                Street = model.Street,
+                BuildingNo = model.BuildingNo,
+                ApartmentNo = model.ApartmentNo
+            };
+            address.FullAdress = AddressConverter.GetFullAddress(address);
+            clinic.Address = address;
+            return clinic;
+        }
     }
 }

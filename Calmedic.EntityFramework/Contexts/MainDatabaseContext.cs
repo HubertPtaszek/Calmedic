@@ -34,7 +34,7 @@ namespace Calmedic.EntityFramework
 
         public static MainDatabaseContext Create()
         {
-            return (new AppContextFactory()).CreateDbContext(new string[0]);
+            return new AppContextFactory().CreateDbContext(new string[0]);
         }
 
         //Add-Migration -Context MainDatabaseContext -o MainDatabaseMigrations <Nazwa migracji>
@@ -45,15 +45,20 @@ namespace Calmedic.EntityFramework
 
         public DbSet<AppSetting> AppSettings { get; set; }
         public DbSet<AppMailMessage> AppMailMessages { get; set; }
+        public DbSet<Address> Addresses { get; set; }
+        public DbSet<File> Files { get; set; }
+
+        #endregion Core
+
+        #region Membership
+
         public DbSet<Person> Peoples { get; set; }
         public DbSet<SystemUser> SystemUsers { get; set; }
         public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<AppRole> AppRoles { get; set; }
         public DbSet<AppUserRole> AppUserRoles { get; set; }
-        public DbSet<Address> Addresses { get; set; }
-        public DbSet<File> Files { get; set; }
 
-        #endregion Core
+        #endregion Membership
 
         #region Clinics
 
@@ -90,8 +95,10 @@ namespace Calmedic.EntityFramework
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             #region Core
+
             modelBuilder.ApplyConfiguration(new FileConfiguration());
-            #endregion
+
+            #endregion Core
 
             #region Membership
 

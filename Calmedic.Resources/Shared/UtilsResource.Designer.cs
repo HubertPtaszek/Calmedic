@@ -70,6 +70,33 @@ namespace Calmedic.Resources.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to System wspomagania pracy przeznaczony do obsługi przychodni lekarskiej..
+        /// </summary>
+        public static string About_Subtitle {
+            get {
+                return ResourceManager.GetString("About_Subtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O nas - Calmedic.
+        /// </summary>
+        public static string About_Title {
+            get {
+                return ResourceManager.GetString("About_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Przypisani lekarze.
+        /// </summary>
+        public static string AssignedDoctors {
+            get {
+                return ResourceManager.GetString("AssignedDoctors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Przypisani użytkownicy.
         /// </summary>
         public static string AssignedUsers {
@@ -93,6 +120,15 @@ namespace Calmedic.Resources.Shared {
         public static string Clinic {
             get {
                 return ResourceManager.GetString("Clinic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nowa przychodnia.
+        /// </summary>
+        public static string Clinic_Add {
+            get {
+                return ResourceManager.GetString("Clinic_Add", resourceCulture);
             }
         }
         

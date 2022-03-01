@@ -2,7 +2,6 @@
 using Calmedic.Dictionaries;
 using Calmedic.Utils;
 using DevExtreme.AspNet.Mvc;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Calmedic.Areas.Membership.Controllers

@@ -1,28 +1,167 @@
 ﻿@model ClinicDetailsVM
 @{
     ViewBag.Title = UtilsResource.Clinic_Details;
+    List<AppRoleType> Roles = Context.Session.GetObject<AppUserData>(SessionVariableNames.AppUserData).Roles;
 }
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item" aria-current="page"><a href="@Url.Action("Index", "Dashboard", new { area = AreaNames.Dashboard_Area })">@UtilsResource.Home.ToHtmlStringSafe()</a></li>
-        <li class="breadcrumb-item active" aria-current="page">@UtilsResource.User_Details.ToHtmlStringSafe()</li>
+        <li class="breadcrumb-item" aria-current="page"><a href="@Url.Action("Index", "Clinic", new { area = AreaNames.Evidence_Area })">@UtilsResource.Clinics.ToHtmlStringSafe()</a></li>
+        <li class="breadcrumb-item active" aria-current="page">@UtilsResource.Clinic_Details.ToHtmlStringSafe()</li>
     </ol>
 </nav>
 
 <div class="wrapper">
     <div class="wrapper-header d-flex middle between">
-        <h4 class="wrapper-header-title">@UtilsResource.Clinic_Details.ToHtmlStringSafe() (<span id="totalCountId">0</span>)</h4>
+        <h4 class="wrapper-header-title">@UtilsResource.Clinic_Details.ToHtmlStringSafe()</h4>
         <div>
+            <div id="deleteBtnId"></div>
+            <div id="editBtnId"></div>
         </div>
     </div>
     <hr />
     <div class="wrapper-inner">
-        <div class="row" style="height: 500px"></div>
+        <div class="row">
+            <div class="col-xs-4">
+                <h4 class="form-group-title">@SharedResource.PrimaryData.ToHtmlStringSafe()</h4>
+                <div class="form-group form-group-horizontal-big row">
+                    <label class="col-xs-3">@Html.DisplayNameFor(x => x.LogoUrl)</label>
+                    <img class="form-group-image" src="~/images/logos/@(Model.LogoUrl.ToHtmlStringSafe())">
+                    <div class="col-xs-3 form-group-btn center">
+                        <div id="uploadBtnId"></div>
+                    </div>
+                </div>
+                <div class="form-group form-group-horizontal row">
+                    <label class="col-xs-3">@Html.DisplayNameFor(x => x.Name)</label>
+                    <div class="col-xs-9" id="nameBoxId"></div>
+                </div>
+                <div class="form-group form-group-horizontal row">
+                    <label class="col-xs-3">@Html.DisplayNameFor(x => x.ClinicType)</label>
+                    <div class="col-xs-9" id="clinicTypeBoxId"></div>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <h4 class="form-group-title">@SharedResource.Address.ToHtmlStringSafe()</h4>
+                <div class="form-group form-group-horizontal-big row">
+                    <label class="col-xs-3">@Html.DisplayNameFor(x => x.Address)</label>
+                    <div class="col-xs-9" id="addressAreaId"></div>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <h4 class="form-group-title">@SharedResource.AdditionalData.ToHtmlStringSafe()</h4>
+                <div class="form-group form-group-horizontal row">
+                    <label class="col-xs-3">@Html.DisplayNameFor(x => x.PhoneNumber)</label>
+                    <div class="col-xs-9" id="phoneBoxId"></div>
+                </div>
+                <div class="form-group form-group-horizontal row">
+                    <label class="col-xs-3">@Html.DisplayNameFor(x => x.Email)</label>
+                    <div class="col-xs-9" id="emailBoxId"></div>
+                </div>
+                <div class="form-group form-group-horizontal row">
+                    <label class="col-xs-3">@Html.DisplayNameFor(x => x.OpenFrom)</label>
+                    <div class="col-xs-9" id="openFromBoxId"></div>
+                </div>
+                <div class="form-group form-group-horizontal row">
+                    <label class="col-xs-3">@Html.DisplayNameFor(x => x.OpenTo)</label>
+                    <div class="col-xs-9" id="openToBoxId"></div>
+                </div>
+            </div>
+        </div>
+        @{
+            if (Roles.Contains(AppRoleType.Administrator))
+            {
+                <div class="row">
+                    <div class="col-xs-12">
+                        @await Component.InvokeAsync("ClinicDoctorsList", Model)
+                    </div>
+                </div>
+            }
+        }
     </div>
 </div>
 
 <script>
     $(document).ready(function () {
+        $("#deleteBtnId").dxButton({
+            elementAttr: { class: "btn btn-danger" },
+            height: 32,
+            onClick: function () {
+                //podpiąc popup usuwajacy
+            },
+            text: "@ButtonNameResource.Delete.ToScriptStringSafe()",
+            type: "danger"
+        });
+
+        $("#editBtnId").dxButton({
+            elementAttr: { class: "btn btn-ml btn-default" },
+            height: 32,
+            text: "@ButtonNameResource.Edit.ToScriptStringSafe()",
+            onClick: function () {
+                window.location = '@Url.Action("Edit", "Clinic", new { id = Model.Id })';
+            },
+            type: "default"
+        });
+
+        $("#nameBoxId").dxTextBox({
+            name: "Name",
+            readOnly: true,
+            width: "100%",
+            value: '@Model.Name.ToScriptStringSafe()'
+        });
+
+        $("#clinicTypeBoxId").dxSelectBox({
+            items: @Html.Raw(Model.ClinicTypes.ToJson()),
+            displayExpr: "Text",
+            name: "ClinicType",
+            placeholder: "@SharedResource.Select.ToScriptStringSafe()",
+            readOnly: true,
+            width: "100%",
+            value: @((int)Model.ClinicType),
+            valueExpr: "Value"
+        });
+
+        $("#addressAreaId").dxTextArea({
+            height: "auto",
+            minHeight: "75px",
+            name: "Address",
+            readOnly: true,
+            width: "100%",
+            value: '@Model.Address.ToScriptStringSafe()'
+        });
+
+        $("#phoneBoxId").dxTextBox({
+            mode: "tel",
+            name: "PhoneNumber",
+            readOnly: true,
+            width: "100%",
+            value: '@Model.PhoneNumber.ToScriptStringSafe()'
+        });
+
+        $("#emailBoxId").dxTextBox({
+            mode: "email",
+            name: "Email",
+            readOnly: true,
+            width: "100%",
+            value: '@Model.Email.ToScriptStringSafe()'
+        });
+
+        $("#openFromBoxId").dxDateBox({
+            name: "OpenFrom",
+            pickerType: "rollers",
+            readOnly: true,
+            type: "time",
+            width: "100%",
+            value: '@(Model.OpenFrom)'
+        });
+
+        $("#openToBoxId").dxDateBox({
+            name: "OpenTo",
+            pickerType: "rollers",
+            readOnly: true,
+            type: "time",
+            width: "100%",
+            value: '@(Model.OpenTo)'
+        });
     });
 </script>

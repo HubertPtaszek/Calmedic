@@ -77,8 +77,7 @@ namespace Calmedic.Areas.Evidence.Controllers
             return View(model);
         }
 
-        [HttpDelete]
-        [ValidateAntiForgeryToken]
+        [HttpDelete, ValidateAntiForgeryToken]
         [AppRoleAuthorization(new AppRoleType[] { AppRoleType.Administrator, AppRoleType.Clinic, AppRoleType.Reception })]
         public ActionResult Delete(int id)
         {

@@ -42,7 +42,6 @@
     <Folder Include="Areas\Gallery\Controllers\" />
     <Folder Include="Areas\Gallery\Data\" />
     <Folder Include="Areas\Gallery\Models\" />
-    <Folder Include="Areas\Gallery\Views\" />
     <Folder Include="Areas\Presentation\Data\" />
     <Folder Include="Areas\Presentation\Models\" />
     <Folder Include="wwwroot\css\gallery\" />

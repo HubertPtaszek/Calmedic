@@ -1,27 +1,19 @@
-﻿@model ClinicListVM
+﻿@model ClinicDetailsVM
 @{
-    ViewBag.Title = UtilsResource.Clinics;
+    string validationGroup = Guid.NewGuid().ToString();
 }
 
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item" aria-current="page"><a href="@Url.Action("Index", "Dashboard", new { area = AreaNames.Dashboard_Area })">@UtilsResource.Home.ToHtmlStringSafe()</a></li>
-        <li class="breadcrumb-item active" aria-current="page">@UtilsResource.Clinics.ToHtmlStringSafe()</li>
-    </ol>
-</nav>
-
-<div class="wrapper">
-    <div class="wrapper-header d-flex middle between">
-        <h4 class="wrapper-header-title">@UtilsResource.Clinics.ToHtmlStringSafe() (<span id="totalCountId">0</span>)</h4>
-        <div>
-            <div id="addBtnId"></div>
-        </div>
-    </div>
-    <hr />
-    <div class="wrapper-inner">
-        <div id="clinicsGridId"></div>
+<div class="grid-header d-flex middle between">
+    <h6 class="grid-header-title">@UtilsResource.AssignedDoctors.ToHtmlStringSafe() (<span id="totalCountId">0</span>)</h6>
+    <div>
+        <div id="addBtnId"></div>
     </div>
 </div>
+
+<div id="assignedDoctorsGridId"></div>
+
+@*@await Component.InvokeAsync("AssignUser", Model)
+@await Component.InvokeAsync("UnassignUser", Model)*@
 
 <script>
     $(document).ready(function () {
@@ -29,17 +21,20 @@
             elementAttr: { class: "btn btn-default" },
             height: 32,
             onClick: function () {
-                window.location = '@Url.Action("Add", "Clinic")';
+                 $("#assignDoctorPopupId").dxPopup("instance").show();
             },
             text: "@ButtonNameResource.Add.ToScriptStringSafe()",
             type: "default"
         });
 
         var store = DevExpress.data.AspNet.createStore({
-            "loadUrl": "@Url.Action("GetData", "Clinic")"
+            loadUrl: "@Url.Action("GetClinicDocotrs", "Clinic")",
+            loadParams: {
+                clinicId: '@Model.Id'
+            }
         });
 
-        var dataGrid = $("#clinicsGridId").dxDataGrid({
+        var dataGrid = $("#assignedDoctorsGridId").dxDataGrid({
             dataSource: {
                 store: store,
                 onLoadingChanged: function (isLoading) {
@@ -81,29 +76,19 @@
             rowAlternationEnabled: true,
             columns: [
                 { dataField: "Id", visible: false, allowSearch: false },
-                { dataField: "Name", sortOrder: "asc", caption: "@SharedResource.Name.ToScriptStringSafe()" },
+                { dataField: "LastName", caption: "@SharedResource.LastName.ToScriptStringSafe()" },
+                { dataField: "FirstName", caption: "@SharedResource.FirstName.ToScriptStringSafe()" },
+                { dataField: "Title", caption: "@SharedResource.Title.ToScriptStringSafe()" },
                 {
-                    dataField: "Type",
-                    caption: "@SharedResource.Type.ToScriptStringSafe()",
+                    dataField: "SpecializationId",
                     lookup: {
-                        dataSource: @Html.Raw(Model.ClinicTypes.ToJson()),
+                        dataSource: @Html.Raw(Model.Specializations.ToJson()),
                         displayExpr: 'Text',
                         valueExpr: 'Value'
-                    }
+                    },
+                    caption: "@SharedResource.Specialization.ToScriptStringSafe()"
                 },
-                {
-                    dataField: "OpenFrom",
-                    dataType: "datetime",
-                    format: "shortTime",
-                    caption: "@SharedResource.OpenFrom.ToScriptStringSafe()"
-                },
-                {
-                    dataField: "OpenTo",
-                    dataType: "datetime",
-                    format: "shortTime",
-                    caption: "@SharedResource.OpenTo.ToScriptStringSafe()"
-                },
-                { dataField: "Address", caption: "@SharedResource.Address.ToScriptStringSafe()" },
+                { dataField: "DocumentNumber", caption: "@SharedResource.Document.ToScriptStringSafe()" },
                 { dataField: "Email", caption: "@SharedResource.EmailAddress.ToScriptStringSafe()" },
                 { dataField: "PhoneNumber", caption: "@SharedResource.PhoneNumber.ToScriptStringSafe()" },
                 {
@@ -115,11 +100,18 @@
                     width: 100,
                     cellTemplate: function (container, options) {
                         var id = options.row.data["Id"];
+                        var email = options.row.data["Email"];
+                        var userName = options.row.data["FirstName"] + " " + options.row.data["LastName"];
                         var temp = '__id__';
                         var reId = new RegExp(temp, 'g');
-
-                        var detailsUrl = '<a class="btn-datagrid" href="@Url.Action("Details", "Clinic", new { id = "__id__" }, null)"><i class="fas fa-arrow-right"></i></a>';
-                        detailsUrl = detailsUrl.replace(reId, id);
+                        var detailsUrl = '';
+                        if (email != "admin@calmedic.pl") {
+                            detailsUrl = '<a class="btn-datagrid btn-datagrid-danger" onclick="unassignUser(' + id + ', \'' + userName + '\')"><i class="fas fa-trash"></i></a>';
+                            detailsUrl = detailsUrl.replace(reId, id);
+                        }
+                        else {
+                            detailsUrl = '<a class="btn-datagrid btn-datagrid-normal"><i class="fas fa-trash"></i></a>';
+                        }
                         container.append(detailsUrl);
                     }
                 }

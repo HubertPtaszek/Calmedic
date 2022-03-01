@@ -1,0 +1,13 @@
+﻿@model GalleyItemVM
+
+<div class="col-xs-3 col-md-2 file-thumb-container">
+    <div id=""></div>
+    <div class="file-thumb-delete">
+        <i class="fas fa-times"></i>
+    </div>
+    <a class="file-thumb" href="#">
+        <div class="file-thumb-img">
+            <img src="~/media/@Model.Name.ToHtmlStringSafe()" />
+        </div>
+    </a>
+</div>

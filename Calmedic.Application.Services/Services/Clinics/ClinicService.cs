@@ -1,5 +1,4 @@
 using Calmedic.Data;
-using Calmedic.Dictionaries;
 using Calmedic.Domain;
 using Calmedic.Utils;
 using DevExtreme.AspNet.Data;
@@ -13,6 +12,7 @@ namespace Calmedic.Application
 
         public IClinicRepository ClinicRepository { get; set; }
         public IClinicUserRepository ClinicUserRepository { get; set; }
+        public ISpecializationRepository SpecializationRepository { get; set; }
         public ClinicConverter ClinicConverter { get; set; }
 
         #endregion Dependencies
@@ -23,9 +23,22 @@ namespace Calmedic.Application
             return model;
         }
 
-        public virtual object GetClinics(DataSourceLoadOptionsBase loadOptions)
+        public virtual object GetClinics(DataSourceLoadOptionsBase loadOptions, HttpContext httpContext)
         {
-            return new object();
+            AppUserData userData = httpContext.Session.GetObject<AppUserData>("AppUserData");
+            object result;
+            if (userData.Roles.Contains(Dictionaries.AppRoleType.Doctor))
+            {
+                ClinicUser clinicUser = ClinicUserRepository.GetSingle(x => x.UserId == userData.Id);
+                result = ClinicRepository.GetClinicsForUser(loadOptions, clinicUser);
+            }
+            result = ClinicRepository.GetClinics(loadOptions);
+            return result;
+        }
+
+        public virtual object GetClinicDocotrs(DataSourceLoadOptionsBase loadOptions, int clinicId)
+        {
+            return ClinicRepository.GetClinicDocotrs(loadOptions, clinicId);
         }
 
         public virtual ClinicDetailsVM GetClinicDetailsVMForUser(HttpContext context)
@@ -44,12 +57,7 @@ namespace Calmedic.Application
         {
             Clinic clinic = ClinicRepository.GetSingle(x => x.Id == id);
             ClinicDetailsVM model = ClinicConverter.ToClinicDetailsVM(clinic);
-            return model;
-        }
-
-        public virtual ClinicAddVM GetClinicAddVM()
-        {
-            ClinicAddVM model = new ClinicAddVM();
+            model.Specializations = SpecializationRepository.GetSpecializationsToSelect();
             return model;
         }
 
@@ -62,10 +70,9 @@ namespace Calmedic.Application
 
         public virtual int Add(ClinicAddVM model)
         {
-            //Clinic clinic = PatientConverter.FromClinicAddVM(model);
-            //ClinicRepository.Add(clinic);
-            //return clinic.Id;
-            return 1;
+            Clinic clinic = ClinicConverter.FromClinicAddVM(model);
+            ClinicRepository.Add(clinic);
+            return clinic.Id;
         }
 
         public virtual int Edit(ClinicEditVM model)

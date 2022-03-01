@@ -1,5 +1,3 @@
-using Calmedic.Dictionaries;
-using Calmedic.Utils;
 using System.Collections.Generic;
 
 namespace Calmedic.Application
@@ -9,5 +7,8 @@ namespace Calmedic.Application
         public GalleryListVM()
         {
         }
+
+        public int ClinicId { get; set; }
+        public List<GalleyItemVM> Files { get; set; }
     }
 }

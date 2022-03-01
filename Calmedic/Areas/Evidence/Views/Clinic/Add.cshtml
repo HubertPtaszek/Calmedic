@@ -1,0 +1,33 @@
+﻿@model ClinicAddVM
+@{
+    ViewBag.Title = UtilsResource.Clinic_Add;
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page"><a href="@Url.Action("Index", "Dashboard", new { area = AreaNames.Dashboard_Area })">@UtilsResource.Home.ToHtmlStringSafe()</a></li>
+        <li class="breadcrumb-item" aria-current="page"><a href="@Url.Action("Index", "Clinic", new { area = AreaNames.Evidence_Area })">@UtilsResource.Clinics.ToHtmlStringSafe()</a></li>
+        <li class="breadcrumb-item active" aria-current="page">@UtilsResource.Clinic_Add.ToHtmlStringSafe()</li>
+    </ol>
+</nav>
+
+<div class="wrapper">
+    <div class="wrapper-header d-flex middle between">
+        <h4 class="wrapper-header-title">@UtilsResource.Clinic_Add.ToHtmlStringSafe()</h4>
+        <div>
+        </div>
+    </div>
+    <hr />
+    @using (Html.BeginForm("Add", "Clinic", FormMethod.Post, new { id = "formId", enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="wrapper-inner">
+            <div class="row" style="height: 500px"></div>
+        </div>
+    }
+</div>
+
+<script>
+    $(document).ready(function () {
+    });
+</script>

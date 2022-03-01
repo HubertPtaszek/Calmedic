@@ -21,7 +21,7 @@ namespace Calmedic.Application
         public string BuildingNo { get; set; }
         public string ApartmentNo { get; set; }
         public string PostalCode { get; set; }
-        public string EmailAddress { get; set; }
+        public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public TimeSpan OpenFrom { get; set; }
         public TimeSpan OpenTo { get; set; }

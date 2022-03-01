@@ -8,6 +8,26 @@
     overflow: hidden;
     max-height: 700px;
 
+    &-error {
+        color: $primary-text-color;
+
+        ul {
+            border: 1px solid #ecbcbf;
+            border-radius: 4px;
+            list-style: none;
+            padding: 0;
+            width: 100%;
+            text-align: center;
+            height: 37px;
+            margin: 0;
+            background: #ffe3e6;
+
+            li {
+                padding: 9px 0;
+            }
+        }
+    }
+
     form {
         display: flex;
         max-height: 700px;
@@ -46,26 +66,6 @@
 
         img {
             height: 100%;
-        }
-    }
-}
-
-.login-error {
-    color: $primary-text-color;
-
-    ul {
-        border: 1px solid #ecbcbf;
-        border-radius: 4px;
-        list-style: none;
-        padding: 0;
-        width: 100%;
-        text-align: center;
-        height: 37px;
-        margin: 0;
-        background: #ffe3e6;
-
-        li {
-            padding: 9px 0;
         }
     }
 }

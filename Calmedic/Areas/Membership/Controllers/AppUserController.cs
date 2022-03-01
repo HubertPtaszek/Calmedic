@@ -58,6 +58,7 @@ namespace Calmedic.Areas.Membership.Controllers
             AppUserDetailsVM model = _appUserService.GetAppUserDetailsVM(id);
             return View(model);
         }
+
         [AppRoleAuthorization(AppRoleType.Administrator)]
         public ActionResult Edit(int id)
         {

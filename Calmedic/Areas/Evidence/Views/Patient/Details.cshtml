@@ -47,7 +47,7 @@
             </div>
             <div class="col-xs-4">
                 <h4 class="form-group-title">@SharedResource.Address.ToHtmlStringSafe()</h4>
-                <div class="form-group form-group-horizontal row">
+                <div class="form-group form-group-horizontal-big row">
                     <label class="col-xs-3">@Html.DisplayNameFor(x => x.Address)</label>
                     <div class="col-xs-9" id="addressAreaId"></div>
                 </div>
@@ -126,7 +126,7 @@
         $("#addressAreaId").dxTextArea({
             height: "auto",
             minHeight: "75px",
-            name: "Role",
+            name: "Address",
             readOnly: true,
             width: "100%",
             value: '@Model.Address.ToScriptStringSafe()'

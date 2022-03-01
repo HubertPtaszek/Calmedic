@@ -1,6 +1,7 @@
 ﻿using Calmedic.Application;
 using Calmedic.Dictionaries;
 using Calmedic.Utils;
+using DevExtreme.AspNet.Mvc;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
@@ -36,11 +37,26 @@ namespace Calmedic.Areas.Evidence.Controllers
             }
         }
 
+        [HttpGet]
+        [AppRoleAuthorization(new AppRoleType[] { AppRoleType.Administrator, AppRoleType.Doctor })]
+        public ActionResult GetData(DataSourceLoadOptions loadOptions)
+        {
+            object data = _clinicService.GetClinics(loadOptions, HttpContext);
+            return CustomJson(data);
+        }
+
+        [HttpGet]
+        [AppRoleAuthorization(AppRoleType.Administrator)]
+        public ActionResult GetClinicDocotrs(DataSourceLoadOptions loadOptions, int clinicId)
+        {
+            var data = _clinicService.GetClinicDocotrs(loadOptions, clinicId);
+            return CustomJson(data);
+        }
+
         [AppRoleAuthorization(AppRoleType.Administrator)]
         public ActionResult Add()
         {
-            ClinicAddVM model = _clinicService.GetClinicAddVM();
-            return View(model);
+            return View(new ClinicAddVM());
         }
 
         [HttpPost, ValidateAntiForgeryToken]
