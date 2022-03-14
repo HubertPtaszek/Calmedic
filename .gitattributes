@@ -1,4 +1,3 @@
-Calmedic/wwwroot/lib/* linguist-vendored
 Calmedic/wwwroot/lib/cldrjs/* linguist-vendored
 Calmedic/wwwroot/lib/cropper/* linguist-vendored
 Calmedic/wwwroot/lib/devextreme-cldr-data/* linguist-vendored
@@ -9,6 +8,7 @@ Calmedic/wwwroot/lib/jquery-validation-unobtrusive/* linguist-vendored
 Calmedic/wwwroot/lib/jquery-validation/* linguist-vendored
 Calmedic/wwwroot/lib/jquery/* linguist-vendored
 Calmedic/wwwroot/lib/modernizr/* linguist-vendored
+Calmedic/wwwroot/lib/* linguist-vendored
 Calmedic/wwwroot/js/devextreme/* linguist-vendored
 Calmedic/wwwroot/js/* linguist-vendored
 Calmedic/wwwroot/css/* linguist-vendored
