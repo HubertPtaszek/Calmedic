@@ -14,7 +14,6 @@ Calmedic/wwwroot/js/* linguist-vendored
 Calmedic/wwwroot/css/* linguist-vendored
 Calmedic/wwwroot/css/devextreme/* linguist-vendored
 Calmedic/wwwroot/css/scss/* linguist-vendored
-Calmedic/* linguist-vendored
 
 ###############################################################################
 # Set default behavior to automatically normalize line endings.
